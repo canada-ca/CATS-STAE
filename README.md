@@ -26,7 +26,7 @@ possible.
 
 ## Current Specifications
 
-* **CATS 2.0 - SAML 2.0 Deployment Profile**: A deployment profile of version 2
+* **[CATS 2.0 - SAML 2.0 Deployment Profile](https://s3.amazonaws.com/ssc-cats/CATS_V2_0_Deployment_Profile_Final_r8_2_en.pdf)**: A deployment profile of version 2
   of the
   [Security Assertion Markup Language](https://wiki.oasis-open.org/security/FrontPage "OASIS SAML Wiki")
   standard, based on the
@@ -84,7 +84,7 @@ interopérabilité sécurisée possible.
 
 ## Spécifications actuelles
 
-* **STAE 2.0 - SAML 2.0 Profil de mise en place**: Un profil de mise en place de
+* **[STAE 2.0 - SAML 2.0 Profil de mise en place](https://s3.amazonaws.com/ssc-cats/CATS_V2_0_Deployment+Profile_Final+r7.2_fr.pdf)**: Un profil de mise en place de
  la version 2 de la norme
  [Security Assertion Markup Language](https://wiki.oasis-open.org/security/FrontPage "OASIS SAML Wiki")
  fondée sur la version 2.0 du
