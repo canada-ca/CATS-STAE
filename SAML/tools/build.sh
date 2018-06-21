@@ -42,6 +42,7 @@ echo "Done"
 echo -n "Producing HTML..."
 docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor \
    asciidoctor --source-dir ./src --destination-dir ./publish src/main.adoc
+cp -R ./src/images ./publish
 
 echo -n "Producing PDF..."
 docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor \
