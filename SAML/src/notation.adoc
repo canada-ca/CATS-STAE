@@ -1,0 +1,44 @@
+== Notation and Terminology
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <<RFC2119>> <<RFC8174>> when, and only when, they appear in all capitals, as shown here.
+
+This specification uses the following typographical conventions in text: `<ns:Element>`, `Attribute`, **Datatype**, `OtherCode`. The normative requirements of this specification are individually labeled with a unique identifier in the following form: *[SDP-EXAMPLE01]*. All information within these requirements should be considered normative unless it is set in _italic_ type.  Italicized text is non-normative and is intended to provide additional information that may be helpful in implementing the normative requirements.
+
+=== References to SAML 2.0 specification
+
+When referring to elements from the SAML 2.0 core specification <<SAML2Core>>, the following syntax is used:
+
+* `<samlp:ProtocolElement>` - for elements from the SAML 2.0 Protocol namespace.
+* `<saml:AssertionElement>` - for elements from the SAML 2.0 Assertion namespace.
+
+When referring to elements from the SAML 2.0 metadata specification <<SAML2Meta>>, the following syntax is used:
+
+* `<md:MetadataElement>`
+
+When referring to elements from the SAML 2.0 Metadata Extensions for Login and Discovery User Interface specification <<MetaUi>>, the following syntax is used:
+
+* `<mdui:MetadataElement>`
+
+When referring to elements from the SAML 2.0 Metadata Extension for Entity Attributes specification <<MetaAttr>>, the following syntax is used:
+
+* `<mdattr:MetadataElement>`
+
+When referring to elements from the SAML V2.0 Asynchronous Single Logout Protocol Extension specification <<SAML2ASLO>>, the following syntax is used:
+
+* `<aslo:Element>`
+
+When referring to elements from the XML-Signature Syntax and Processing Version 1.1 WWWC Recommendation <<XMLSig>>, the following syntax is used:
+
+* `<ds:Element>`
+
+=== Terminology
+
+The abbreviations IdP and SP are used below to refer to Identity Providers and Service Providers in the sense of their usage within the SAML Browser SSO Profile and Single Logout profiles.
+
+While the term Relying Party is not used in this document, it does commonly appear in other related documentation. This term is synonymous with Service Provider.
+
+The term Credential Service Provider (abbreviated CSP) refers to an Identity Provider that provides anonymous credential authentication services.
+
+The term Trusted Identity Provider (abbreviated TIP) refers to an Identity Provider that provides identity authentication services.
+
+Whether explicit or implicit, all the requirements in this document are meant to apply to deployments of SAML profiles and may involve explicit support for requirements by SAML-implementing software and/or supplemental support via application code. Deployments of a Service Provider may refer to both stand-alone implementations of SAML, libraries integrated with an application, or any combination of the two. It is difficult to define a clear boundary between a Service Provider and the application/service it represents, and unnecessary to do so for the purposes of this document.
