@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Clone the latest Kantara saml2iop sources
 echo -n "Obtaining the latest Kantara specifications..."

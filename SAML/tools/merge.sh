@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Pattern to match a requirement ID
 REGEX="^\[.+]::"
