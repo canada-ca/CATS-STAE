@@ -28,7 +28,7 @@ page:
   # margin_inner and margin_outer keys are used for recto/verso print margins when media=prepress
   margin_inner: 0.75in
   margin_outer: 0.59in
-  size: A4
+  size: letter
 base:
   align: left
   # color as hex string (leading # is optional)
