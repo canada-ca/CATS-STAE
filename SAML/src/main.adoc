@@ -4,6 +4,7 @@
 :toc-placement: preamble
 :imagesdir: images
 :docinfo:
+:sectnumlevels: 4
 
 [horizontal]
 Version:: 3.x
