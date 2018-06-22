@@ -1,22 +1,41 @@
 == Introduction
 
-=== The Cyber Authentication Initiative Vision
-The Cyber Authentication Initiative at the Government of Canada has a Vision
-which is partially described in the following diagram.
+SAML V2.0 is a rich and extensible standard that must be profiled to be used
+interoperably, and the profiles that typically emerge from the broader
+standardization process usually remain fairly broad and include a number of
+options and features that increase the burden for implementers and make
+deployment-time decisions more difficult.
+
+Implementation profiles define the features that software implementations must
+support such that deployers can be assured of the ability to meet their own
+(possibly varied) deployment requirements. Deployment profiles define specific
+options and constraints to which deployments are required to conform; they guide
+product configuration and federation operations, and provide criteria against
+which actual deployments may be tested. This document provides a
+deployment profile for use by members of the the Government of Canada....
+
 
 === Overview of the CATS SAML 2.0 Deployment Profile
 
+This deployment profile is based on the draft SAML V2.0 Interoperability
+Deployment Profile V1.0 <<SAML2Iop>> published by the Kantara Initiative, which
+in turn is based on the SAML 2.0 specifications created by the Security Services
+Technical Committee (SSTC) of the Organization for the Advancement of Structured
+Information Standards (OASIS). 
+
+.CATS SAML Profile Building Blocks
+image::BuildingBlocks.png[]
+
 === Compliance to the CATS SAML 2.0 Deployment Profile
 
-This deployment profile is based on but does not require full compliance with
-the draft SAML V2.0 Interoperability Deployment Profile V1.0 <<SAML2Iop>> 
-published by the Kantara Initiative. The normative requirements of this
-CATS Deployment Profile in terms of the applicable sections of the Kantara
-Profile are detailed in Section 2 of this document.
-The Kantara Profile is based on the SAML 2.0 specifications created by the
-Security Services Technical Committee (SSTC) of OASIS. The Kantara
-Interoperability Deployment Profile constrains the base SAML 2.0 features,
-elements, attributes and other values required for approved eGovernment
-federations and deployments.
-Unless otherwise specified, SAML operations and features follow those found in
-the OASIS SAML 2.0 specifications [SAML2 *].
+The requirements specified are in addition to all normative requirements of the
+underlying Web Browser SSO and Single Logout profiles <<SAML2Prof>>, as modified
+by the Approved Errata <<SAML2Err>>, and readers are assumed to be familiar with
+all relevant reference documents. Any such requirements are not repeated here
+except where deemed necessary to highlight a point of discussion or draw
+attention to an issue addressed in errata, but remain implied.
+
+The normative requirements of this CATS Deployment Profile in terms of the
+applicable sections of the Kantara Profile are detailed in Sections 3 through 6
+of this document.
+
