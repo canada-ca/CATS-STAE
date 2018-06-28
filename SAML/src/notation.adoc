@@ -49,19 +49,56 @@ When referring to elements from the XML-Signature Syntax and Processing Version
 
 === Terminology
 
-The abbreviations IdP and SP are used below to refer to Identity Providers and
-Service Providers in the sense of their usage within the SAML Browser SSO
-Profile and Single Logout profiles.
+The following SAML standard terms and abbreviations are used in a manner
+consistent with the SAML Browser SSO Profile and Single Logout profiles
+described in <<SAML2Prof>>. Formal definitions of these terms can be found in
+the SAML2 Glossary <<SAML2Gloss>>:
 
-While the term Relying Party is not used in this document, it does commonly
-appear in other related documentation. This term is synonymous with Service
-Provider.
+* Service Provider (SP)
+* Identity Provider (IdP)
+* Proxying Identity Provider
+* Session Authority
+* Session Participant
 
-The term Credential Service Provider (abbreviated CSP) refers to an Identity
+
+In addition, the following terms are used:
+
+Anonymous Credential:: a Credential that, while still making an assertion about
+some property, status, or right of the person, does not reveal the person's
+identity.
+
+Assurance of Credential:: (Credential Assurance) the assurance that an
+individual, organization or device has maintained control over what has been
+entrusted to him or her (e.g., a password, key, token, document or identifier)
+and that the credential has not been compromised (e.g., tampered with, modified
+or stolen).
+
+Authoritatve Party:: A federation member that provides assurances of credential
+ to other federation members (i.e. “Relying Parties”).
+
+Credential:: A unique physical or electronic object (or identifier) issued to,
+or associated with, a person, organization, or device (e.g. key, token,
+document, program identifier).
+
+Credential Service Provider:: (abbreviated CSP) refers to an Identity
 Provider that provides anonymous credential authentication services.
 
-The term Trusted Identity Provider (abbreviated TIP) refers to an Identity
-Provider that provides identity authentication services.
+Federation:: A cooperative agreement between autonomous entities that have
+agreed to relinquish some of their autonomy in order to work together
+effectively to support a collaborative effort. The federation is supported by
+trust relationships and standards to support interoperability.
+
+Relying Party (RP):: A federation member who relies on assurances of credential
+from other federation members (i.e. “Authoritative Parties”).
+
+Sign in Canada Acceptance Platform:: A Governemnt of Canada service that acts as
+a trusted intermediary between Credential Service Providers and Government of
+Canada Relying Parties. The Acceptance Platform operates as a Proxying Identity
+Provider and centralized Session Authority.
+
+Sign in Canada Federation:: A Federation whose members include the Sign in
+Canada Acceptance Platform and all Relying Parties who use it.
+
 
 Whether explicit or implicit, all the requirements in this document are meant to
 apply to deployments of SAML profiles and may involve explicit support for
@@ -69,5 +106,5 @@ requirements by SAML-implementing software and/or supplemental support via
 application code. Deployments of a Service Provider may refer to both
 stand-alone implementations of SAML, libraries integrated with an application,
 or any combination of the two. It is difficult to define a clear boundary
-between a Service Provider and the application/service it represents, and
-unnecessary to do so for the purposes of this document.
+between a Service Provider and the Relying Party application/service it
+represents, and unnecessary to do so for the purposes of this document.
