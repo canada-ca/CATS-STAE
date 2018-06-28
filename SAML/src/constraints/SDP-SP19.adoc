@@ -1,0 +1,1 @@
+SP deployments SHOULD NOT implement <<SAML2SubjId>>. 
