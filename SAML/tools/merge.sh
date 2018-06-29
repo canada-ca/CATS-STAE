@@ -20,7 +20,7 @@ function endRequirement() {
         echo
         echo '*CATS Support*: _Constrained_'
         echo
-        echo $CATS_DETAILS
+        cat $CATS_DETAILS
         echo
     fi
     echo "''''"
@@ -43,7 +43,7 @@ while read SOURCE_LINE; do
       SOURCE_LINE=${SOURCE_LINE#*:: }
       if  [[ -f ./src/constraints/$REQUIREMENT.adoc ]] ; then #CATS Constraints
          CATS_STATUS='Constrained'
-         CATS_DETAILS=$(cat ./src/constraints/$REQUIREMENT.adoc)
+         CATS_DETAILS="./src/constraints/$REQUIREMENT.adoc"
       else
          CATS_STATUS='Supported'
          CATS_DETAILS=
