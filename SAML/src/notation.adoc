@@ -54,11 +54,11 @@ consistent with the SAML Browser SSO Profile and Single Logout profiles
 described in <<SAML2Prof>>. Formal definitions of these terms can be found in
 the SAML2 Glossary <<SAML2Gloss>>:
 
-* Service Provider (SP)
-* Identity Provider (IdP)
-* Proxying Identity Provider
-* Session Authority
-* Session Participant
+* *Service Provider (SP)*
+* *Identity Provider (IdP)*
+* *Proxying Identity Provider*
+* *Session Authority*
+* *Session Participant*
 
 
 In addition, the following terms are used:
@@ -67,7 +67,7 @@ Anonymous Credential:: A Credential that, while still making an assertion about
 some property, status, or right of the person, does not reveal the person's
 identity.
 
-Assurance of Credential:: (Credential Assurance) The assurance that an
+Assurance of Credential (Credential Assurance):: The assurance that an
 individual, organization or device has maintained control over what has been
 entrusted to him or her (e.g., a password, key, token, document or identifier)
 and that the credential has not been compromised (e.g., tampered with, modified
@@ -80,8 +80,8 @@ Credential:: A unique physical or electronic object (or identifier) issued to,
 or associated with, a person, organization, or device (e.g. key, token,
 document, program identifier).
 
-Credential Service Provider:: (abbreviated CSP) An Identity
-Provider that provides anonymous credential authentication services.
+Credential Service Provider (CSP):: An Identity Provider that provides anonymous
+credential authentication services.
 
 Federation:: A cooperative agreement between autonomous entities that have
 agreed to relinquish some of their autonomy in order to work together
