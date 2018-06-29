@@ -24,8 +24,8 @@ Technical Committee (SSTC) of the Organization for the Advancement of Structured
 Information Standards (OASIS).
 
 The scope of this profile applies only to providers and consumers of
-anonymous credential authentication services. A separate complementary profile
-will be developed for identity authentication services.
+anonymous credential authentication services. A future profile
+will be developed to support identity authentication services.
 
 
 .CATS SAML Profile Building Blocks
