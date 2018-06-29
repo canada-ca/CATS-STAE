@@ -49,7 +49,7 @@ while read SOURCE_LINE; do
          CATS_DETAILS=
       fi
       echo
-      echo '*Kantara Requirement*: *_'$REQUIREMENT'_*'
+      echo '*Kantara Requirement*: *_['$REQUIREMENT']_*'
       echo
       echo '===='
       echo
