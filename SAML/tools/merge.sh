@@ -22,6 +22,7 @@ function endRequirement() {
         echo
         cat $CATS_DETAILS
         echo
+        echo
     fi
     echo "''''"
 }
