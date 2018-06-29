@@ -12,7 +12,7 @@ are assumed to be optional and out of scope of this profile if not otherwise
 precluded or given specific processing rules.
 
 The normative requirements of this CATS Deployment Profile in terms of the
-applicable sections of the Kantara Profile are detailed in Sections 3 through 6
+applicable sections of the Kantara Profile are detailed in Sections 4 through 6
 of this document.
 
 Deployments participating in the Sign in Canada federation must obtain approval
