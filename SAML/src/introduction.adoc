@@ -12,8 +12,7 @@ support such that deployers can be assured of the ability to meet their own
 options and constraints to which deployments are required to conform; they guide
 product configuration and federation operations, and provide criteria against
 which actual deployments may be tested. This document provides a
-deployment profile for use by members of the Sign in Canada federation,
-prevoisly known as the Government of Canada Credential Federation (GCCF).
+deployment profile for use by members of the Sign in Canada federation.
 
 
 === Overview of the CATS SAML 2.0 Deployment Profile for Credential Authentication
