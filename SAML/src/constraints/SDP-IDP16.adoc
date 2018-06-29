@@ -1,1 +1,1 @@
-IdP deployments SHOULD NOT implement <<SAML2SubjId>>.
+IdP deployments MUST NOT implement <<SAML2SubjId>>.
