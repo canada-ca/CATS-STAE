@@ -7,6 +7,10 @@ all relevant reference documents. Any such requirements are not repeated here
 except where deemed necessary to highlight a point of discussion or draw
 attention to an issue addressed in errata, but remain implied.
 
+Note that SAML features that are optional, or lack mandatory processing rules,
+are assumed to be optional and out of scope of this profile if not otherwise
+precluded or given specific processing rules.
+
 The normative requirements of this CATS Deployment Profile in terms of the
 applicable sections of the Kantara Profile are detailed in Sections 3 through 6
 of this document.
