@@ -104,6 +104,10 @@ Provider and centralized Session Authority.
 Sign in Canada Federation:: A Federation whose members include the Sign in
 Canada Acceptance Platform and all Relying Parties who use it.
 
+User Agent:: Software that is acting on behalf of a user. For example, a web
+browser or native mobile application.
+
+
 Whether explicit or implicit, all the requirements in this document are meant to
 apply to deployments of SAML profiles and may involve explicit support for
 requirements by SAML-implementing software and/or supplemental support via

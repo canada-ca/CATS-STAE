@@ -1,1 +1,8 @@
-=== CATS-Specific IdP Requirements
+==== CATS-Specific IdP Requirements
+
+*[CDP-IDP01]*
+
+Identity Provider implementations MUST support the issuance of
+`<saml2p:Response>` messages (with appropriate status codes) in the event that
+a user indicates they wish to cancel/exit or if an error condition occurs,
+provided that the user agent remains available.
