@@ -1,3 +1,25 @@
-Deployments participating in the Sign in Canada federation MUST use X.509
-certificates issued by the Government Shared Services (GSS) Certificate
-Authority operated by Shared Services Canada.
+Deployments owned by Government of Canada departments and agencies MUST use
+X.509 certificates issued by the Government Shared Services (GSS) Certificate
+Authority for signing and encryption of SAML messages.
+
+X.509 certificates used for TLS server authentication MUST be issued by a
+certificate authority that is recognized by all of the following:
+
+* https://www.apple.com/certificateauthority/ca_program.html[The Apple Trusted Root Certificate Program]
+* http://www.oracle.com/technetwork/java/javase/javasecarootcertsprogram-1876540.html[The Java Trusted Root Certificate Program]
+* https://technet.microsoft.com/en-ca/library/cc751157.aspx[The Microsoft Trusted Root Certificate Program]
+* https://wiki.mozilla.org/CA[The Mozilla Trusted Root Certificate Program]
+
+Deployments MUST NOT accept expired certificates.
+
+Deployments SHOULD NOT perform runtime path validation or revocation checking of
+X.509 certificates used for signing or encryption of SAML messages.
+
+_Using revocation checking mechanisms such as certificate revocation lists
+(CRLs) and the Online Certificate Status Protocol(OCSP) during runtime creates a
+dependency that can reduce the availability of a deployment. In the
+event of a private key compromise, Shared Services Canada will revoke the
+affected deployment's SAML metadata._
+
+Deployments MUST perform path validation and check the revocation status of
+X.509 certificates used for TLS server authentication.
