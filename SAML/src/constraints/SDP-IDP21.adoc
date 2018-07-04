@@ -1,1 +1,2 @@
-The Sign in Canada Acceptance Platform MUST support the propagation of logout.
+IdP deployments participating in the Sign in Canada federation as a session
+authority MUST support the propagation of logout.
