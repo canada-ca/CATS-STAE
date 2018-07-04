@@ -2,6 +2,13 @@
 
 *[CDP-IDP01]*
 
+In addition to the requirements of *[SDP-IDP31]*, an IdP’s metadata MUST also
+contain the levels of assurance to which it conforms, as specified by the
+Identity Assurance Certification Attribute Profile <<SAML2Assur>>.
+
+
+*[CDP-IDP02]*
+
 Identity Provider implementations MUST support the issuance of
 `<saml2p:Response>` messages (with appropriate status codes) in the event that
 a user indicates they wish to cancel/exit or if an error condition occurs,
