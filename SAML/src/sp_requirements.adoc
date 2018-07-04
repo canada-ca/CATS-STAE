@@ -1,4 +1,4 @@
-==== CATS-Specific SP Requirements
+==== CATS-Specific Requirements
 
 *[CDP-SP01]*
 
