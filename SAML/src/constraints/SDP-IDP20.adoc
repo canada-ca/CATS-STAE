@@ -1,0 +1,5 @@
+IdP deployments participating in the Sign in Canada federation as a session
+authority MUST always terminate the subject's IdP session.
+
+_At all times, a `<samlp:LogoutRequest>` will generate a
+global logout for the principal’s session._
