@@ -1,0 +1,10 @@
+SP deployments MUST support `<saml:NameID>` and the
+`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` name identifier format as
+described in <<SAML2Core>>. `<saml:Attribute>` elements MUST NOT be used for
+this purpose.
+
+_The  `NameQualifier` and `SPNameQualifier` attributes of the `<saml:NameID>`
+element allow for the qualification of the element value, which  provides
+critical functionality to support changes in the topology of a federation. This
+profile has not adopted [SAML2SubjAttr] as it does not currently provide
+equivalent functionality._

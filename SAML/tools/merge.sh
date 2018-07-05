@@ -12,21 +12,21 @@ function startTable() {
 
 function endRequirement() {
     echo '===='
-    if [[ $CATS_STATUS == 'Supported' ]] ; then
-        echo
-        echo '*CATS Support*: _Required_'
-        echo
-    else
-        echo
-        echo '*CATS Support*: _Constrained_'
+    echo
+    if [[ $CATS_STATUS == 'Constrained' ]] ; then
+        echo "*CATS Support*: _Constrained_"
         echo
         cat $CATS_DETAILS
         echo
-        echo
+    else
+        echo "*CATS Support*: _${CATS_STATUS}_"
     fi
+    echo
     echo "''''"
 }
 
+declare -A applicable
+source ./src/applicable.dat
 
 REQUIREMENT=
 while read SOURCE_LINE; do
@@ -42,12 +42,15 @@ while read SOURCE_LINE; do
 
       REQUIREMENT=$(echo $SOURCE_LINE | cut -f 1 -d ':' | tr -d '[]')
       SOURCE_LINE=${SOURCE_LINE#*:: }
+      CATS_DETAILS=
       if  [[ -f ./src/constraints/$REQUIREMENT.adoc ]] ; then #CATS Constraints
          CATS_STATUS='Constrained'
          CATS_DETAILS="./src/constraints/$REQUIREMENT.adoc"
+      elif [[ -n ${applicable[$REQUIREMENT]} ]] ; then
+         CATS_STATUS=${applicable[$REQUIREMENT]}
       else
          CATS_STATUS='Supported'
-         CATS_DETAILS=
+         
       fi
       echo
       echo '*Kantara Requirement*: *_['$REQUIREMENT']_*'

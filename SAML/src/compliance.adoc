@@ -15,10 +15,9 @@ The normative requirements of this CATS Deployment Profile in terms of the
 applicable sections of the Kantara Profile are detailed in Sections 4 through 6
 of this document. The requirements of <<SAML2Iop>> are repeated word-for-word in
 the same order as they appear in the upstream profile. Each requirement is then
-annotated with the support required by this profile: typically
-this is either “Support” or “Constrained” or “N/A” (not applicable). Whenever
-further details are required to fully explain the CATS requirement, they are
-provided.
+annotated with the support required by this profile: typically this is either
+“Support” or “Constrained” or “Not Applicable”. Whenever further details are
+required to fully explain the CATS requirement, they are provided.
 
 This profile also has requirements which are additional to the <<SAML2Iop>>
 requirements. These are specified at the end of each applicable section, as well
