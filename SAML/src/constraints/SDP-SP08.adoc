@@ -11,4 +11,4 @@ _This is useful when a certain minumum level of assurance is required, but the
 SP is willing to accept a higher level of assurance._
 
 _The AuthnContext Schema for the Sign in Canada levels of assurance are
-published at https://canada-ca.github.io/CATS-STAE/TBD._
+published at https://github.com/canada-ca/CATS-STAE/tree/master/SAML/src/schemas._
