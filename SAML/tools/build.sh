@@ -36,14 +36,14 @@ echo "Done"
 # Publish to HTML and PDF
 echo -n "Producing HTML..."
 cp -R ./src/images ../docs
-docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor \
-   asciidoctor --source-dir ./src --destination-dir ../docs \
-   -o saml2cred.html src/main.adoc
+docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
+   asciidoctor --source-dir SAML/src --destination-dir docs \
+   -o saml2cred.html SAML/src/main.adoc
 
 echo -n "Producing PDF..."
-docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor \
-   asciidoctor-pdf --source-dir ./src --destination-dir ../docs \
+docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
+   asciidoctor-pdf --source-dir SAML/src --destination-dir docs \
    -a pdf-stylesdir=./tools -a pdf-style=cats \
-   -o saml2cred.pdf src/main.adoc
+   -o saml2cred.pdf SAML/src/main.adoc
 
 echo "Done"
