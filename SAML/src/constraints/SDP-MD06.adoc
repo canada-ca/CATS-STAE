@@ -23,3 +23,6 @@ affected deployment's SAML metadata._
 
 Deployments MUST perform path validation and check the revocation status of
 X.509 certificates used for TLS server authentication.
+
+_This profile does not contain any requirement for using TLS client
+authentication._
