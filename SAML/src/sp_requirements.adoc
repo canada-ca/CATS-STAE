@@ -1,0 +1,5 @@
+==== CATS-Specific Requirements
+
+*[CDP-SP01]*
+
+``<samlp:AuthnRequest>`` messages MUST be signed using the SHA-256 algorithm.

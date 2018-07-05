@@ -1,0 +1,5 @@
+SP deployments participating in the Sign in Canada federation MUST NOT support
+<<IDPDisco>>.
+
+_Discovery services are provided by the Sign in Canada Service as part of
+authentication request processing._

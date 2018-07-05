@@ -1,0 +1,49 @@
+== CATS-Specific Proxy Requirements
+
+*[CDP-PIP01]*
+
+Proxying Identity Provider deployments MUST support the mapping of incoming to
+outgoing `<saml:NameID>` elements, to pass through values or map between
+different vocabularies as required.
+
+*[CDP-PIP02]*
+
+Proxying Identity Provider deployments MUST support the suppression/eliding of
+`<saml:AttributeStatement>` elements from the `<saml:Assertion>` of outgoing
+`<saml2p:Response>` messages to allow for hiding the identity of the subject
+from SPs.
+
+*[CDP-PIP03]*
+
+Proxying Identity Provider deployments MUST support the mapping of incoming to
+outgoing `<saml2p:RequestedAuthnContext>` and `<saml2p:NameIDPolicy>` elements,
+to pass through values or map between different vocabularies as required.
+
+*[CDP-PIP04]*
+
+Proxying Identity Provider deployments MUST support the suppression/eliding
+of `<saml2p:RequesterID>` elements from outgoing `<saml2p:AuthnRequest>` messages
+to allow for hiding the identity of the Service Provider from proxied Identity
+Providers.
+
+*[CDP-PIP05]*
+
+Proxying Identity Provider deployments MUST support the mapping of incoming to
+outgoing `<saml2:AuthnContext>` elements, to pass through values or map between
+different vocabularies as required.
+
+*[CDP-PIP06]*
+
+Proxying Identity Provider deployments MUST support the suppression of
+`<saml2:AuthenticatingAuthority>` elements from outgoing `<saml2:AuthnContext>`
+elements to allow for hiding the identity of the proxied Identity Provider from
+Service Providers.
+
+*[CDP-PIP07]*
+
+Proxying Identity Provider deployments MUST support the use of a
+`<samlp:IDPList>` containing one or more `<samlp:IDPEntry>` elements in incoming
+and outgoing `<saml2p:AuthnRequest>` messages.
+
+_This allows one proxy in a chain of proxies to provide IdP doscovery services
+on behalf of other proxies in the chain._

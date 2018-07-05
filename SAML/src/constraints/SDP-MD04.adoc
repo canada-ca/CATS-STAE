@@ -1,0 +1,3 @@
+Deployments participating in the Sign in Canada federation must provide their
+metadata to Shared Services Canada who performs third-party validation,
+curation, signing, and publishing of metadata.
