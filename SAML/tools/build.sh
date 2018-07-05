@@ -31,23 +31,19 @@ for FILE in $FILES ; do
                    > ./merged/$FILE
 done
 
-# Publish to HTML and PDF
-if [[ -d ./publish ]] ; then
-   rm -rf ./publish/*
-else
-   mkdir publish
-fi
 echo "Done"
 
+# Publish to HTML and PDF
 echo -n "Producing HTML..."
+cp -R ./src/images ../docs
 docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor \
-   asciidoctor --source-dir ./src --destination-dir ./publish src/main.adoc
-cp -R ./src/images ./publish
+   asciidoctor --source-dir ./src --destination-dir ../docs \
+   -o saml2cred.html src/main.adoc
 
 echo -n "Producing PDF..."
 docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor \
-   asciidoctor-pdf --source-dir ./src --destination-dir ./publish \
+   asciidoctor-pdf --source-dir ./src --destination-dir ../docs \
    -a pdf-stylesdir=./tools -a pdf-style=cats \
-   src/main.adoc
+   -o saml2cred.pdf src/main.adoc
 
 echo "Done"
