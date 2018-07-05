@@ -1,0 +1,1 @@
+Responses MUST NOT be signed.

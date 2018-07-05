@@ -1,0 +1,2 @@
+The `<saml:NameID>` Format MUST be
+`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`.

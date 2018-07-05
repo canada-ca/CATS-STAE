@@ -1,0 +1,5 @@
+Deployments MUST NOT use SAML metadata to provision their behaviour in the
+following areas:
+
+* determination of the trustworthiness of TLS client and server certificates
+* determination of subject identifier SAML Attribute(s) to provide

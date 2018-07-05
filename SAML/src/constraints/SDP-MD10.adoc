@@ -1,0 +1,4 @@
+The metadata of IdPs and SPs participating in the Sign in Canada federation must
+contain at least one signing certificate with the ``use`` attribute set to
+``signing`` and at least one encryption certificate with the ``use`` attribute
+set to ``encryption``.
