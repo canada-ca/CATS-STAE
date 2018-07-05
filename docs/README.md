@@ -38,7 +38,7 @@ possible.
 
 * **[CATS 3.0 - SAML 2.0 Deployment Profile](https://canada-ca.github.io/CATS-STAE/saml2cred.html)**: An update to the SAML 2.0
  deployment profile, incorporating improvements from the
-  [Kantara Initiative](https://kantarainitiative.org/)'s [Interoperability Deployment Profile](https://kantarainitiative.github.io/SAMLprofiles/eGovImplProfile.html)
+  [Kantara Initiative](https://kantarainitiative.org/)'s [Interoperability Deployment Profile](https://kantarainitiative.github.io/SAMLprofiles/saml2int.html)
   version 1.0.
 
 * **CATS 3.0 - OpenID Connect 1.0 Deployment Profile**: A deployment profile of
@@ -95,7 +95,7 @@ interopérabilité sécurisée possible.
 
 * **STAE 3.0 - SAML 2.0 Profil de mise en place**: Mise à jour du profil de
  déploiement SAML 2.0, en intégrant les améliorations de la version 1.0 du
- [Profil de mise en place de l’interopérabilité](https://kantarainitiative.github.io/SAMLprofiles/eGovImplProfile.html)
+ [Profil de mise en place de l’interopérabilité](https://kantarainitiative.github.io/SAMLprofiles/saml2int.html)
  de l’[initiative Kantara](https://kantarainitiative.org/).
 
 * **STAE 3.0 - OpenID Connect 1.0 Profil de mise en place**: Un profil de mise en place de la version 1 de la norme

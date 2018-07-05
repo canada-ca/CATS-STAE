@@ -26,7 +26,7 @@ possible.
 
 ## Current Specifications
 
-* **[CATS 2.0 - SAML 2.0 Deployment Profile](https://s3.amazonaws.com/ssc-cats/CATS_V2_0_Deployment_Profile_Final_r8_2_en.pdf)**: A deployment profile of version 2
+* **[CATS 2.0 - SAML 2.0 Deployment Profile](https://canada-ca.github.io/CATS-STAE/archive/CATS_V2_0_Deployment_Profile_Final_r8_2_en.pdf)**: A deployment profile of version 2
   of the
   [Security Assertion Markup Language](https://wiki.oasis-open.org/security/FrontPage "OASIS SAML Wiki")
   standard, based on the
@@ -36,9 +36,9 @@ possible.
 
 ## Future Specifications
 
-* **CATS 3.0 - SAML 2.0 Deployment Profile**: An update to the SAML 2.0
+* **[CATS 3.0 - SAML 2.0 Deployment Profile](https://canada-ca.github.io/CATS-STAE/saml2cred.html)**: An update to the SAML 2.0
  deployment profile, incorporating improvements from the
-  [Kantara Initiative](https://kantarainitiative.org/)'s [Interoperability Deployment Profile](https://kantarainitiative.github.io/SAMLprofiles/eGovImplProfile.html)
+  [Kantara Initiative](https://kantarainitiative.org/)'s [Interoperability Deployment Profile](https://kantarainitiative.github.io/SAMLprofiles/saml2int.html)
   version 1.0.
 
 * **CATS 3.0 - OpenID Connect 1.0 Deployment Profile**: A deployment profile of
@@ -84,7 +84,7 @@ interopérabilité sécurisée possible.
 
 ## Spécifications actuelles
 
-* **[STAE 2.0 - SAML 2.0 Profil de mise en place](https://s3.amazonaws.com/ssc-cats/CATS_V2_0_Deployment+Profile_Final+r7.2_fr.pdf)**: Un profil de mise en place de
+* **[STAE 2.0 - SAML 2.0 Profil de mise en place](https://canada-ca.github.io/CATS-STAE/archive/CATS_V2_0_Deployment+Profile_Final+r7.2_fr.pdf)**: Un profil de mise en place de
  la version 2 de la norme
  [Security Assertion Markup Language](https://wiki.oasis-open.org/security/FrontPage "OASIS SAML Wiki")
  fondée sur la version 2.0 du
@@ -95,7 +95,7 @@ interopérabilité sécurisée possible.
 
 * **STAE 3.0 - SAML 2.0 Profil de mise en place**: Mise à jour du profil de
  déploiement SAML 2.0, en intégrant les améliorations de la version 1.0 du
- [Profil de mise en place de l’interopérabilité](https://kantarainitiative.github.io/SAMLprofiles/eGovImplProfile.html)
+ [Profil de mise en place de l’interopérabilité](https://kantarainitiative.github.io/SAMLprofiles/saml2int.html)
  de l’[initiative Kantara](https://kantarainitiative.org/).
 
 * **STAE 3.0 - OpenID Connect 1.0 Profil de mise en place**: Un profil de mise en place de la version 1 de la norme
