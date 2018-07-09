@@ -1,7 +1,7 @@
 SP deployments participating in the Sign in Canada federation MUST include
-`<RequestedAuthnContext>` with the `Comparison` attribute set to `exact`.
+`<samlp:RequestedAuthnContext>` with the `Comparison` attribute set to `exact`.
 
-The `<RequestedAuthnContext>` MUST include a Level of Assurance as specified in
+The `<samlp:RequestedAuthnContext>` MUST include a Level of Assurance as specified in
 <<SAML2Assur>>.
 
 The SP MAY request more than one level of assurance in descending priority
