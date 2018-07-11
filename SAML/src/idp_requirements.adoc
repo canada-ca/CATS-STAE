@@ -1,4 +1,4 @@
-==== CATS-Specific Requirements
+=== CATS-Specific Requirements
 
 *[CDP-IDP01]*
 
