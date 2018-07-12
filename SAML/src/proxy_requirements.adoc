@@ -45,5 +45,11 @@ Proxying Identity Provider deployments MUST support the use of a
 `<samlp:IDPList>` containing one or more `<samlp:IDPEntry>` elements in incoming
 and outgoing `<saml2p:AuthnRequest>` messages.
 
-_This allows one proxy in a chain of proxies to provide IdP doscovery services
+_This allows one proxy in a chain of proxies to provide IdP discovery services
 on behalf of other proxies in the chain._
+
+*[CDP-PIP08]*
+
+`<samlp:AuthnRequest>` messages produced by Proxying Identity Provider
+deployments MUST include the `ForceAuthn` attribute with a value of `true` or
+`1`. 
