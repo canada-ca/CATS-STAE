@@ -1,3 +1,3 @@
-Consumption of metadata by deployments participating in the Sign in Canada
-federation MUST be contingent on verification of a signature applied by Shared
-Services Canada.
+Consumption of metadata by the Sign in Canada acceptance platform and all
+depployments federating with it MUST be contingent on verification of a
+signature applied by Shared Services Canada.

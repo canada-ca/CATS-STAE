@@ -23,7 +23,7 @@ This profile also has requirements which are additional to the <<SAML2Iop>>
 requirements. These are specified at the end of each applicable section, as well
 as in section 7.
 
-Deployments participating in the Sign in Canada federation MUST obtain approval
-from the Chief Information Officer Branch of Treasury Board Secretariat before
-ignoring any requirements labelled with the key words "SHOULD", "SHOULD NOT",
-"RECOMMENDED" or "NOT RECOMMENDED".
+Deployments owned by Government of Canada departments and agencies MUST obtain
+approval from the Chief Information Officer Branch of Treasury Board Secretariat
+before ignoring any requirements labelled with the key words "SHOULD", "SHOULD
+NOT", "RECOMMENDED" or "NOT RECOMMENDED".
