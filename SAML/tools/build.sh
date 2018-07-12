@@ -34,6 +34,7 @@ done
 echo "Done"
 
 # Publish to HTML and PDF
+touch ./src/main.adoc
 echo -n "Producing HTML..."
 cp -R ./src/images ../docs
 docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
