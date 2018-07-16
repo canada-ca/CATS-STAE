@@ -67,3 +67,11 @@ the same user agent triggering a new authentication event. If the end-user
 authenticates with a different credential (subject B) than the one originally
 used by subject A, then the IdP must peform a global logout of subject A's
 session, before starting a new session for subject B._
+
+==== Security
+
+*[CDP-IDP08]*
+
+The private keys of an IdPs signing certificates MUST be protected within the
+boundary of a FIPS 140-2 Level 2 or higher validated hardware cryptographic
+module.
