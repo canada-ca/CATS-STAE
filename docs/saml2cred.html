@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-07-12</p>
+<p>2018-07-16</p>
 </td>
 </tr>
 <tr>
@@ -2269,9 +2269,24 @@ unneccesary elements such as <code>&lt;ds:X509Data&gt;</code> in <code>&lt;saml:
 <p><strong>CATS Support</strong>: <em>Constrained</em></p>
 </div>
 <div class="paragraph">
+<p>The metadata of SPs MUST contain at least one signing certificate with
+the <code>use</code> attribute set to <code>signing</code> and at least one encryption certificate
+with the <code>use</code> attribute set to <code>encryption</code>.</p>
+</div>
+<div class="paragraph">
+<p>An <code>&lt;md:Extensions&gt;</code> element MAY contain an <code>&lt;mdui:UIInfo&gt;</code> but MUST NOT include
+an <code>&lt;mdattr:EntityAttributes&gt;</code> attribute.</p>
+</div>
+<div class="paragraph">
 <p>The <code>&lt;md:SPSSODescriptor&gt;</code> element of an SP&#8217;s metadata MUST also include an
 <code>AuthnRequestsSigned</code> attribute set to <code>true</code> or <code>1</code> and a
 <code>WantAssertionsSigned</code> attribute set to <code>true</code> or <code>1</code>.</p>
+</div>
+<div class="paragraph">
+<p>An SP&#8217;s metadata SHOULD include two <code>&lt;md:SingleLogoutService&gt;</code> el;ements, one
+with the <code>Binding</code> attribute value of
+<code>urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect</code>, the other with the
+<code>Binding</code> attribute value of <code>urn:oasis:names:tc:SAML:2.0:bindings:SOAP</code>.</p>
 </div>
 <hr>
 </div>
@@ -2937,7 +2952,12 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>The metadata of IdPs MUST contain at least one signing certificate with
+the <code>use</code> attribute set to <code>signing</code> and at least one encryption certificate
+with the <code>use</code> attribute set to <code>encryption</code>.</p>
 </div>
 <hr>
 </div>
@@ -3031,6 +3051,17 @@ the same user agent triggering a new authentication event. If the end-user
 authenticates with a different credential (subject B) than the one originally
 used by subject A, then the IdP must peform a global logout of subject A&#8217;s
 session, before starting a new session for subject B.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_security">6.4.4. Security</h4>
+<div class="paragraph">
+<p><strong>[CDP-IDP08]</strong></p>
+</div>
+<div class="paragraph">
+<p>The private keys of an IdPs signing certificates MUST be protected within the
+boundary of a FIPS 140-2 Level 2 or higher validated hardware cryptographic
+module.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -3215,7 +3246,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-12 14:56:13 UTC
+Last updated 2018-07-16 11:45:36 UTC
 </div>
 </div>
 </body>
