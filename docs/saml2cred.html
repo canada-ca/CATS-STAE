@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-07-16</p>
+<p>2018-07-20</p>
 </td>
 </tr>
 <tr>
@@ -707,7 +707,7 @@ entrusted to him or her (e.g., a password, key, token, document or identifier)
 and that the credential has not been compromised (e.g., tampered with, modified
 or stolen).</p>
 </dd>
-<dt class="hdlist1">Authoritatve Party</dt>
+<dt class="hdlist1">Authoritative Party</dt>
 <dd>
 <p>A federation member that provides assurances of credential
 to other federation members (i.e. “Relying Parties”).</p>
@@ -741,7 +741,7 @@ from other federation members (i.e. “Authoritative Parties”).</p>
 </dd>
 <dt class="hdlist1">Sign in Canada Acceptance Platform</dt>
 <dd>
-<p>A Governemnt of Canada service that acts as
+<p>A Government of Canada service that acts as
 a trusted intermediary between Credential Service Providers and Government of
 Canada Relying Parties. The Acceptance Platform operates as a Proxying Identity
 Provider and centralized Session Authority.</p>
@@ -972,7 +972,7 @@ following areas:</p>
 </div>
 <div class="paragraph">
 <p>Consumption of metadata by the Sign in Canada acceptance platform and all
-depployments federating with it MUST be contingent on verification of a
+deployments federating with it MUST be contingent on verification of a
 signature applied by Shared Services Canada.</p>
 </div>
 <hr>
@@ -1090,10 +1090,10 @@ X.509 certificates used for signing or encryption of SAML messages.</p>
 </div>
 <div class="paragraph">
 <p><em>Using revocation checking mechanisms such as certificate revocation lists
-(CRLs) and the Online Certificate Status Protocol(OCSP) during runtime creates a
-dependency that can reduce the availability of a deployment. In the
-event of a private key compromise, Shared Services Canada will revoke the
-affected deployment&#8217;s SAML metadata.</em></p>
+(CRLs) and the Online Certificate Status Protocol (OCSP) during runtime creates
+a dependency that can reduce the availability of a deployment. In the event of a
+private key compromise, Shared Services Canada will revoke the affected
+deployment&#8217;s SAML metadata.</em></p>
 </div>
 <div class="paragraph">
 <p>Deployments MUST perform path validation and check the revocation status of
@@ -1505,7 +1505,7 @@ specified in <a href="#SAML2Assur">[SAML2Assur]</a>.</p>
 order.</p>
 </div>
 <div class="paragraph">
-<p><em>This is useful when a certain minumum level of assurance is required, but the
+<p><em>This is useful when a certain minimum level of assurance is required, but the
 SP is willing to accept a higher level of assurance.</em></p>
 </div>
 <div class="paragraph">
@@ -2048,10 +2048,10 @@ element.</p>
 <p><em>This profile uses persistent identifiers which should be protected.</em></p>
 </div>
 <div class="paragraph">
-<p><em>Note that encrypting the NameId increases the size of the SAML message
+<p><em>Note that encrypting the NameID increases the size of the SAML message
 significantly, which has historically caused problems with very old browsers
 that do not support long URLs. SP software should be configured to not include
-unneccesary elements such as <code>&lt;ds:X509Data&gt;</code> in <code>&lt;saml:EncryptedID&gt;</code>.</em></p>
+unnecessary elements such as <code>&lt;ds:X509Data&gt;</code> in <code>&lt;saml:EncryptedID&gt;</code>.</em></p>
 </div>
 <hr>
 </div>
@@ -2803,7 +2803,7 @@ the HTTP-Redirect binding <a href="#SAML2Bind">[SAML2Bind]</a> MUST be encrypted
 <p><em>This profile uses persistent identifiers which should be protected.</em></p>
 </div>
 <div class="paragraph">
-<p><code>&lt;saml:EncryptedID&gt;</code> MUST NOT include any optional elements that unneccesarily
+<p><code>&lt;saml:EncryptedID&gt;</code> MUST NOT include any optional elements that unnecessarily
 increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 </div>
 <div class="paragraph">
@@ -2981,7 +2981,7 @@ Identity Assurance Certification Attribute Profile <a href="#SAML2Assur">[SAML2A
 <p><strong>[CDP-IDP02]</strong></p>
 </div>
 <div class="paragraph">
-<p>IdP deploymentrs MUST support the issuance of <code>&lt;saml2p:Response&gt;</code> messages (with
+<p>IdP deployments MUST support the issuance of <code>&lt;saml2p:Response&gt;</code> messages (with
 appropriate status codes) in the event that a user indicates they wish to
 cancel/exit or if an error condition occurs, provided that the user agent
 remains available.</p>
@@ -3027,12 +3027,12 @@ attribute of <code>&lt;saml:AuthnStatement&gt;</code>.</p>
 </div>
 <div class="paragraph">
 <p>IdPs participating as a session authority MUST retain sufficient session state
-to sucessfully process <code>&lt;samlp:LogoutRequest&gt;</code> messages that specify a
+to successfully process <code>&lt;samlp:LogoutRequest&gt;</code> messages that specify a
 <code>&lt;samlp:SessionIndex&gt;</code> value that mathes the <code>SessionIndex</code> attribute of any
 <code>&lt;saml:AuthnStatement&gt;</code> it has issued within the previous 8 hours.</p>
 </div>
 <div class="paragraph">
-<p><em>This ensures that the IdP will be able to propogate single-logout of a
+<p><em>This ensures that the IdP will be able to propagate single-logout of a
 subject&#8217;s session for up to 8 hours after issuing the last assertion for that
 session.</em></p>
 </div>
@@ -3040,8 +3040,8 @@ session.</em></p>
 <p><strong>[CDP-IDP07]</strong></p>
 </div>
 <div class="paragraph">
-<p>IdPs participating as a sesson authority MUST administatively perform a global
-logout of any current subject&#8217;s session whenver an authentication event within
+<p>IdPs participating as a session authority MUST administratively perform a global
+logout of any current subject&#8217;s session whenever an authentication event within
 that session results in the authentication of a different subject.</p>
 </div>
 <div class="paragraph">
@@ -3246,7 +3246,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-16 12:04:40 UTC
+Last updated 2018-07-20 18:58:49 UTC
 </div>
 </div>
 </body>
