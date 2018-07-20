@@ -3,7 +3,7 @@ element.
 
 _This profile uses persistent identifiers which should be protected._
 
-_Note that encrypting the NameId increases the size of the SAML message
+_Note that encrypting the NameID increases the size of the SAML message
 significantly, which has historically caused problems with very old browsers
 that do not support long URLs. SP software should be configured to not include
-unneccesary elements such as `<ds:X509Data>` in `<saml:EncryptedID>`._
+unnecessary elements such as `<ds:X509Data>` in `<saml:EncryptedID>`._

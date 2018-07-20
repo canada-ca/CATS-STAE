@@ -12,7 +12,7 @@ Identity Assurance Certification Attribute Profile <<SAML2Assur>>.
 
 *[CDP-IDP02]*
 
-IdP deploymentrs MUST support the issuance of `<saml2p:Response>` messages (with
+IdP deployments MUST support the issuance of `<saml2p:Response>` messages (with
 appropriate status codes) in the event that a user indicates they wish to
 cancel/exit or if an error condition occurs, provided that the user agent
 remains available.
@@ -47,18 +47,18 @@ attribute of `<saml:AuthnStatement>`.
 *[CDP-IDP06]*
 
 IdPs participating as a session authority MUST retain sufficient session state
-to sucessfully process `<samlp:LogoutRequest>` messages that specify a
+to successfully process `<samlp:LogoutRequest>` messages that specify a
 `<samlp:SessionIndex>` value that mathes the `SessionIndex` attribute of any
 `<saml:AuthnStatement>` it has issued within the previous 8 hours.
 
-_This ensures that the IdP will be able to propogate single-logout of a
+_This ensures that the IdP will be able to propagate single-logout of a
 subject's session for up to 8 hours after issuing the last assertion for that
 session._
 
 *[CDP-IDP07]*
 
-IdPs participating as a sesson authority MUST administatively perform a global
-logout of any current subject's session whenver an authentication event within
+IdPs participating as a session authority MUST administratively perform a global
+logout of any current subject's session whenever an authentication event within
 that session results in the authentication of a different subject.
 
 _For example, say the IdP has issued an `<saml:AuthnStatement>` for subject A

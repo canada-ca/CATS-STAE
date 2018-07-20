@@ -7,7 +7,7 @@ specified in <<SAML2Assur>>.
 The SP MAY request more than one level of assurance in descending priority
 order.
 
-_This is useful when a certain minumum level of assurance is required, but the
+_This is useful when a certain minimum level of assurance is required, but the
 SP is willing to accept a higher level of assurance._
 
 _The AuthnContext Schema for the Sign in Canada levels of assurance are

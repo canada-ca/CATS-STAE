@@ -76,7 +76,7 @@ entrusted to him or her (e.g., a password, key, token, document or identifier)
 and that the credential has not been compromised (e.g., tampered with, modified
 or stolen).
 
-Authoritatve Party:: A federation member that provides assurances of credential
+Authoritative Party:: A federation member that provides assurances of credential
  to other federation members (i.e. “Relying Parties”).
 
 Credential:: A unique physical or electronic object (or identifier) issued to,
@@ -96,7 +96,7 @@ Level of Assurance:: A level of confidence that may be relied on by others.
 Relying Party (RP):: A federation member who relies on assurances of credential
 from other federation members (i.e. “Authoritative Parties”).
 
-Sign in Canada Acceptance Platform:: A Governemnt of Canada service that acts as
+Sign in Canada Acceptance Platform:: A Government of Canada service that acts as
 a trusted intermediary between Credential Service Providers and Government of
 Canada Relying Parties. The Acceptance Platform operates as a Proxying Identity
 Provider and centralized Session Authority.

@@ -4,7 +4,7 @@ the HTTP-Redirect binding <<SAML2Bind>> MUST be encrypted via the
 
 _This profile uses persistent identifiers which should be protected._
 
-`<saml:EncryptedID>` MUST NOT include any optional elements that unneccesarily
+`<saml:EncryptedID>` MUST NOT include any optional elements that unnecessarily
 increase the size of the `<samlp:LogoutRequest>` message.
 
 _This is to avoid issues with older browsers that do not support long URLs._
