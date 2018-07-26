@@ -46,14 +46,21 @@ attribute of `<saml:AuthnStatement>`.
 
 *[CDP-IDP06]*
 
-IdPs participating as a session authority MUST retain sufficient session state
-to successfully process `<samlp:LogoutRequest>` messages that specify a
-`<samlp:SessionIndex>` value that mathes the `SessionIndex` attribute of any
-`<saml:AuthnStatement>` it has issued within the previous 8 hours.
+Once an IdP participating as a session authority has issued the first
+`<saml:AuthnStatement>` containing the `SessionIndex` for a new session, it MUST
+retain sufficient session state to successfully process `<samlp:LogoutRequest>`
+messages that specify a matching `<samlp:SessionIndex>` value for no less than 8
+hours.
 
 _This ensures that the IdP will be able to propagate single-logout of a
-subject's session for up to 8 hours after issuing the last assertion for that
+subject's session for up to 8 hours after issuing the first assertion for that
 session._
+
+The IdP MAY retain this session state for longer than 8 hours.
+
+The IdP MAY discard all state associated with a `SessionIndex` after processing
+a `<samlp:LogoutRequest>` for the session.
+
 
 *[CDP-IDP07]*
 
@@ -61,12 +68,12 @@ IdPs participating as a session authority MUST administratively perform a global
 logout of any current subject's session whenever an authentication event within
 that session results in the authentication of a different subject.
 
-_For example, say the IdP has issued an `<saml:AuthnStatement>` for subject A
-within the last 8 hours, and subsequently receives a `<samlp:AuthnRequest>` from
-the same user agent triggering a new authentication event. If the end-user
-authenticates with a different credential (subject B) than the one originally
-used by subject A, then the IdP must peform a global logout of subject A's
-session, before starting a new session for subject B._
+_For example, say the IdP has issued the first `<saml:AuthnStatement>` for
+subject A within the last 8 hours, and subsequently receives a
+`<samlp:AuthnRequest>` from the same user agent triggering a new authentication
+event. If the end-user authenticates with a different credential (subject B)
+than the one originally used by subject A, then the IdP must peform a global
+logout of subject A's session, before starting a new session for subject B._
 
 ==== Security
 

@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-07-20</p>
+<p>2018-07-26</p>
 </td>
 </tr>
 <tr>
@@ -3026,15 +3026,23 @@ attribute of <code>&lt;saml:AuthnStatement&gt;</code>.</p>
 <p><strong>[CDP-IDP06]</strong></p>
 </div>
 <div class="paragraph">
-<p>IdPs participating as a session authority MUST retain sufficient session state
-to successfully process <code>&lt;samlp:LogoutRequest&gt;</code> messages that specify a
-<code>&lt;samlp:SessionIndex&gt;</code> value that mathes the <code>SessionIndex</code> attribute of any
-<code>&lt;saml:AuthnStatement&gt;</code> it has issued within the previous 8 hours.</p>
+<p>Once an IdP participating as a session authority has issued the first
+<code>&lt;saml:AuthnStatement&gt;</code> containing the <code>SessionIndex</code> for a new session, it MUST
+retain sufficient session state to successfully process <code>&lt;samlp:LogoutRequest&gt;</code>
+messages that specify a matching <code>&lt;samlp:SessionIndex&gt;</code> value for no less than 8
+hours.</p>
 </div>
 <div class="paragraph">
 <p><em>This ensures that the IdP will be able to propagate single-logout of a
-subject&#8217;s session for up to 8 hours after issuing the last assertion for that
+subject&#8217;s session for up to 8 hours after issuing the first assertion for that
 session.</em></p>
+</div>
+<div class="paragraph">
+<p>The IdP MAY retain this session state for longer than 8 hours.</p>
+</div>
+<div class="paragraph">
+<p>The IdP MAY discard all state associated with a <code>SessionIndex</code> after processing
+a <code>&lt;samlp:LogoutRequest&gt;</code> for the session.</p>
 </div>
 <div class="paragraph">
 <p><strong>[CDP-IDP07]</strong></p>
@@ -3045,12 +3053,12 @@ logout of any current subject&#8217;s session whenever an authentication event w
 that session results in the authentication of a different subject.</p>
 </div>
 <div class="paragraph">
-<p><em>For example, say the IdP has issued an <code>&lt;saml:AuthnStatement&gt;</code> for subject A
-within the last 8 hours, and subsequently receives a <code>&lt;samlp:AuthnRequest&gt;</code> from
-the same user agent triggering a new authentication event. If the end-user
-authenticates with a different credential (subject B) than the one originally
-used by subject A, then the IdP must peform a global logout of subject A&#8217;s
-session, before starting a new session for subject B.</em></p>
+<p><em>For example, say the IdP has issued the first <code>&lt;saml:AuthnStatement&gt;</code> for
+subject A within the last 8 hours, and subsequently receives a
+<code>&lt;samlp:AuthnRequest&gt;</code> from the same user agent triggering a new authentication
+event. If the end-user authenticates with a different credential (subject B)
+than the one originally used by subject A, then the IdP must peform a global
+logout of subject A&#8217;s session, before starting a new session for subject B.</em></p>
 </div>
 </div>
 <div class="sect3">
@@ -3246,7 +3254,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-20 18:58:49 UTC
+Last updated 2018-07-26 13:11:19 UTC
 </div>
 </div>
 </body>
