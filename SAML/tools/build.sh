@@ -3,7 +3,7 @@
 # Clone the latest Kantara saml2iop sources
 echo -n "Obtaining the latest Kantara specifications..."
 if [[ -d ./Kantara ]] ; then
-   pushd ./Kantara > /dev/null
+   pushd ./Kantara/SAMLProfiles > /dev/null
    git pull
    popd > /dev/null
 else
