@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-07-26</p>
+<p>2018-07-27</p>
 </td>
 </tr>
 <tr>
@@ -827,7 +827,7 @@ NOT", "RECOMMENDED" or "NOT RECOMMENDED".</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Deployments MUST allow for a minimum of three (3) and a maximum of five (5) minutes of clock skew&#8201;&#8212;&#8201;in either direction&#8201;&#8212;&#8201;when interpreting <code>xsd:dateTime</code> values in assertions and when enforcing security policies based thereupon.</p>
+<p>Deployments MUST allow between three (3) and five (5) minutes of clock skew&#8201;&#8212;&#8201;in either direction&#8201;&#8212;&#8201;when interpreting <code>xsd:dateTime</code> values in assertions and when enforcing security policies based thereupon.</p>
 </div>
 <div class="paragraph">
 <p><em>The following is a non-exhaustive list of items to which this directive applies:</em> <code>NotBefore</code>, <code>NotOnOrAfter</code>, <em>and</em> <code>validUntil</code> <em>XML attributes found on</em> <code>&lt;saml:Conditions&gt;</code>, <code>&lt;saml:SubjectConfirmationData&gt;</code>, <code>&lt;samlp:LogoutRequest&gt;</code>, <code>&lt;md:EntityDescriptor&gt;</code>, <code>&lt;md:EntitiesDescriptor&gt;</code>, <code>&lt;md:RoleDescriptor&gt;</code>, <em>and</em> <code>&lt;md:AffiliationDescriptor&gt;</code> <em>elements.</em></p>
@@ -1008,6 +1008,12 @@ signature applied by Shared Services Canada.</p>
 <p>Deployments MUST have the ability to provide SAML metadata capturing their requirements and characteristics in the areas identified above in a secure fashion, the specifics of which will necessarily vary by context and community. The use of services offering third-party validation, curation, signing, and publishing of metadata is a recommended practice.</p>
 </div>
 <div class="paragraph">
+<p>Metadata MAY include content indicating support for profiles or features beyond the bounds of this profile, but metadata MUST NOT contain content that advertises profile support or features that aren&#8217;t supported by a deployment.</p>
+</div>
+<div class="paragraph">
+<p><em>As an example, deployments that lack support for, or have not tested and integrated an implementation&#8217;s support for the HTTP-Artifact binding <a href="#SAML2Bind">[SAML2Bind]</a> must omit such endpoints.</em></p>
+</div>
+<div class="paragraph">
 <p><em>This profile does not mandate any specific automated support for the production of metadata by a deployment. In fact, automatic generation of metadata has a strong tendency to undermine the correct functioning of peer deployments in the face of key rollover or changes to endpoints or other software features because it tends to change too suddenly to accommodate a graceful transition between states.</em></p>
 </div>
 </div>
@@ -1027,15 +1033,12 @@ validation, curation, signing, and publishing of metadata.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Metadata MAY include content indicating support for profiles or features beyond the bounds of this profile, but metadata MUST NOT contain content that advertises profile support or features that aren&#8217;t supported or that have not been deliberately and intentionally configured by a deployment.</p>
-</div>
-<div class="paragraph">
-<p><em>As an example, deployments that lack support for, or have not tested and integrated an implementation&#8217;s support for the HTTP-Artifact binding <a href="#SAML2Bind">[SAML2Bind]</a> must omit such endpoints.</em></p>
+<p><em>(REMOVED)</em></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Not Applicable</em></p>
 </div>
 <hr>
 <div class="sect4">
@@ -1049,7 +1052,23 @@ validation, curation, signing, and publishing of metadata.</p>
 <p>Public keys used for signing, encryption, and TLS client and server authentication MUST be expressed via X.509 certificates included in metadata via <code>&lt;md:KeyDescriptor&gt;</code> elements.</p>
 </div>
 <div class="paragraph">
-<p>These certificates SHOULD be long-lived and self-signed. To avoid problems with non-conforming SAML implementations, certificates in metadata SHOULD NOT be expired (though deployments complying with this profile MUST accept expired certificates by virtue of <a href="#SAML2MDIOP">[SAML2MDIOP]</a>).</p>
+<p><em>By virtue of <a href="#SAML2MDIOP">[SAML2MDIOP]</a>, this profile (and SAML in general) does not place requierments on the non-key material contained in X.509 certificates in metadata. However, the following are suggested practices to avoid interoperability issues with deployments outside the scope of this profile:</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>use long-lived certificates</em></p>
+</li>
+<li>
+<p><em>use self-signed certificates</em></p>
+</li>
+<li>
+<p><em>do not use expired certificates</em></p>
+</li>
+<li>
+<p><em>do not sign certificates with MD5- or SHA1-based signature algorithms.</em></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1138,12 +1157,12 @@ authentication.</em></p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Certificates used MUST NOT be signed with an MD5-based signature algorithm and SHOULD NOT be signed with a SHA1-based signature algorithm.</p>
+<p>(<em>REMOVED</em>)</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Not Applicable</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1174,7 +1193,7 @@ with the <code>use</code> attribute set to <code>encryption</code>.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Metadata MUST include an <code>&lt;mdui:UIInfo&gt;</code> element as defined in <a href="#MetaUI">[MetaUI]</a> containing at least the child elements <code>&lt;mdui:DisplayName&gt;</code>, <code>&lt;mdui:Logo&gt;</code>, <code>&lt;mdui:InformationURL&gt;</code>, and <code>&lt;mdui:PrivacyStatementURL&gt;</code>.</p>
+<p>Metadata MUST include an <code>&lt;mdui:UIInfo&gt;</code> element as defined in <a href="#MetaUI">[MetaUI]</a> containing at least the child elements <code>&lt;mdui:DisplayName&gt;</code>, <code>&lt;mdui:Logo&gt;</code>, and <code>&lt;mdui:InformationURL&gt;</code>.</p>
 </div>
 </div>
 </div>
@@ -1191,7 +1210,7 @@ with the <code>use</code> attribute set to <code>encryption</code>.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>The content of the <code>&lt;mdui:Logo&gt;</code> element MUST be either an <code>https</code> URL or an in-line image embedded in a <code>data</code> URI element.</p>
+<p>The content of the <code>&lt;mdui:Logo&gt;</code> element MUST be either an <code>https</code> URL or an in-line image embedded in a <code>data</code> URI element. The size of the <code>data</code> URI used in a <code>&lt;mdui:Logo&gt;</code> element is not limited to 256 characters.</p>
 </div>
 </div>
 </div>
@@ -1423,23 +1442,6 @@ the topology of a federation. This is why this profile has not adopted
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP05]</em></strong></p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>The <code>&lt;samlp:AuthnRequest&gt;</code> message MUST NOT contain a <code>&lt;saml:Subject&gt;</code> element.</p>
-</div>
-<div class="paragraph">
-<p><em>This is a relatively unused feature that is supported by few IdPs.</em></p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
-</div>
-<hr>
-<div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP06]</em></strong></p>
 </div>
 <div class="exampleblock">
@@ -1594,7 +1596,8 @@ published at
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>The response to such errors MUST direct users to appropriate support resources offered by the SP or alternatively to the <code>errorURL</code> attribute in an IdP&#8217;s metadata.</p>
+<p>The response to such errors MUST direct users to appropriate support resources offered by the SP or, alternatively, to the <code>errorURL</code> attribute in an IdP&#8217;s metadata if the cause of the error is inferred to be a lack
+of sufficient or appropriate attributes about the user to operate successfully.</p>
 </div>
 </div>
 </div>
@@ -1669,6 +1672,9 @@ equivalent functionality.</em></p>
 <div class="paragraph">
 <p><em>If an SP requires coordination and/or correlation of user activity between itself and other SPs, then the SAML Attribute named <code>urn:oasis:names:tc:SAML:attribute:subject-id</code> is appropriate. Otherwise the SAML Attribute named <code>urn:oasis:names:tc:SAML:attribute:pairwise-id</code> can be used.</em></p>
 </div>
+<div class="paragraph">
+<p><em>SPs MAY support legacy or historical <code>&lt;saml:NameID&gt;</code> and <code>&lt;saml:Attribute&gt;</code> identifier content for compatibility reasons but MUST NOT require their use.</em></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1677,6 +1683,11 @@ equivalent functionality.</em></p>
 <div class="paragraph">
 <p>SP deployments MUST NOT implement <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
+<div class="paragraph">
+<p>SP deployments MUST support <code>&lt;saml:NameID&gt;</code> and the
+<code>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</code> name identifier format as
+described in <a href="#SAML2Core">[SAML2Core]</a>.</p>
+</div>
 <hr>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP17]</em></strong></p>
@@ -1684,17 +1695,12 @@ equivalent functionality.</em></p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>SPs MAY support legacy or historical <code>&lt;saml:NameID&gt;</code> and <code>&lt;saml:Attribute&gt;</code> content for compatibility reasons but MUST NOT require their use.</p>
+<p><em>(REMOVED)</em></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>SP deployments MUST support <code>&lt;saml:NameID&gt;</code> and the
-<code>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</code> name identifier format as
-described in <a href="#SAML2Core">[SAML2Core]</a>.</p>
+<p><strong>CATS Support</strong>: <em>Not Applicable</em></p>
 </div>
 <hr>
 </div>
@@ -2002,7 +2008,7 @@ support cross-origin resource sharing <a href="#CORS">[CORS]</a> so that the IdP
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Requests MUST be signed.</p>
+<p>Requests MUST be signed (via a signature created in accordance with the HTTP=Redirect binding [SAML2Bind]).</p>
 </div>
 </div>
 </div>
@@ -2097,7 +2103,7 @@ unnecessary elements such as <code>&lt;ds:X509Data&gt;</code> in <code>&lt;saml:
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Responses MUST be signed.</p>
+<p>Responses MUST be signed (via a signature created in accordance with the HTTP=Redirect binding [SAML2Bind]).</p>
 </div>
 </div>
 </div>
@@ -2227,10 +2233,10 @@ unnecessary elements such as <code>&lt;ds:X509Data&gt;</code> in <code>&lt;saml:
 <p>at least one <code>&lt;md:AssertionConsumerService&gt;</code> endpoint element</p>
 </li>
 <li>
-<p>at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>signing</code></p>
+<p>at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>encryption</code></p>
 </li>
 <li>
-<p>at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>encryption</code></p>
+<p>if the SP generates single logout requests: at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>signing</code></p>
 </li>
 </ul>
 </div>
@@ -2240,7 +2246,7 @@ unnecessary elements such as <code>&lt;ds:X509Data&gt;</code> in <code>&lt;saml:
 <div class="ulist">
 <ul>
 <li>
-<p>an <code>&lt;mdui:UIInfo&gt;</code> extension element with previously prescribed content</p>
+<p>an <code>&lt;mdui:UIInfo&gt;</code> extension element with previously prescribed content and <code>&lt;mdui:PrivacyStatementURL&gt;</code></p>
 </li>
 <li>
 <p>an <code>&lt;mdattr:EntityAttributes&gt;</code> extension element for signaling Subject Identifier requirements with previously prescribed content</p>
@@ -2498,6 +2504,11 @@ to which the subject was authenticated.</p>
 <div class="paragraph">
 <p>In the event the HTTP-POST binding <a href="#SAML2Bind">[SAML2Bind]</a> is used, assertions MUST be encrypted and transmitted via a <code>&lt;saml:EncryptedAssertion&gt;</code> element. Information intended for the consumption of the SP MUST NOT be further encrypted via <code>&lt;saml:EncryptedID&gt;</code> or <code>&lt;saml:EncryptedAttribute&gt;</code> constructs.</p>
 </div>
+<div class="paragraph">
+<p><em>While encryption is viewed in some quarters as onerous or unnecessary, interopability is enhanced by uniformity. Moreover,
+a spate of recent vulnerabilities across the industry would have been almost entirely mitigated by its use, demonstrating
+that it is no longer acceptable to view it as an optional part of front-channel delivery of assertions, if it ever was.</em></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -2623,7 +2634,10 @@ to which the subject was authenticated.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>It is RECOMMENDED that the content of <code>&lt;saml:AttributeValue&gt;</code> elements be limited to a single child text node (i.e., a simple string value).</p>
+<p>It is RECOMMENDED that the content of each <code>&lt;saml:AttributeValue&gt;</code> element be limited to a single child text node (i.e., a simple string value) and that multiple values of a <code>&lt;saml:Attribute&gt;</code> be expressed as individual <code>&lt;saml:AttributeValue&gt;</code> elements rather than embedded in a delimited form within a single element.</p>
+</div>
+<div class="paragraph">
+<p><em>Note that this refers to <code>&lt;saml:AttributeValue&gt;</code> elements, not <code>&lt;saml:Attribute&gt;</code> elements, and refers to the form of each individual value. It discourages the use of complex XML content models within the value of an Attribute.</em></p>
 </div>
 </div>
 </div>
@@ -2770,7 +2784,7 @@ not be able to respond to the SP that initiated the logout.</em></p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Requests MUST be signed.</p>
+<p>Requests MUST be signed ((via a signature created in accordance with the HTTP=Redirect binding [SAML2Bind]).</p>
 </div>
 </div>
 </div>
@@ -2852,7 +2866,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Responses MUST be signed.</p>
+<p>Responses MUST be signed (via a signature created in accordance with the HTTP=Redirect binding [SAML2Bind]).</p>
 </div>
 </div>
 </div>
@@ -2912,7 +2926,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>an <code>&lt;md:IDPSSODescriptor&gt;</code> role element containing an <code>errorURL</code> attribute and an appropriate URL value</p>
+<p>an <code>&lt;md:IDPSSODescriptor&gt;</code> role element</p>
 <div class="ulist">
 <ul>
 <li>
@@ -3254,7 +3268,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-26 13:11:19 UTC
+Last updated 2018-07-27 13:32:21 UTC
 </div>
 </div>
 </body>
