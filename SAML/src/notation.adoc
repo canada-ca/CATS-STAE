@@ -28,7 +28,7 @@ When referring to elements from the SAML 2.0 metadata specification
 * `<md:MetadataElement>`
 
 When referring to elements from the SAML 2.0 Metadata Extensions for Login and
-Discovery User Interface specification <<MetaUi>>, the following syntax is used:
+Discovery User Interface specification <<MetaUI>>, the following syntax is used:
 
 * `<mdui:MetadataElement>`
 
