@@ -1,7 +1,0 @@
-SPs SHOULD support the SOAP <<SAML2Bind>> binding for the the receipt of
-`<samlp:LogoutRequest>` messages.
-
-An SP MAY support the HTTP-Redirect binding in the event that their
-implementation does not support the SOAP binding, in which case the SP MUST
-support cross-origin resource sharing <<CORS>> so that the IdP can send
-`<samlp:LogoutRequest>` messages without giving up control of the user agent.

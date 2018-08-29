@@ -1,1 +1,0 @@
-SPs MUST NOT implement other encrypted constructs.
