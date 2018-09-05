@@ -24,16 +24,16 @@ include::notation.adoc[]
 include::compliance.adoc[]
 
 <<<
-include::../merged/common_requirements.adoc[]
+include::../../merged/common_requirements.adoc[]
 include::common_requirements.adoc[]
 
 <<<
-include::../merged/sp_requirements.adoc[]
+include::../../merged/sp_requirements.adoc[]
 include::sp_requirements.adoc[]
 
 <<<
 
-include::../merged/idp_requirements.adoc[]
+include::../../merged/idp_requirements.adoc[]
 include::idp_requirements.adoc[]
 
 <<<

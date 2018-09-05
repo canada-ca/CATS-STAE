@@ -14,37 +14,46 @@ else
 fi
 echo "Done"
 
-# Merge in CATS contraints
-if [[ -d ./merged ]] ; then
-   rm -rf ./merged/*
-else
-   mkdir merged
-fi
+# Enumerate the upstream requirements files
 
-echo -n "Merging in CATS constraints..."
 pushd ./Kantara/SAMLProfiles/edit/saml2int  > /dev/null
 FILES=$(find . -name '*requirements.adoc' -print)
 popd > /dev/null
 
-for FILE in $FILES ; do
-   ./tools/merge.sh < ./Kantara/SAMLProfiles/edit/saml2int/$FILE \
-                   > ./merged/$FILE
+for spec in credauth ; do
+    echo "Producing $spec..."
+
+    pushd ./src/$spec > /dev/null
+
+    echo -n "Merging in CATS constraints..."
+    if [[ -d ../../merged ]] ; then
+    rm -rf ../merged/*
+    else
+    mkdir ../../merged
+    fi
+
+    for FILE in $FILES ; do
+    ../../tools/merge.sh < ../../Kantara/SAMLProfiles/edit/saml2int/$FILE \
+                    > ../../merged/$FILE
+    done
+
+    popd > /dev/null
+
+    echo "Done"
+
+    # Publish to HTML and PDF
+    touch ./src/${spec}/main.adoc
+    echo -n "Producing HTML..."
+    cp -R ./src/${spec}/images ../docs
+    docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
+    asciidoctor --source-dir SAML/src/$spec --destination-dir docs \
+    -o saml2cred.html SAML/src/$spec/main.adoc
+
+    echo -n "Producing PDF..."
+    docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
+    asciidoctor-pdf --source-dir SAML/src/credauth --destination-dir docs \
+    -a pdf-stylesdir=./SAML/tools -a pdf-style=cats \
+    -o saml2cred.pdf SAML/src/${spec}/main.adoc
+
+    echo "Done"
 done
-
-echo "Done"
-
-# Publish to HTML and PDF
-touch ./src/main.adoc
-echo -n "Producing HTML..."
-cp -R ./src/images ../docs
-docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
-   asciidoctor --source-dir SAML/src --destination-dir docs \
-   -o saml2cred.html SAML/src/main.adoc
-
-echo -n "Producing PDF..."
-docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
-   asciidoctor-pdf --source-dir SAML/src --destination-dir docs \
-   -a pdf-stylesdir=./SAML/tools -a pdf-style=cats \
-   -o saml2cred.pdf SAML/src/main.adoc
-
-echo "Done"
