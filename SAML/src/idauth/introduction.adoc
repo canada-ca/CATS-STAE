@@ -1,0 +1,33 @@
+== Introduction
+
+SAML V2.0 is a rich and extensible standard that must be profiled to be used
+interoperably, and the profiles that typically emerge from the broader
+standardization process usually remain fairly broad and include a number of
+options and features that increase the burden for implementers and make
+deployment-time decisions more difficult.
+
+Implementation profiles define the features that software implementations must
+support such that deployers can be assured of the ability to meet their own
+(possibly varied) deployment requirements. Deployment profiles define specific
+options and constraints to which deployments are required to conform; they guide
+product configuration and federation operations, and provide criteria against
+which actual deployments may be tested. This document provides a
+deployment profile for use by members of the Sign in Canada federation.
+
+
+=== Overview of the CATS SAML 2.0 Deployment Profile for Identity Authentication
+
+This deployment profile is based on the draft SAML V2.0 Interoperability
+Deployment Profile V1.0 <<SAML2Iop>> published by the Kantara Initiative, which
+in turn is based on the SAML 2.0 specifications created by the Security Services
+Technical Committee (SSTC) of the Organization for the Advancement of Structured
+Information Standards (OASIS).
+
+The scope of this profile applies only to providers and consumers of trusted
+identity authentication services. A seperate profile suppors anonymous
+credential authentication services.
+
+
+.CATS SAML Profile Building Blocks
+image::BuildingBlocks.png[]
+
