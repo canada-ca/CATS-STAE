@@ -1,0 +1,6 @@
+Information intended for the consumption of the SP MAY be further encrypted
+via the `<saml:EncryptedAttribute>` construct.
+
+_Encryption of attrubutes can protect the confidentiality of personal
+information that passes through an intermediary such as a Proxying Identity
+Provider._
