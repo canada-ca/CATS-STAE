@@ -1,0 +1,6 @@
+`<samlp:NameIDPolicy>` MAY contain a `Format` attribute, in which case its value
+MUST be `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`.
+
+An `SPNameQualifier` attribute MAY also be present to indicate a Proxying
+Identity Provider's desire to request a transient `<saml:NameID>` value on
+behalf of one of its client SPs.

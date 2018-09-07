@@ -1,0 +1,15 @@
+SP deployments MUST include `<samlp:RequestedAuthnContext>` with the
+`Comparison` attribute set to `exact`.
+
+The `<samlp:RequestedAuthnContext>` MUST include a Level of Assurance as
+specified in <<SAML2Assur>>.
+
+The SP MAY request more than one level of assurance in descending priority
+order.
+
+_This is useful when a certain minimum level of assurance is required, but the
+SP is willing to accept a higher level of assurance._
+
+_The AuthnContext Schema for the Sign in Canada levels of assurance are
+published at
+https://github.com/canada-ca/CATS-STAE/tree/master/SAML/src/schemas._
