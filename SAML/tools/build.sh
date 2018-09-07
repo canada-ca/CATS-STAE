@@ -39,6 +39,11 @@ for spec in cred id ; do
 
     popd > /dev/null
 
+    if [[ "$spec" = "id" ]] ; then # remove non-applicable sections
+      sed -i '/^==== Usability/,/^=== Metadata and Trust Management/{/^=== Metadata and Trust Management/b;d}' ./merged/sp_requirements.adoc
+      sed -i '/^=== Single Logout/,/^=== Metadata and Trust Management/{/^=== Metadata and Trust Management/b;d}' ./merged/idp_requirements.adoc
+    fi
+
     echo "Done"
 
     # Publish to HTML and PDF
