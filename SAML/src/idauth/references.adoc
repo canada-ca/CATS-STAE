@@ -1,0 +1,36 @@
+== References
+
+=== Normative
+
+[bibliography]
+
+- [[[RFC2119]]] IETF RFC 2119, Key words for use in RFCs to Indicate Requirement Levels, March 1997. http://www.ietf.org/rfc/rfc2119.txt
+- [[[RFC8174]]] IETF RFC 8174, Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words, May 2017. http://www.ietf.org/rfc/rfc8174.txt
+- [[[RFC4051]]] IETF RFC 4051, Additional XML Security Uniform Resource Identifiers, April 2005. https://www.ietf.org/rfc/rfc4051.txt
+- [[[SAML2Core]]] OASIS Standard, Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0, March 2005. http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf
+- [[[SAML2Bind]]] OASIS Standard, Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0, March 2005. http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf
+- [[[SAML2Prof]]] OASIS Standard, Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0, March 2005. http://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf
+- [[[SAML2Meta]]] OASIS Standard, Metadata for the OASIS Security Assertion Markup Language (SAML) V2.0, March 2005. http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf
+- [[[SAML2Gloss]]] OASIS Standard, Glossary for the OASIS Security Assertion Markup Language (SAML) V2, March 2005. http://docs.oasis-open.org/security/saml/v2.0/saml-glossary-2.0-os.pdf
+- [[[X500SAMLattr]]] OASIS Committee Specification, SAML V2.0 X.500/LDAP Attribute Profile, March 2008. http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-attribute-x500-cs-01.pdf
+- [[[SAML2MDIOP]]] OASIS Committee Specification, SAML V2.0 Metadata Interoperability Profile Version 1.0, August 2009. http://docs.oasis-open.org/security/saml/Post2.0/sstc-metadata-iop.pdf
+- [[[IdPDisco]]] OASIS Committee Specification, Identity Provider Discovery Service Protocol and Profile, March 2008. http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-idp-discovery.pdf
+- [[[SAML2Err]]] OASIS Approved Errata, SAML Version 2.0 Errata 05, May 2012. http://docs.oasis-open.org/security/saml/v2.0/sstc-saml-approved-errata-2.0.pdf
+- [[[XMLEnc]]] D. Eastlake et al. XML Encryption Syntax and Processing. W3C Recommendation, April 2013. https://www.w3.org/TR/xmlenc-core1/
+- [[[XMLSig]]] D. Eastlake et al. XML-Signature Syntax and Processing, Version 1.1. W3C Recommendation, April 2013. https://www.w3.org/TR/xmldsig-core1/
+- [[[SAML2Assur]]] OASIS Committee Specification, SAML V2.0 Identity Assurance Profiles Version 1.0,  November 2010. http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-assurance-profile.pdf
+- [[[SAML2SubjId]]] OASIS Working Draft, SAMLV2.0 Subject Identifier Attributes Profile Version 1.0, February 2018.  https://www.oasis-open.org/committees/download.php/62438/saml-subject-id-attr-v1.0-wd04.pdf
+- [[[SAML2ASLO]]] OASIS Committee Specification, SAML V2.0 Asynchronous Single Logout Profile Extension Version 1.0, November 2012. http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf
+- [[[MetaUI]]] OASIS Committee Specification, SAML V2.0 Metadata Extensions for Login and Discovery User Interface Version 1.0, April 2012. http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-metadata-ui/v1.0/cs01/sstc-saml-metadata-ui-v1.0-cs01.pdf
+- [[[MetaAttr]]] OASIS Committee Specification, SAML V2.0 Metadata Extension for Entity Attributes Version 1.0, August 2009. http://docs.oasis-open.org/security/saml/Post2.0/sstc-metadata-attr-cs-01.pdf
+- [[[SAML2Iop]]] Kantara Initiative, SAML V2.0 Interoperability Deployment Profile V1.0 (Draft). https://kantarainitiative.github.io/SAMLprofiles/saml2int.html
+- [[[CORS]]] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. http://www.w3.org/TR/cors/
+- [[[ITSP.40.111]]] Communications Security Establishment, Cryptographic Algorithms for UNCLASSIFIED, PROTECTED A, and PROTECTED B Information. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.111-eng_0.pdf
+- [[[ITSP.40.062]]] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.062-eng_0.pdf
+
+=== Non-Normative
+
+[bibliography]
+
+- [[[SAML2Cred]]] Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Credential Authentication. https://canada-ca.github.io/CATS-STAE/saml2cred.html
+- [[[XMLEncBreak]]] Jager and Somorovsky, How to Break XML Encryption, October 2011. http://www.nds.rub.de/media/nds/veroeffentlichungen/2011/10/22/HowToBreakXMLenc.pdf

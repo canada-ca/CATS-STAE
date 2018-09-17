@@ -20,10 +20,10 @@ pushd ./Kantara/SAMLProfiles/edit/saml2int  > /dev/null
 FILES=$(find . -name '*requirements.adoc' -print)
 popd > /dev/null
 
-for spec in credauth ; do
-    echo "Producing $spec..."
+for spec in cred id ; do
+    echo "Producing ${spec}auth..."
 
-    pushd ./src/$spec > /dev/null
+    pushd ./src/${spec}auth > /dev/null
 
     echo -n "Merging in CATS constraints..."
     if [[ -d ../../merged ]] ; then
@@ -39,21 +39,26 @@ for spec in credauth ; do
 
     popd > /dev/null
 
+    if [[ "$spec" = "id" ]] ; then # remove non-applicable sections
+      sed -i '/^==== Usability/,/^=== Metadata and Trust Management/{/^=== Metadata and Trust Management/b;d}' ./merged/sp_requirements.adoc
+      sed -i '/^=== Single Logout/,/^=== Metadata and Trust Management/{/^=== Metadata and Trust Management/b;d}' ./merged/idp_requirements.adoc
+    fi
+
     echo "Done"
 
     # Publish to HTML and PDF
-    touch ./src/${spec}/main.adoc
+    touch ./src/${spec}auth/main.adoc
     echo -n "Producing HTML..."
-    cp -R ./src/${spec}/images ../docs
+    cp -R ./src/${spec}auth/images ../docs
     docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
-    asciidoctor --source-dir SAML/src/$spec --destination-dir docs \
-    -o saml2cred.html SAML/src/$spec/main.adoc
+    asciidoctor --source-dir SAML/src/${spec}auth --destination-dir docs \
+    -o saml2${spec}.html SAML/src/${spec}auth/main.adoc
 
     echo -n "Producing PDF..."
     docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
-    asciidoctor-pdf --source-dir SAML/src/credauth --destination-dir docs \
+    asciidoctor-pdf --source-dir SAML/src/${spec}auth --destination-dir docs \
     -a pdf-stylesdir=./SAML/tools -a pdf-style=cats \
-    -o saml2cred.pdf SAML/src/${spec}/main.adoc
+    -o saml2${spec}.pdf SAML/src/${spec}auth/main.adoc
 
     echo "Done"
 done

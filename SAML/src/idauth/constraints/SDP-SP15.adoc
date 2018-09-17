@@ -1,0 +1,6 @@
+SP deployments MUST NOT use this profile for the persistent
+tracking/identification of users.
+
+_Persistent identification of users is accomplished by binding an identiy,
+authenticated using this profile, to a credential, authenticated using
+the <<SAML2Cred>> profile._

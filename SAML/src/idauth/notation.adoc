@@ -1,0 +1,118 @@
+== Notation and Terminology
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in BCP 14 <<RFC2119>> <<RFC8174>>
+when, and only when, they appear in all capitals, as shown here.
+
+This specification uses the following typographical conventions in text:
+`<ns:Element>`, `Attribute`, **Datatype**, `OtherCode`. The normative
+requirements of this specification are individually labeled with a unique
+identifier in the following form: *[SDP-EXAMPLE01]*. All information within
+these requirements should be considered normative unless it is set in _italic_
+type.  Italicized text is non-normative and is intended to provide additional
+information that may be helpful in implementing the normative requirements.
+
+=== References to SAML 2.0 specification
+
+When referring to elements from the SAML 2.0 core specification <<SAML2Core>>,
+the following syntax is used:
+
+* `<samlp:ProtocolElement>` - for elements from the SAML 2.0 Protocol namespace.
+* `<saml:AssertionElement>` - for elements from the SAML 2.0 Assertion
+namespace.
+
+When referring to elements from the SAML 2.0 metadata specification
+<<SAML2Meta>>, the following syntax is used:
+
+* `<md:MetadataElement>`
+
+When referring to elements from the SAML 2.0 Metadata Extensions for Login and
+Discovery User Interface specification <<MetaUI>>, the following syntax is used:
+
+* `<mdui:MetadataElement>`
+
+When referring to elements from the SAML 2.0 Metadata Extension for Entity
+Attributes specification <<MetaAttr>>, the following syntax is used:
+
+* `<mdattr:MetadataElement>`
+
+When referring to elements from the SAML V2.0 Asynchronous Single Logout
+Protocol Extension specification <<SAML2ASLO>>, the following syntax is used:
+
+* `<aslo:Element>`
+
+When referring to elements from the XML-Signature Syntax and Processing Version
+1.1 WWWC Recommendation <<XMLSig>>, the following syntax is used:
+
+* `<ds:Element>`
+
+=== Terminology
+
+The following SAML standard terms and abbreviations are used in a manner
+consistent with the SAML Browser SSO Profile and Single Logout profiles
+described in <<SAML2Prof>>. Formal definitions of these terms can be found in
+the SAML2 Glossary <<SAML2Gloss>>:
+
+* *Service Provider (SP)*
+* *Session Authority*
+* *Session Participant*
+* *Subject*
+* *Identity Provider (IdP)*
+* *Proxying Identity Provider*
+
+
+In addition, the following terms are used:
+
+Anonymous Credential:: A Credential that, while still making an assertion about
+some property, status, or right of the person, does not reveal the person's
+identity.
+
+Assurance:: A measure of certainty that a statement or fact is true.
+
+Assurance of Credential (Credential Assurance):: The assurance that an
+individual, organization or device has maintained control over what has been
+entrusted to him or her (e.g., a password, key, token, document or identifier)
+and that the credential has not been compromised (e.g., tampered with, modified
+or stolen).
+
+Authoritative Party:: A federation member that provides assurances of credential
+ to other federation members (i.e. “Relying Parties”).
+
+Credential:: A unique physical or electronic object (or identifier) issued to,
+or associated with, a person, organization, or device (e.g. key, token,
+document, program identifier).
+
+Credential Service Provider (CSP):: An Identity Provider that provides anonymous
+credential authentication services.
+
+Federation:: A cooperative agreement between autonomous entities that have
+agreed to relinquish some of their autonomy in order to work together
+effectively to support a collaborative effort. The federation is supported by
+trust relationships and standards to support interoperability.
+
+Level of Assurance:: A level of confidence that may be relied on by others.
+
+Relying Party (RP):: A federation member who relies on assurances of identity
+from other federation members (i.e. “Authoritative Parties”).
+
+Sign in Canada Acceptance Platform:: A Government of Canada service that acts as
+a trusted intermediary between Credential Service Providers and Government of
+Canada Relying Parties. The Acceptance Platform operates as a Proxying Identity
+Provider and centralized Session Authority.
+
+Sign in Canada Federation:: A Federation whose members include the Sign in
+Canada Acceptance Platform and all Relying Parties who use it.
+
+User Agent:: Software that is acting on behalf of a user. For example, a web
+browser or native mobile application.
+
+
+Whether explicit or implicit, all the requirements in this document are meant to
+apply to deployments of SAML profiles and may involve explicit support for
+requirements by SAML-implementing software and/or supplemental support via
+application code. Deployments of a Service Provider may refer to both
+stand-alone implementations of SAML, libraries integrated with an application,
+or any combination of the two. It is difficult to define a clear boundary
+between a Service Provider and the Relying Party application/service it
+represents, and unnecessary to do so for the purposes of this document.

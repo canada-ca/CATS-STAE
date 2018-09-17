@@ -1,0 +1,17 @@
+=== CATS-Specific Requirements
+
+==== Request Signing
+
+*[CIP-SP01]*
+
+`<samlp:AuthnRequest>` messages MUST be signed using the SHA-256 algorithm.
+
+*[CIP-SP02]*
+
+`<samlp:AuthnRequest>` messages SHOULD NOT include an `isPassive` attribute. If
+the SP implementation is unable to omit the `isPassive` attribute then it MUST
+have a value of  `false` or `0`.
+
+_In all cases of identity authentication, the IdP must interact with the
+end-user in order to obtain their informed consent._
+
