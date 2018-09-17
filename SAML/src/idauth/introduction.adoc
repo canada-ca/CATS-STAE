@@ -14,7 +14,6 @@ product configuration and federation operations, and provide criteria against
 which actual deployments may be tested. This document provides a
 deployment profile for use by members of the Sign in Canada federation.
 
-
 === Overview of the CATS SAML 2.0 Deployment Profile for Identity Authentication
 
 This deployment profile is based on the draft SAML V2.0 Interoperability
@@ -24,9 +23,8 @@ Technical Committee (SSTC) of the Organization for the Advancement of Structured
 Information Standards (OASIS).
 
 The scope of this profile applies only to providers and consumers of trusted
-identity authentication services. A seperate profile suppors anonymous
-credential authentication services.
-
+identity authentication services. A seperate profile <<SAML2cred>> supports
+anonymous credential authentication services.
 
 .CATS SAML Profile Building Blocks
 image::BuildingBlocks.png[]
