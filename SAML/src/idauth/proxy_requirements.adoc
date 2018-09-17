@@ -26,9 +26,9 @@ pass through values or map between different vocabularies as required.
 
 *[CIP-PIP04]*
 
-Proxying Identity Provider deployments MUST support the suppression of
-`<saml:AuthenticatingAuthority>` elements from outgoing `<saml:AuthnContext>`
-elements to allow for hiding the identity of the proxied Identity Provider from
+Proxying Identity Provider deployments MUST include at least one
+`<saml:AuthenticatingAuthority>` element in outgoing `<saml:AuthnContext>`
+elements to discolose the identity of the proxied Identity Provider to
 Service Providers.
 
 *[CIP-PIP05]*
