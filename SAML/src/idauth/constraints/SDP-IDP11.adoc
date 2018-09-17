@@ -1,6 +1,4 @@
-Information intended for the consumption of the SP MAY be further encrypted
-via the `<saml:EncryptedAttribute>` construct.
-
-_Encryption of attrubutes can protect the confidentiality of personal
-information that passes through an intermediary such as a Proxying Identity
-Provider._
+Attriubutes contained in responses sent to a proxying identity provider that
+contain personal information intended for the use of a proxied service provider
+SHOULD be further encrypted for the proxied SP via the
+`<saml:EncryptedAttribute>` construct.
