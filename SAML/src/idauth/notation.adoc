@@ -93,7 +93,7 @@ trust relationships and standards to support interoperability.
 
 Level of Assurance:: A level of confidence that may be relied on by others.
 
-Relying Party (RP):: A federation member who relies on assurances of credential
+Relying Party (RP):: A federation member who relies on assurances of identity
 from other federation members (i.e. “Authoritative Parties”).
 
 Sign in Canada Acceptance Platform:: A Government of Canada service that acts as
