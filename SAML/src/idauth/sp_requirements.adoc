@@ -15,3 +15,11 @@ have a value of  `false` or `0`.
 _In all cases of identity authentication, the IdP must interact with the
 end-user in order to obtain their informed consent._
 
+*[CIP-SP03]*
+
+The `<md:SPSSODescriptor>` element of SP metadata MUST contain at least one
+`<md:AttributeConsumingService>` element that specifies the attributes required
+or desired by the relying party. `<md:AttributeConsumingService>` MUST include
+two `<md:ServiceName>` elements, one in english and one in french.
+`<md:ServiceDescription>`, if present, MUST also be included for both english
+and french.
