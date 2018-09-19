@@ -27,6 +27,8 @@
 - [[[CORS]]] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. http://www.w3.org/TR/cors/
 - [[[ITSP.40.111]]] Communications Security Establishment, Cryptographic Algorithms for UNCLASSIFIED, PROTECTED A, and PROTECTED B Information. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.111-eng_0.pdf
 - [[[ITSP.40.062]]] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.062-eng_0.pdf
+- [[[OIDC]]] OpenID Foundation, OpenID Connect Core 1.0 incorporating errata set 1. https://openid.net/specs/openid-connect-core-1_0.html
+- [[[IMI]]] OASIS Standard, Identity Metasystem Interoperability Version 1.0. http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf
 
 === Non-Normative
 
