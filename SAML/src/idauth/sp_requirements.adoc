@@ -1,6 +1,6 @@
 === CATS-Specific Requirements
 
-==== Request Signing
+==== Authentication Request Signing
 
 *[CIP-SP01]*
 
@@ -14,6 +14,8 @@ have a value of  `false` or `0`.
 
 _In all cases of identity authentication, the IdP must interact with the
 end-user in order to obtain their informed consent._
+
+==== Metadata and Trust Management
 
 *[CIP-SP03]*
 
