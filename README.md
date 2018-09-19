@@ -36,7 +36,7 @@ possible.
 
 ## Future Specifications
 
-* **[CATS 3.0 - SAML 2.0 Deployment Profile](https://canada-ca.github.io/CATS-STAE/saml2cred.html)**: An update to the SAML 2.0
+* **CATS 3.0 - SAML 2.0 Deployment Profiles** for [credential](https://canada-ca.github.io/CATS-STAE/saml2cred.html) and [identity](https://canada-ca.github.io/CATS-STAE/saml2id.html) authentication: An update to the SAML 2.0
  deployment profile, incorporating improvements from the
   [Kantara Initiative](https://kantarainitiative.org/)'s [Interoperability Deployment Profile](https://kantarainitiative.github.io/SAMLprofiles/saml2int.html)
   version 1.0.
