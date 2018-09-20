@@ -29,6 +29,8 @@
 - [[[ITSP.40.062]]] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.062-eng_0.pdf
 - [[[OIDC]]] OpenID Foundation, OpenID Connect Core 1.0 incorporating errata set 1. https://openid.net/specs/openid-connect-core-1_0.html
 - [[[IMI]]] OASIS Standard, Identity Metasystem Interoperability Version 1.0. http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf
+- [[[XMLSchema]]] W3C Reccomendation, W3C XML Schema Language (XSD) 1.1 Part 1: Structures.
+ http://www.w3.org/TR/xmlschema11-1/
 
 === Non-Normative
 

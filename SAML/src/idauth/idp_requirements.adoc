@@ -35,7 +35,7 @@ name and definition profiles before defining custom attributes. Use of the
 following profiles are RECCOMENDED in descending order of preference:
 
 * The standard OpenID Connect claims defined in section 5.1 of <<OIDC>>. (See
-  [CIP-IDP05] below). 
+  *[CIP-IDP05]* below). 
 * The Identity Metasystem Interoperability claim types
   defined in section 7.5 of <<IMI>>.
 * The SAML V2.0 X.500/LDAP Attribute Profile <<X500SAMLattr>>.
@@ -52,10 +52,22 @@ The name and value of  `<saml:Attribute>` elements with a `NameFormat` of
 `urn:oasis:names:tc:SAML:2.0:attrname-format:basic` MUST correspond to one of
 the standard claims defined in section 5.1 of <<OIDC>> as follows:
 
-* The value of the `Name` attribute of `<saml:Attribute>` must match the JSON member name in <<OIDC>>.
-* The `xsi:type` attribute of `<saml:AttributeValue>` must correspond to the JSON type in <<OIDC>>.
-* The `address` claim MUST NOT be used. _Refer to requirement [SDP-IDP18]_.
-* The following component members of the `address` claim MAY be used:
+* The value of the `Name` attribute of `<saml:Attribute>` must match the JSON
+ member name in <<OIDC>>.
+* The `xsi:type` attribute of `<saml:AttributeValue>` must specify the XML
+ Schema type that corresponds to the JSON type in <<OIDC>>:
+
+[width="40%", align="center", options="header"]
+|===========================
+|JSON Type |XML Schema Type
+|string    |xs:string
+|boolean   |xs:boolean
+|number    |xs:decimal
+|===========================
+
+* The `address` claim MUST NOT be used. _Refer to requirement *[SDP-IDP18]*._
+* The following properties of the `address` claim MAY be used as standalone
+ attributes:
 ** street_address
 ** locality
 ** region
