@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-09-17</p>
+<p>2018-09-20</p>
 </td>
 </tr>
 <tr>
@@ -542,16 +542,39 @@ deployment profile for use by members of the Sign in Canada federation.</p>
 <div class="sect2">
 <h3 id="_overview_of_the_cats_saml_2_0_deployment_profile_for_credential_authentication">1.1. Overview of the CATS SAML 2.0 Deployment Profile for Credential Authentication</h3>
 <div class="paragraph">
+<p>This deployment profile of SAML 2.0 supports three of the eight trusted
+processes that make up the Verified Login Component of the Pan-Canadian Trust
+Framework <a href="#PCTF">[PCTF]</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Authentication</strong> establishes the confidence, or Level of Assurance, that a
+Subject has control over their issued credential and that the credential is
+currently valid (i.e., not suspended or revoked).</p>
+</li>
+<li>
+<p><strong>Authentication Session Initiation</strong> enables a persistent interaction between a
+Subject and an end-point, such as a CSP or RP, while removing the need to
+continuously repeat the authentication process between interactions.</p>
+</li>
+<li>
+<p><strong>Authentication Session Termination</strong> an explicit logout event, session
+expiration due to inactivity or maximum duration, or other means.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A companion profile, <a href="#CATS-SAML2Id">[CATS-SAML2Id]</a>, can be used in tandem with this profile.
+<a href="#CATS-SAML2Id">[CATS-SAML2Id]</a> supports <strong>Identity Verification</strong>, one of the trusted processes
+that make up the Verified Person component of the <a href="#PCTF">[PCTF]</a>.</p>
+</div>
+<div class="paragraph">
 <p>This deployment profile is based on the draft SAML V2.0 Interoperability
 Deployment Profile V1.0 <a href="#SAML2Iop">[SAML2Iop]</a> published by the Kantara Initiative, which
 in turn is based on the SAML 2.0 specifications created by the Security Services
 Technical Committee (SSTC) of the Organization for the Advancement of Structured
 Information Standards (OASIS).</p>
-</div>
-<div class="paragraph">
-<p>The scope of this profile applies only to providers and consumers of
-anonymous credential authentication services. A future profile
-will be developed to support identity authentication services.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -3214,6 +3237,13 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 <div class="ulist bibliography">
 <ul class="bibliography">
 <li>
+<p><a id="CATS-SAML2Id"></a>[CATS-SAML2Id] - Treasury Board Canada Secretariat, CATS SAML 2.0 Deployment Profile for Identity Authentication. <a href="https://canada-ca.github.io/CATS-STAE/saml2id.html" class="bare">https://canada-ca.github.io/CATS-STAE/saml2id.html</a></p>
+</li>
+<li>
+<p><a id="PCTF"></a>[PCTF] Identity Management Subcomittee, Pan-Canadian Trust Framework.
+<a href="https://github.com/canada-ca/PCTF" class="bare">https://github.com/canada-ca/PCTF</a></p>
+</li>
+<li>
 <p><a id="XMLEncBreak"></a>[XMLEncBreak] Jager and Somorovsky, How to Break XML Encryption, October 2011. <a href="http://www.nds.rub.de/media/nds/veroeffentlichungen/2011/10/22/HowToBreakXMLenc.pdf" class="bare">http://www.nds.rub.de/media/nds/veroeffentlichungen/2011/10/22/HowToBreakXMLenc.pdf</a></p>
 </li>
 </ul>
@@ -3231,7 +3261,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-17 14:58:11 UTC
+Last updated 2018-09-20 14:35:02 UTC
 </div>
 </div>
 </body>
