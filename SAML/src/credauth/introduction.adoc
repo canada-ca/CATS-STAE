@@ -17,16 +17,29 @@ deployment profile for use by members of the Sign in Canada federation.
 
 === Overview of the CATS SAML 2.0 Deployment Profile for Credential Authentication
 
+
+This deployment profile of SAML 2.0 supports three of the eight trusted
+processes that make up the Verified Login Component of the Pan-Canadian Trust
+Framework <<PCTF>>:
+
+* *Authentication* establishes the confidence, or Level of Assurance, that a
+Subject has control over their issued credential and that the credential is
+currently valid (i.e., not suspended or revoked).
+* *Authentication Session Initiation* enables a persistent interaction between a
+Subject and an end-point, such as a CSP or RP, while removing the need to
+continuously repeat the authentication process between interactions.
+* *Authentication Session Termination* an explicit logout event, session
+expiration due to inactivity or maximum duration, or other means.
+
+A companion profile, <<CATS-SAML2Id>>, can be used in tandem with this profile.
+<<CATS-SAML2Id>> supports *Identity Verification*, one of the trusted processes
+that make up the Verified Person component of the <<PCTF>>.
+
 This deployment profile is based on the draft SAML V2.0 Interoperability
 Deployment Profile V1.0 <<SAML2Iop>> published by the Kantara Initiative, which
 in turn is based on the SAML 2.0 specifications created by the Security Services
 Technical Committee (SSTC) of the Organization for the Advancement of Structured
 Information Standards (OASIS).
-
-The scope of this profile applies only to providers and consumers of
-anonymous credential authentication services. A future profile
-will be developed to support identity authentication services.
-
 
 .CATS SAML Profile Building Blocks
 image::BuildingBlocks.png[]
