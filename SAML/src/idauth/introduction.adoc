@@ -25,7 +25,7 @@ presented relates to the person who is making the claim.
 
 A companion profile, <<CATS-SAML2Cred>>, can be used in tandem with this
 profile. <<CATS-SAML2Cred>> supports *Authentication*, *Authentication Session
-Initiation*, and *Authentication Session Terminiation*. three of the trusted
+Initiation*, and *Authentication Session Terminiation*, three of the trusted
 processes that make up the Verified Login component of the <<PCTF>>.
 
 This deployment profile is based on the draft SAML V2.0 Interoperability
@@ -33,10 +33,6 @@ Deployment Profile V1.0 <<SAML2Iop>> published by the Kantara Initiative, which
 in turn is based on the SAML 2.0 specifications created by the Security Services
 Technical Committee (SSTC) of the Organization for the Advancement of Structured
 Information Standards (OASIS).
-
-The scope of this profile applies only to providers and consumers of trusted
-identity authentication services. A seperate profile <<SAML2cred>> supports
-anonymous credential authentication services.
 
 .CATS SAML Profile Building Blocks
 image::BuildingBlocks.png[]
