@@ -28,7 +28,9 @@ module.
 
 ==== Attributes
 
-*[CIP-IDP03]* IdP deployments SHOULD prioritize the use of standard attribute
+*[CIP-IDP03]*
+
+IdP deployments SHOULD prioritize the use of standard attribute
 name and definition profiles before defining custom attributes. Use of the
 following profiles are RECCOMENDED in descending order of preference:
 
@@ -60,4 +62,3 @@ the standard claims defined in section 5.1 of <<OIDC>> as follows:
 ** postal_code
 ** country
 * The `formatted` member of the `address` claim SHOULD NOT be used.
-
