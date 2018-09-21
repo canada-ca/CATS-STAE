@@ -1,6 +1,6 @@
 === CATS-Specific Requirements
 
-==== Request Signing
+==== Authentication Request Signing
 
 *[CDP-SP01]*
 
