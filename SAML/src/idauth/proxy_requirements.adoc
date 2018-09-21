@@ -39,9 +39,3 @@ and outgoing `<samlp:AuthnRequest>` messages.
 
 _This allows one proxy in a chain of proxies to provide IdP discovery services
 on behalf of other proxies in the chain._
-
-*[CIP-PIP06]*
-
-`<samlp:AuthnRequest>` messages produced by Proxying Identity Provider
-deployments MUST include the `ForceAuthn` attribute with a value of `true` or
-`1`. 
