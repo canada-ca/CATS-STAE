@@ -1,2 +1,5 @@
 `<samlp:NameIDPolicy>` MAY contain a `Format` attribute, in which case its value
 MUST be `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`.
+
+_Service providers can use the `Format` attribute to signal to the IdP that it
+is requesting identity authentication and not credential authentication._

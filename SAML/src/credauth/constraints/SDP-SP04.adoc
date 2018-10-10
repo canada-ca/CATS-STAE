@@ -1,6 +1,9 @@
 `<samlp:NameIDPolicy>` MAY contain a `Format` attribute, in which case its value
 MUST be `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`.
 
+_Service providers can use the `Format` attribute to signal to the IdP that it
+is requesting credential authentication and not identity authentication._
+
 An `SPNameQualifier` attribute MAY also be present to indicate:
 
 .. the SP's membership in an affiliation of SPs, or

@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-09-21</p>
+<p>2018-10-10</p>
 </td>
 </tr>
 <tr>
@@ -1283,9 +1283,6 @@ least one encryption certificate with the <code>use</code> attribute set to
 <p><code><code><a href="http://www.w3.org/2009/xmlenc11#aes128-gcm" class="bare">http://www.w3.org/2009/xmlenc11#aes128-gcm</a></code></code> <a href="#XMLEnc">[XMLEnc]</a></p>
 </li>
 <li>
-<p><code><code><a href="http://www.w3.org/2009/xmlenc11#aes192-gcm" class="bare">http://www.w3.org/2009/xmlenc11#aes192-gcm</a></code></code> <a href="#XMLEnc">[XMLEnc]</a></p>
-</li>
-<li>
 <p><code><code><a href="http://www.w3.org/2009/xmlenc11#aes256-gcm" class="bare">http://www.w3.org/2009/xmlenc11#aes256-gcm</a></code></code> <a href="#XMLEnc">[XMLEnc]</a></p>
 </li>
 </ul>
@@ -1415,6 +1412,10 @@ information and the integrity of information to the medium injury level.</em></p
 <div class="paragraph">
 <p><code>&lt;samlp:NameIDPolicy&gt;</code> MAY contain a <code>Format</code> attribute, in which case its value
 MUST be <code>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</code>.</p>
+</div>
+<div class="paragraph">
+<p><em>Service providers can use the <code>Format</code> attribute to signal to the IdP that it
+is requesting identity authentication and not credential authentication.</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1572,13 +1573,19 @@ published at
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>The response to such errors MUST direct users to appropriate support resources offered by the SP or, alternatively, to the <code>errorURL</code> attribute in an IdP&#8217;s metadata if the cause of the error is inferred to be a lack
-of sufficient or appropriate attributes about the user to operate successfully.</p>
+<p>If a successful authentication response lacks sufficient or appropriate attributes (including subject identifiers) for successful SP operation, the SP MUST display a meaningful status message to the user. This message SHOULD direct the user to appropriate support resources offered by the SP or, alternatively, to the <code>errorURL</code> attribute in an IdP&#8217;s metadata.</p>
+</div>
+<div class="paragraph">
+<p><em>There are many reasons an SP may be unable or choose not to provide service to a user based on an given authentication response. IdP&#8217;s failing to release the necessary attributes is the most prevalent interoperability issue encountered in larger, general purpose federations, which is why this scenario is singled out here.</em></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>The response to such errors MUST direct users to appropriate support resources
+offered by the SP.</p>
 </div>
 <hr>
 </div>
@@ -2121,9 +2128,7 @@ element.</p>
 <p>In the event the HTTP-POST binding <a href="#SAML2Bind">[SAML2Bind]</a> is used, assertions MUST be encrypted and transmitted via a <code>&lt;saml:EncryptedAssertion&gt;</code> element. Information intended for the consumption of the SP MUST NOT be further encrypted via <code>&lt;saml:EncryptedID&gt;</code> or <code>&lt;saml:EncryptedAttribute&gt;</code> constructs.</p>
 </div>
 <div class="paragraph">
-<p><em>While encryption is viewed in some quarters as onerous or unnecessary, interopability is enhanced by uniformity. Moreover,
-a spate of recent vulnerabilities across the industry would have been almost entirely mitigated by its use, demonstrating
-that it is no longer acceptable to view it as an optional part of front-channel delivery of assertions, if it ever was.</em></p>
+<p><em>While encryption is viewed in some quarters as onerous or unnecessary, interoperability is enhanced by uniformity. Moreover, a spate of recent vulnerabilities across the industry would have been almost entirely mitigated by its use, demonstrating that it is no longer acceptable to view it as an optional part of front-channel delivery of assertions, if it ever was.</em></p>
 </div>
 </div>
 </div>
@@ -2131,7 +2136,7 @@ that it is no longer acceptable to view it as an optional part of front-channel 
 <p><strong>CATS Support</strong>: <em>Constrained</em></p>
 </div>
 <div class="paragraph">
-<p>Attriubutes contained in responses sent to a proxying identity provider that
+<p>Attributes contained in responses sent to a proxying identity provider that
 contain personal information intended for the use of a proxied service provider
 SHOULD be further encrypted for the proxied SP via the
 <code>&lt;saml:EncryptedAttribute&gt;</code> construct.</p>
@@ -2188,6 +2193,9 @@ such as logout.</p>
 <div class="paragraph">
 <p>IdPs MUST support the metadata-based identifier requirement signaling mechanism defined in <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
+<div class="paragraph">
+<p><em>The purpose of this requirement is to provide a level of confidence to a signaling SP that a compliant IdP which fails to do as instructed is unwilling or unable to fulfill the requirements rather than merely oblivious to them.</em></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -2203,7 +2211,7 @@ such as logout.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>If an IdP cannot or will not satisfy the requirements of an SP in this respect, then it MUST fail the authentication request and SHOULD respond to the SP with a SAML error status and a second-level <code>&lt;samlp:StatusCode&gt;</code> of <code>urn:oasis:names:tc:SAML:profiles:subject-id:req</code>.</p>
+<p>If an IdP cannot or will not satisfy the requirements of an SP in this respect, then it MAY return an assertion without the data it is unable to provide or return an error as it sees fit.</p>
 </div>
 </div>
 </div>
@@ -2255,10 +2263,24 @@ such as logout.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>It is RECOMMENDED that the content of each <code>&lt;saml:AttributeValue&gt;</code> element be limited to a single child text node (i.e., a simple string value) and that multiple values of a <code>&lt;saml:Attribute&gt;</code> be expressed as individual <code>&lt;saml:AttributeValue&gt;</code> elements rather than embedded in a delimited form within a single element.</p>
+<p>It is RECOMMENDED that the content of each <code>&lt;saml:AttributeValue&gt;</code> element be limited to a single child text node (i.e., a simple string value).</p>
 </div>
 <div class="paragraph">
 <p><em>Note that this refers to <code>&lt;saml:AttributeValue&gt;</code> elements, not <code>&lt;saml:Attribute&gt;</code> elements, and refers to the form of each individual value. It discourages the use of complex XML content models within the value of an Attribute.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP19]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Multiple values of a <code>&lt;saml:Attribute&gt;</code> MUST be expressed as individual <code>&lt;saml:AttributeValue&gt;</code> elements rather than embedded in a delimited form within a single <code>&lt;saml:AttributeValue&gt;</code> element.</p>
 </div>
 </div>
 </div>
@@ -2276,7 +2298,7 @@ such as logout.</p>
 <p>The ability to perform seamless key migration depends upon proper support for consuming and/or leveraging multiple keys at the same time.</p>
 </div>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP30]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP31]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2293,7 +2315,7 @@ such as logout.</p>
 <div class="sect3">
 <h4 id="_metadata_content_2">6.2.2. Metadata Content</h4>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP31]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP32]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2327,6 +2349,9 @@ such as logout.</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>an <code>errorURL</code> attribute containing an https URL resolving to an HTML page suitable for referral by SPs in the event they receive insufficient attributes from the IdP to proceed</p>
 </li>
 </ul>
 </div>
@@ -2619,7 +2644,7 @@ on behalf of other proxies in the chain.</em></p>
 <p><a id="SAML2Assur"></a>[SAML2Assur] OASIS Committee Specification, SAML V2.0 Identity Assurance Profiles Version 1.0,  November 2010. <a href="http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-assurance-profile.pdf" class="bare">http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-assurance-profile.pdf</a></p>
 </li>
 <li>
-<p><a id="SAML2SubjId"></a>[SAML2SubjId] OASIS Working Draft, SAMLV2.0 Subject Identifier Attributes Profile Version 1.0, February 2018.  <a href="https://www.oasis-open.org/committees/download.php/62438/saml-subject-id-attr-v1.0-wd04.pdf" class="bare">https://www.oasis-open.org/committees/download.php/62438/saml-subject-id-attr-v1.0-wd04.pdf</a></p>
+<p><a id="SAML2SubjId"></a>[SAML2SubjId] OASIS Working Draft, SAMLV2.0 Subject Identifier Attributes Profile Version 1.0, February 2018.  <a href="https://www.oasis-open.org/committees/download.php/63939/saml-subject-id-attr-v1.0-wd06.pdf" class="bare">https://www.oasis-open.org/committees/download.php/63939/saml-subject-id-attr-v1.0-wd06.pdf</a></p>
 </li>
 <li>
 <p><a id="SAML2ASLO"></a>[SAML2ASLO] OASIS Committee Specification, SAML V2.0 Asynchronous Single Logout Profile Extension Version 1.0, November 2012. <a href="http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf" class="bare">http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf</a></p>
@@ -2684,7 +2709,7 @@ on behalf of other proxies in the chain.</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-21 13:34:25 UTC
+Last updated 2018-10-10 18:08:00 UTC
 </div>
 </div>
 </body>
