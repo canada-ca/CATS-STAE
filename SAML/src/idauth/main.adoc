@@ -1,4 +1,4 @@
-= Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Identity Authentication
+= Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Identity Authentication (Draft)
 :numbered:
 :toc:
 :toc-placement: preamble
@@ -9,7 +9,7 @@
 [horizontal]
 Version:: 3.x
 Date:: {docdate}
-Status:: Work In Progress
+Status:: Community Draft
 
 .Required Information
 Document identifier: TBD
