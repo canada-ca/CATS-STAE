@@ -2,8 +2,9 @@ The metadata of SPs MUST contain at least one signing certificate with
 the ``use`` attribute set to ``signing`` and at least one encryption certificate
 with the ``use`` attribute set to ``encryption``.
 
-An `<md:Extensions>` element MAY contain an `<mdui:UIInfo>` but MUST NOT include
-an `<mdattr:EntityAttributes>` attribute.
+SP metadata MAY include an `<md:Extensions>` element containing an
+`<mdui:UIInfo>` extension element, but it MUST NOT include an
+`<mdattr:EntityAttributes>` extension element.
 
 The ``<md:SPSSODescriptor>`` element of an SP's metadata MUST also include an
 ``AuthnRequestsSigned`` attribute set to ``true`` or ``1`` and a

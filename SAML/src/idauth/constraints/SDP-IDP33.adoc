@@ -1,0 +1,10 @@
+The `use` attribute of the `<md:KeyDescriptor>` element(s) MUST be set to
+`signing`.
+
+IdP metadata MUST NOT contain a `<md:SingleLogoutService>` endpoint element.
+
+IdP metadata MAY include an `<md:Extensions>` element containing an
+`<mdui:UIInfo>` extension element, but it MUST NOT include an
+`<mdattr:EntityAttributes>` extension element.
+
+IdP metadata MUST NOT contain a <shibmd:Scope> element.

@@ -1,0 +1,9 @@
+The metadata of IdPs MUST contain at least one signing certificate with
+the ``use`` attribute set to ``signing`` and at least one encryption certificate
+with the ``use`` attribute set to ``encryption``.
+
+IdP metadata MAY include an `<md:Extensions>` element containing an
+`<mdui:UIInfo>` extension element, but it MUST NOT include an
+`<mdattr:EntityAttributes>` extension element.
+
+IdP metadata MUST NOT contain a <shibmd:Scope> element.
