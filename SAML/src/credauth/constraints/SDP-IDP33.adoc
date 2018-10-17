@@ -6,4 +6,6 @@ IdP metadata MAY include an `<md:Extensions>` element containing an
 `<mdui:UIInfo>` extension element, but it MUST NOT include an
 `<mdattr:EntityAttributes>` extension element.
 
-IdP metadata MUST NOT contain a <shibmd:Scope> element.
+IdP metadata SHOULD NOT include an `ErrorURL` attribute.
+
+IdP metadata MUST NOT contain a <shibmd:Scope> extension element.
