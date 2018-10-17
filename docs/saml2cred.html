@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
-<title>Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Credential Authentication</title>
+<title>Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Credential Authentication (Draft)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Credential Authentication</h1>
+<h1>Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Credential Authentication (Draft)</h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-10-10</p>
+<p>2018-10-17</p>
 </td>
 </tr>
 <tr>
@@ -460,7 +460,7 @@ Date
 Status
 </td>
 <td class="hdlist2">
-<p>Work In Progress</p>
+<p>Community Draft</p>
 </td>
 </tr>
 </table>
@@ -1061,7 +1061,7 @@ validation, curation, signing, and publishing of metadata.</p>
 <p>Public keys used for signing, encryption, and TLS client and server authentication MUST be expressed via X.509 certificates included in metadata via <code>&lt;md:KeyDescriptor&gt;</code> elements.</p>
 </div>
 <div class="paragraph">
-<p><em>By virtue of <a href="#SAML2MDIOP">[SAML2MDIOP]</a>, this profile (and SAML in general) does not place requierments on the non-key material contained in X.509 certificates in metadata. However, the following are suggested practices to avoid interoperability issues with deployments outside the scope of this profile:</em></p>
+<p><em>By virtue of <a href="#SAML2MDIOP">[SAML2MDIOP]</a>, this profile (and SAML in general) does not place requirements on the non-key material contained in X.509 certificates in metadata. However, the following are suggested practices to avoid interoperability issues with deployments outside the scope of this profile:</em></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1734,7 +1734,13 @@ described in <a href="#SAML2Core">[SAML2Core]</a>.</p>
 <p>SPs MUST associate identifier scopes with IdPs such that only authorized IdPs may assert identifiers with particular scopes for particular purposes.</p>
 </div>
 <div class="paragraph">
-<p><em>For example, if the <code>example.com</code> scope is bound to the IdP named <code><a href="http://idp.example.com/saml" class="bare">http://idp.example.com/saml</a></code>, it should be generally disallowed for any other IdP to assert an identifier in that scope. Note that this is not a 1:1 relationship; it may frequently happen that multiple IdPs may assert a given scope, or an IdP may assert identifiers in multiple scopes, but the rules for this should be explicit and enforced.</em></p>
+<p>It is RECOMMENDED that the <code>&lt;shibmd:Scope&gt;</code> metadata extension defined in <a href="#SAML2SubjId">[SAML2SubjId]</a> be supported for this purpose. SPs MAY ignore any such extension elements whose <code>regexp</code> attribute is <code>true</code> or <code>1</code>. SPs MUST NOT rely on this extension unless the metadata is verifiably obtained from a third party that is trusted to supply it.</p>
+</div>
+<div class="paragraph">
+<p>In the event that this extension cannot be used, then SPs MUST apply policy established in some other manner.</p>
+</div>
+<div class="paragraph">
+<p><em>Note that scopes and IdPs do not necessarily have a 1:1 relationship; it may well be legitimate for multiple IdPs to assert a given scope, or for an IdP to assert identifiers in multiple scopes, but the rules for this should be explicit and enforced.</em></p>
 </div>
 </div>
 </div>
@@ -2276,8 +2282,9 @@ the <code>use</code> attribute set to <code>signing</code> and at least one encr
 with the <code>use</code> attribute set to <code>encryption</code>.</p>
 </div>
 <div class="paragraph">
-<p>An <code>&lt;md:Extensions&gt;</code> element MAY contain an <code>&lt;mdui:UIInfo&gt;</code> but MUST NOT include
-an <code>&lt;mdattr:EntityAttributes&gt;</code> attribute.</p>
+<p>SP metadata MAY include an <code>&lt;md:Extensions&gt;</code> element containing an
+<code>&lt;mdui:UIInfo&gt;</code> extension element, but it MUST NOT include an
+<code>&lt;mdattr:EntityAttributes&gt;</code> extension element.</p>
 </div>
 <div class="paragraph">
 <p>The <code>&lt;md:SPSSODescriptor&gt;</code> element of an SP&#8217;s metadata MUST also include an
@@ -2551,18 +2558,19 @@ to which the subject was authenticated.</p>
 <p>IdP deployments MUST NOT implement <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
 <hr>
-<div class="sect4">
-<h5 id="_subject_identifier_requirements_signaling_2">6.1.3.1. Subject Identifier Requirements Signaling</h5>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP14]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>IdPs MUST support the metadata-based identifier requirement signaling mechanism defined in <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
+<p>IdPs MUST enumerate the scope(s) of the subject identifiers they support in their metadata by means of the <code>&lt;shibmd:Scope&gt;</code> extension element, as defined in <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
 <div class="paragraph">
-<p><em>The purpose of this requirement is to provide a level of confidence to a signaling SP that a compliant IdP which fails to do as instructed is unwilling or unable to fulfill the requirements rather than merely oblivious to them.</em></p>
+<p>The element(s) MAY be positioned as an extension of the <code>&lt;md:EntityDescriptor&gt;</code> or <code>&lt;md:IDPSSODescriptor&gt;</code> as deemed appropriate. They MUST NOT contain a regular expression (i.e., each element&#8217;s <code>regexp</code> attribute MUST be set to <code>false</code> or <code>0</code>).</p>
+</div>
+<div class="paragraph">
+<p><em>Note that while common, it is not a requirement for the scope(s) to be contained within the IdP&#8217;s entityID, nor for it to bear any relationship to other data asserted by the IdP, such as email addresses.</em></p>
 </div>
 </div>
 </div>
@@ -2573,13 +2581,15 @@ to which the subject was authenticated.</p>
 <p>IdP deployments MUST NOT implement <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
 <hr>
+<div class="sect4">
+<h5 id="_subject_identifier_requirements_signaling_2">6.1.3.1. Subject Identifier Requirements Signaling</h5>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP15]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>If an IdP cannot or will not satisfy the requirements of an SP in this respect, then it MAY return an assertion without the data it is unable to provide or return an error as it sees fit.</p>
+<p>IdPs MUST support the metadata-based identifier requirement signaling mechanism defined in <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
 </div>
 </div>
@@ -2589,6 +2599,20 @@ to which the subject was authenticated.</p>
 <hr>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP16]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>If an IdP cannot or will not satisfy the requirements of an SP in this respect, then it MUST fail the authentication request and SHOULD respond to the SP with a SAML error status and a second-level <code>&lt;samlp:StatusCode&gt;</code> of <code>urn:oasis:names:tc:SAML:profiles:subject-id:req</code>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Not Applicable</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP17]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2606,7 +2630,7 @@ to which the subject was authenticated.</p>
 <div class="sect3">
 <h4 id="_attributes">6.1.4. Attributes</h4>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP17]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP18]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2623,7 +2647,7 @@ to which the subject was authenticated.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP18]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP19]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2640,7 +2664,7 @@ to which the subject was authenticated.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP19]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP20]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2658,7 +2682,7 @@ to which the subject was authenticated.</p>
 <div class="sect2">
 <h3 id="_single_logout_2">6.2. Single Logout</h3>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP20]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP21]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2675,7 +2699,7 @@ to which the subject was authenticated.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP21]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP22]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2697,7 +2721,7 @@ global logout for the subject’s session.</em></p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP22]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP23]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2719,7 +2743,7 @@ propagation of logout.</p>
 <div class="sect4">
 <h5 id="_binding_7">6.2.1.1. Binding</h5>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP23]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP24]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2769,7 +2793,7 @@ not be able to respond to the SP that initiated the logout.</em></p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP24]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP25]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2787,7 +2811,7 @@ not be able to respond to the SP that initiated the logout.</em></p>
 <div class="sect3">
 <h4 id="_request_content_3">6.2.2. Request Content</h4>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP25]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP26]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2801,7 +2825,7 @@ not be able to respond to the SP that initiated the logout.</em></p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP26]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP27]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2838,7 +2862,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <div class="sect4">
 <h5 id="_binding_8">6.2.3.1. Binding</h5>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP27]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP28]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2852,7 +2876,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP28]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP29]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2869,7 +2893,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <div class="sect4">
 <h5 id="_response_content_3">6.2.3.2. Response Content</h5>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP29]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP30]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2883,7 +2907,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP30]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP31]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2907,7 +2931,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <p>The ability to perform seamless key migration depends upon proper support for consuming and/or leveraging multiple keys at the same time.</p>
 </div>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP31]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP32]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2924,7 +2948,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <div class="sect3">
 <h4 id="_metadata_content_2">6.3.2. Metadata Content</h4>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP32]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP33]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -2950,7 +2974,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 </div>
 </li>
 <li>
-<p>an <code>&lt;md:Extensions&gt;</code> element</p>
+<p>an <code>&lt;md:Extensions&gt;</code> element at the role level</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2970,6 +2994,9 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <div class="ulist">
 <ul>
 <li>
+<p>at least one <code>&lt;shibmd:Scope&gt;</code> element, within an <code>&lt;md:Extensions&gt;</code> element at either the <code>&lt;md:EntityDescriptor&gt;</code> or <code>&lt;md:IDPSSODescriptor&gt;</code> level.</p>
+</li>
+<li>
 <p>an <code>&lt;md:ContactPerson&gt;</code> element with a <code>contactType</code> of <code>technical</code> and an <code>&lt;md:EmailAddress&gt;</code> element</p>
 </li>
 </ul>
@@ -2983,6 +3010,17 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <p>The metadata of IdPs MUST contain at least one signing certificate with
 the <code>use</code> attribute set to <code>signing</code> and at least one encryption certificate
 with the <code>use</code> attribute set to <code>encryption</code>.</p>
+</div>
+<div class="paragraph">
+<p>IdP metadata MAY include an <code>&lt;md:Extensions&gt;</code> element containing an
+<code>&lt;mdui:UIInfo&gt;</code> extension element, but it MUST NOT include an
+<code>&lt;mdattr:EntityAttributes&gt;</code> extension element.</p>
+</div>
+<div class="paragraph">
+<p>IdP metadata SHOULD NOT include an <code>ErrorURL</code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>IdP metadata MUST NOT contain a &lt;shibmd:Scope&gt; extension element.</p>
 </div>
 <hr>
 </div>
@@ -3286,7 +3324,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-10 18:07:37 UTC
+Last updated 2018-10-17 16:08:48 UTC
 </div>
 </div>
 </body>
