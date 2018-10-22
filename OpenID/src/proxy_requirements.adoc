@@ -1,0 +1,47 @@
+== CATS-Specific Proxy Requirements
+
+*[CDP-PIP01]*
+
+Proxying Identity Provider deployments MUST support the mapping of incoming to
+outgoing `sub` claims, to pass through values or map between different
+vocabularies as required.
+
+*[ODP-PIP02]*
+
+Proxying Identity Provider deployments MUST support the mapping of incoming to
+outgoing `acr_values` and `vtr` parameters, to pass through values or
+map between different vocabularies as required.
+
+*[ODP-PIP02]*
+
+Proxying Identity Provider deployments MUST include at least one
+`<samlp:RequesterID>` element in the `<samlp:Scoping>` element of outgoing
+`<samlp:AuthnRequest>` messages that identifies the SP that originated the
+request.
+
+_Proxied Identity Providers must know the identity of the target relying party
+in order to obtain informed consent from the end-user._
+
+*[ODP-PIP03]*
+
+Proxying Identity Provider deployments MUST support the mapping of incoming to
+outgoing `<saml:AuthnContext>` elements as well as the generation of a new
+`<saml:AuthnContext>` element using information from other elements of the
+`<saml:Assertion>` (such as the `Issuer` or `<saml:AttributeStatement>`), to
+pass through values or map between different vocabularies as required.
+
+*[ODP-PIP04]*
+
+Proxying Identity Provider deployments MUST include at least one
+`<saml:AuthenticatingAuthority>` element in outgoing `<saml:AuthnContext>`
+elements to discolose the identity of the proxied Identity Provider to
+Service Providers.
+
+*[ODP-PIP05]*
+
+Proxying Identity Provider deployments MUST support the use of a
+`<samlp:IDPList>` containing one or more `<samlp:IDPEntry>` elements in incoming
+and outgoing `<samlp:AuthnRequest>` messages.
+
+_This allows one proxy in a chain of proxies to provide IdP discovery services
+on behalf of other proxies in the chain._

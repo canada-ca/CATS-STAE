@@ -1,0 +1,43 @@
+== Compliance to the CATS Deployment Profile for OpenID Connect 1.0
+
+The requirements specified are in addition to all normative requirements of the
+underlying specifications, including the International Government Assurance
+Profiles (iGov) for OAuth 2.0 <<iGov-OAuth2>> and OpenID connect <<iGov-OIDC>>,
+the OpenID Connect specifications for back-chwnnel <OIDC-BC>> and front-channel
+<<OIDC-FC>> logout, and all other specifications normatively referenced therein.
+Readers are assumed to be familiar with all relevant reference documents. Any
+such requirements are not repeated here except where deemed necessary to
+highlight a point of discussion or draw attention to an issue addressed in
+errata, but remain implied.
+
+Note that protocol features that are optional, or lack mandatory processing
+rules, are assumed to be optional and out of scope of this profile if not
+otherwise precluded or given specific processing rules.
+
+This specification defines requirements for the following components:
+
+* OpenID Connect 1.0 Relying Parties (also known as OpenID Clients)
+* OpenID Connect 1.0 OpenID Providers (also known as identity providers)
+* OpenID Connect 1.0 proxying identity providers
+
+The specification also defines features for interaction between these
+components:
+
+* Relying party to OpenID provider
+* OpenID provider to relying party
+
+The normative requirements of this CATS Deployment Profile are detailed in
+Sections 4 through 6 of this document. This profile may either constrain, waive,
+or augment specific requiremnts of the underlying specifications. In such cases
+a reference to the source and location of the the original requirement is
+provided, and then the requirement itself is repeated  word-for-word. Each
+requirement is then annotated with the support required by this profile:
+typically this is either “Constrained”, “Not Applicable” or "Augmented".
+Further details are then provided to fully explain the CATS requirement.
+
+This profile also has requirements which are specific to this profile.
+
+Deployments owned by Government of Canada departments and agencies MUST obtain
+approval from the Chief Information Officer Branch of Treasury Board Secretariat
+before ignoring any requirements labelled with the key words "SHOULD", "SHOULD
+NOT", "RECOMMENDED" or "NOT RECOMMENDED".
