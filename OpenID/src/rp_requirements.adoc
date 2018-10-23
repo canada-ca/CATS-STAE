@@ -24,6 +24,6 @@ _Typically the value will be either `en-CA` or `fr-CA`._
 
 *[ODP-RP02]*
 
-RPs implementations SHOULD support OpenID back-channel logout <<OIDC-BC>> for
+RP implementations SHOULD support OpenID back-channel logout <<OIDC-BC>> for
 the receipt of logout tokens. An SP MAY support the OpenID front-channel logout
 <<OIDC-FC>> in the event that their implementation does not support <<OIDC-BC>>.

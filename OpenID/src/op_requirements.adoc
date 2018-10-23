@@ -27,11 +27,11 @@ key pair to the client as part of the registration process.
 
 OpenID Provider deployments MUST support both the OpenID back-channel
 <<OIDC-BC>> and front-channel <<OIDC-FC>> logout specifications and MUST conform
-to all normative requirements therin.
+to all normative requirements therein.
 
 *[ODP-OP03]*
 
-In cases where multiple RPs are participating in a session, OpenID proviers MUST
-first use back-channel logout to send logout tokens to all RPs that support
+In cases where multiple RPs are participating in a session, OpenID providers
+MUST first use back-channel logout to send logout tokens to all RPs that support
 back-channel logout before initiating front-channel logout for any RPs that do
 not support back-channel logout.

@@ -3,7 +3,7 @@
 The requirements specified are in addition to all normative requirements of the
 underlying specifications, including the International Government Assurance
 Profiles (iGov) for OAuth 2.0 <<iGov-OAuth2>> and OpenID connect <<iGov-OIDC>>,
-the OpenID Connect specifications for back-chwnnel <OIDC-BC>> and front-channel
+the OpenID Connect specifications for back-channel <OIDC-BC>> and front-channel
 <<OIDC-FC>> logout, and all other specifications normatively referenced therein.
 Readers are assumed to be familiar with all relevant reference documents. Any
 such requirements are not repeated here except where deemed necessary to
@@ -27,7 +27,7 @@ components:
 * OpenID provider to relying party
 
 The normative requirements of this CATS Deployment Profile are detailed in
-Sections 4 through 6 of this document. This profile may either constrain, waive,
+Sections 4 through 7 of this document. This profile may either constrain, waive,
 or augment specific requiremnts of the underlying specifications. In such cases
 a reference to the source and location of the the original requirement is
 provided, and then the requirement itself is repeated  word-for-word. Each
