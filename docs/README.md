@@ -41,8 +41,8 @@ possible.
   [Kantara Initiative](https://kantarainitiative.org/)'s [Interoperability Deployment Profile](https://kantarainitiative.github.io/SAMLprofiles/saml2int.html)
   version 1.0.
 
-* **CATS 3.0 - OpenID Connect 1.0 Deployment Profile**: A deployment profile of
- version 1 of the
+* **CATS 3.0 - OpenID Connect 1.0 Deployment Profile**: A [deployment profile](https://canada-ca.github.io/CATS-STAE/oidc1.html)
+ of version 1 of the
  [OpenID Connect](http://openid.net/connect/ "OpenID Connect") standard.
 
 ## Related Projects

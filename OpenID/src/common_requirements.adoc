@@ -1,0 +1,52 @@
+== Common Requirements
+
+This section includes material of general significance to both OpernID Providers
+and Relying Parties. Subsequent sections provide guidance specific to those
+roles.
+
+=== Clock Skew
+
+*[ODP-G01]*: Reference _<<OIDC>> Section 2_
+
+====
+exp:: REQUIRED. Expiration time on or after which the ID Token MUST NOT be
+accepted for processing. The processing of this parameter requires that the
+current date/time MUST be before the expiration date/time listed in the value.
+Implementers MAY provide for some small leeway, usually no more than a few
+minutes, to account for clock skew. 
+====
+*CATS Support*: _Constrained_
+
+Deployments MUST allow between three (3) and five (5) minutes of clock skew --
+in either direction -- when interpreting the `exp` and `nbf` claims in ID tokens
+and when enforcing security policies based thereupon.
+
+
+==== TLS and Certificates
+*[ODP-G02]*: Reference _<<iGov-OIDC>> Section 6_
+
+====
+All transactions MUST be protected in transit by TLS as described in BCP195. 
+====
+*CATS Support*: _Constrained_
+
+TLS MUST be configured according to the Guidance on Securely
+Configuring Network Protocols <<ITSP.40.062>>.
+
+===== CATS-specific requirements
+
+[ODP-G03]:: X.509 certificates used for TLS server authentication MUST be issued
+by a certificate authority that is recognized by all of the following:
+
+* https://www.apple.com/certificateauthority/ca_program.html[The Apple Trusted Root Certificate Program]
+* http://www.oracle.com/technetwork/java/javase/javasecarootcertsprogram-1876540.html[The Java Trusted Root Certificate Program]
+* https://technet.microsoft.com/en-ca/library/cc751157.aspx[The Microsoft Trusted Root Certificate Program]
+* https://wiki.mozilla.org/CA[The Mozilla Trusted Root Certificate Program]
+
+Deployments MUST NOT accept expired certificates.
+
+[ODP-G04]:: Deployments MUST perform path validation and check the revocation
+status of X.509 certificates used for TLS server authentication.
+
+[ODP-G05]:: Deployments MUST implement HTTP Strict Transport Security (HSTS)
+<<RFC6797>>.

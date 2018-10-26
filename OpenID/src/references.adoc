@@ -1,0 +1,25 @@
+== References
+
+=== Normative
+
+[bibliography]
+
+- [[[RFC2119]]] IETF RFC 2119, Key words for use in RFCs to Indicate Requirement Levels, March 1997. http://www.ietf.org/rfc/rfc2119.txt
+- [[[RFC8174]]] IETF RFC 8174, Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words, May 2017. http://www.ietf.org/rfc/rfc8174.txt
+- [[[iGov-OIDC]]] OpenID Foundation, International Government Assurance Profile (iGov) for OpenID Connect 1.0 - Draft 03, October 2018, https://openid.bitbucket.io/iGov/openid-igov-profile-id1.html
+- [[[iGov-OAuth]]] OpenID Foundation, International Government Assurance Profile (iGov) for OAuth 2.0 - draft 01, September 2018, https://openid.bitbucket.io/iGov/openid-igov-oauth2-id1.html
+- [[[OIDC]]] OpenID Foundation, OpenID Connect Core 1.0 incorporating errata set 1, November 2014, https://openid.net/specs/openid-connect-core-1_0.html
+- [[[OIDC-BC]]] OpenID Foundation, OpenID Connect Back-Channel Logout 1.0 - draft 04, Jaqnuary 2017, https://openid.net/specs/openid-connect-backchannel-1_0.html
+- [[[OIDC-FC]]] OpenID Foundation, OpenID Connect Front-Channel Logout 1.0 - draft 02, January 2017, https://openid.net/specs/openid-connect-frontchannel-1_0.html
+- [[[RFC6749]]] IETF RFC6749, The OAuth 2.0 Authorization Framework, October 2012, https://tools.ietf.org/html/rfc6749
+- [[[RFC5646]]] IETF RFC5646, Tags for Identifying Languages, September 2009, https://tools.ietf.org/html/rfc5646
+- [[[CORS]]] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. http://www.w3.org/TR/cors/
+- [[[ITSP.40.111]]] Communications Security Establishment, Cryptographic Algorithms for UNCLASSIFIED, PROTECTED A, and PROTECTED B Information. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.111-eng_0.pdf
+- [[[ITSP.40.062]]] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. https://cyber.gc.ca/en/guidance/guidance-securely-configuring-network-protocols-itsp40062
+
+=== Non-Normative
+
+[bibliography]
+
+- [[[PCTF]]] Identity Management Subcomittee, Pan-Canadian Trust Framework.
+ https://github.com/canada-ca/PCTF

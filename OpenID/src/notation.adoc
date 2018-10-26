@@ -1,0 +1,34 @@
+== Notation and Terminology
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in BCP 14 <<RFC2119>> <<RFC8174>>
+when, and only when, they appear in all capitals, as shown here.
+
+This specification uses the following typographical conventions in text:
+`ClaimName`, **Datatype**, `OtherCode`. The normative
+requirements of this specification are individually labeled with a unique
+identifier in the following form: *[ODP-EXAMPLE01]*. All information within
+these requirements should be considered normative unless it is set in _italic_
+type.  Italicized text is non-normative and is intended to provide additional
+information that may be helpful in implementing the normative requirements.
+
+=== Terminology
+
+This specification uses the terms "Access Token", "Authorization Code",
+"Authorization Endpoint", "Authorization Grant", "Authorization Server",
+"Client", "Client Authentication", "Client Identifier", "Client Secret", "Grant
+Type", "Protected Resource", "Redirection URI", "Refresh Token", "Resource
+Owner", "Resource Server", "Response Type", and "Token Endpoint" defined by
+OAuth 2.0 <<RFC6749>>, the terms "Claim Name", "Claim Value", and "JSON Web
+Token (JWT)" defined by JSON Web Token (JWT) <<RFC7519>>, and the
+terms defined by OpenID Connect Core 1.0 <<OpenID-Core>>.
+
+Whether explicit or implicit, all the requirements in this document are meant to
+apply to deployments of OpenID Connect profiles and may involve explicit support
+for requirements by implementing software and/or supplemental support via
+application code. Deployments of a Relying Party may refer to both stand-alone
+implementations of OpenId Connect, libraries integrated with an application, or
+any combination of the two. It is difficult to define a clear boundary between
+an OpenID Connect client and the Relying Party application/service it
+represents, and unnecessary to do so for the purposes of this document.

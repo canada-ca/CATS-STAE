@@ -1,0 +1,37 @@
+== OpenID Provider Requirements
+
+=== Client Registration
+
+*[ODP-OP01]*: _Reference <<iGov-OAuth>> Section 2.1.2_
+
+====
+Native applications using dynamic registration SHOULD generate a unique
+public and private key pair on the device and register that public key value
+with the authorization server. Alternatively, an authorization server MAY issue
+a public and private key pair to the client as part of the registration process.
+In such cases, the authorization server MUST discard its copy of the private
+key. Client credentials MUST NOT be shared among instances of client software.
+====
+*CATS Support*: _Constrained_
+
+Native applications using dynamic registration MUST generate a unique public and
+private key pair on the device and register that public key value with the
+authorization server. Authorization servers MUST NOT issue a public and private
+key pair to the client as part of the registration process.
+
+=== CATS-specific requirements
+
+==== Single Logout
+
+*[ODP-OP02]*
+
+OpenID Provider deployments MUST support both the OpenID back-channel
+<<OIDC-BC>> and front-channel <<OIDC-FC>> logout specifications and MUST conform
+to all normative requirements therein.
+
+*[ODP-OP03]*
+
+In cases where multiple RPs are participating in a session, OpenID providers
+MUST first use back-channel logout to send logout tokens to all RPs that support
+back-channel logout before initiating front-channel logout for any RPs that do
+not support back-channel logout.

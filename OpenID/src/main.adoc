@@ -1,0 +1,42 @@
+= Cyber Authentication Technology Solutions: Deployment Profile of OpenID Connect 1.0 (Draft)
+:numbered:
+:toc:
+:toc-placement: preamble
+:imagesdir: images
+:docinfo:
+:sectnumlevels: 4
+
+[horizontal]
+Version:: 3.x
+Date:: {docdate}
+Status:: Work in Progress
+
+.Required Information
+Document identifier: TBD
+
+<<<
+include::introduction.adoc[]
+
+<<<
+include::notation.adoc[]
+
+<<<
+include::compliance.adoc[]
+
+<<<
+include::common_requirements.adoc[]
+
+<<<
+include::rp_requirements.adoc[]
+
+<<<
+include::op_requirements.adoc[]
+
+<<<
+include::proxy_requirements.adoc[]
+
+<<<
+include::references.adoc[]
+
+<<<
+include::contributors.adoc[]
