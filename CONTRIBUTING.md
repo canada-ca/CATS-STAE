@@ -1,4 +1,5 @@
 # How to Contribute
+
 When contributing, post comments and discuss changes you wish to make via
 Issues.
 
@@ -11,6 +12,7 @@ If this is your first time contributing on GitHub, don't worry! Let us know if
 you have any questions.
 
 # Comment contribuer
+
 Lorsque vous contribuez, veuillez également publier des commentaires et discuter
 des modifications que vous souhaitez apporter par l'entremise des enjeux
 (Issues).
