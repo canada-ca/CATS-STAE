@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-10-26</p>
+<p>2018-11-09</p>
 </td>
 </tr>
 <tr>
@@ -1464,7 +1464,7 @@ is requesting identity authentication and not credential authentication.</em></p
 <p>An SP that requires specific <code>&lt;saml:AuthnContextClassRef&gt;</code> values MUST specify the allowable values in a <code>&lt;samlp:RequestedAuthnContext&gt;</code> element in its requests, with the <code>Comparison</code> attribute set to <code>exact</code>.</p>
 </div>
 <div class="paragraph">
-<p><em>An SP SHOULD NOT request a <code>&lt;saml:AuthnContextClassRef&gt;</code> value in the absence of a shared understanding between itself and the IdP regarding its definition.</em></p>
+<p><em>An SP should not request a <code>&lt;saml:AuthnContextClassRef&gt;</code> value in the absence of a shared understanding between itself and the IdP regarding its definition.</em></p>
 </div>
 </div>
 </div>
@@ -1573,7 +1573,7 @@ published at
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>If a successful authentication response lacks sufficient or appropriate attributes (including subject identifiers) for successful SP operation, the SP MUST display a meaningful status message to the user. This message SHOULD direct the user to appropriate support resources offered by the SP or, alternatively, to the <code>errorURL</code> attribute in an IdP&#8217;s metadata.</p>
+<p>If a successful authentication response lacks sufficient or appropriate attributes (including subject identifiers) for successful SP operation, the SP MUST display a meaningful status message to the user. This message MUST direct the user to appropriate support resources offered by the SP or, alternatively, to the <code>errorURL</code> attribute in an IdP&#8217;s metadata.</p>
 </div>
 <div class="paragraph">
 <p><em>There are many reasons an SP may be unable or choose not to provide service to a user based on an given authentication response. IdP&#8217;s failing to release the necessary attributes is the most prevalent interoperability issue encountered in larger, general purpose federations, which is why this scenario is singled out here.</em></p>
@@ -1997,14 +1997,28 @@ and french.</p>
 <hr>
 </div>
 <div class="sect4">
-<h5 id="_endpoint_verification">6.1.1.2. Endpoint Verification</h5>
+<h5 id="_signing">6.1.1.2. Signing</h5>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP04]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>When verifying the <code>AssertionConsumerServiceURL</code>, it is RECOMMENDED that the IdP perform a case-sensitive string comparison between the requested value and the values found in the SP&#8217;s metadata. It is OPTIONAL to apply any form of URL canonicalization.</p>
+<p>IdPs MUST support unsigned requests generally but MUST reject unsigned requests in the event that an SP&#8217;s metadata includes an <code>AuthnRequestsSigned</code> attribute set to <code>true</code> or <code>1</code>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP05]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>If a request is signed, IdPs MUST successfully verify the signature or fail the request. An IdP MAY handle a signature verification failure locally rather than via an error response to the SP.</p>
 </div>
 </div>
 </div>
@@ -2014,28 +2028,20 @@ and french.</p>
 <hr>
 </div>
 <div class="sect4">
-<h5 id="_signing">6.1.1.3. Signing</h5>
-<div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP05]</em></strong></p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>If a request is signed, IdPs MUST verify the signature or fail the request. An IdP MAY handle a signature verification failure locally rather than via an error response to the SP.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
-</div>
-<hr>
+<h5 id="_endpoint_selectionverification">6.1.1.3. Endpoint Selection/Verification</h5>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP06]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>IdPs MUST reject unsigned requests in the event that an SP&#8217;s metadata includes an <code>AuthnRequestsSigned</code> attribute set to <code>true</code> or <code>1</code>.</p>
+<p>IdPs MUST verify the <code>AssertionConsumerServiceURL</code> supplied in an SP&#8217;s <code>&lt;samlp:AuthnRequest&gt;</code> (if any) against the <code>&lt;md:AssertionConsumerService&gt;</code> elements in the SP&#8217;s metadata. In the absence of such a value, the default endpoint from the SP&#8217;s metadata MUST be used for the response.</p>
+</div>
+<div class="paragraph">
+<p>When verifying the <code>AssertionConsumerServiceURL</code>, it is RECOMMENDED that the IdP perform a case-sensitive string comparison between the requested value and the values found in the SP&#8217;s metadata. It is OPTIONAL to apply any form of URL canonicalization.</p>
+</div>
+<div class="paragraph">
+<p><em>The Browser SSO Profile <a href="#SAML2Prof">[SAML2Prof]</a> notes that validation of the response endpoint is required but does not mandate a specific approach, primarily due to metadata being an optional portion of the original standard. The above is the most common and interoperable approach to meeting this requirement.</em></p>
 </div>
 </div>
 </div>
@@ -2223,6 +2229,9 @@ such as logout.</p>
 <div class="paragraph">
 <p>IdPs MUST support the metadata-based identifier requirement signaling mechanism defined in <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
+<div class="paragraph">
+<p><em>The purpose of this requirement is to provide a level of confidence to a signaling SP that a compliant IdP which fails to do as instructed is unwilling or unable to fulfill the requirements rather than merely oblivious to them.</em></p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -2235,7 +2244,7 @@ such as logout.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>If an IdP cannot or will not satisfy the requirements of an SP in this respect, then it MUST fail the authentication request and SHOULD respond to the SP with a SAML error status and a second-level <code>&lt;samlp:StatusCode&gt;</code> of <code>urn:oasis:names:tc:SAML:profiles:subject-id:req</code>.</p>
+<p>If an IdP cannot or will not satisfy the requirements of an SP in this respect, then it MAY return an assertion without the data it is unable to provide or return an error as it sees fit.</p>
 </div>
 </div>
 </div>
@@ -2682,7 +2691,7 @@ on behalf of other proxies in the chain.</em></p>
 <p><a id="SAML2Assur"></a>[SAML2Assur] OASIS Committee Specification, SAML V2.0 Identity Assurance Profiles Version 1.0,  November 2010. <a href="http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-assurance-profile.pdf" class="bare">http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-assurance-profile.pdf</a></p>
 </li>
 <li>
-<p><a id="SAML2SubjId"></a>[SAML2SubjId] OASIS Working Draft, SAMLV2.0 Subject Identifier Attributes Profile Version 1.0, February 2018.  <a href="https://www.oasis-open.org/committees/download.php/63939/saml-subject-id-attr-v1.0-wd06.pdf" class="bare">https://www.oasis-open.org/committees/download.php/63939/saml-subject-id-attr-v1.0-wd06.pdf</a></p>
+<p><a id="SAML2SubjId"></a>[SAML2SubjId] OASIS Committee Draft, SAMLV2.0 Subject Identifier Attributes Profile Version 1.0, September 2018. <a href="http://docs.oasis-open.org/security/saml-subject-id-attr/v1.0/csprd03/saml-subject-id-attr-v1.0-csprd03.pdf" class="bare">http://docs.oasis-open.org/security/saml-subject-id-attr/v1.0/csprd03/saml-subject-id-attr-v1.0-csprd03.pdf</a></p>
 </li>
 <li>
 <p><a id="SAML2ASLO"></a>[SAML2ASLO] OASIS Committee Specification, SAML V2.0 Asynchronous Single Logout Profile Extension Version 1.0, November 2012. <a href="http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf" class="bare">http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf</a></p>
@@ -2747,7 +2756,7 @@ on behalf of other proxies in the chain.</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-26 12:42:00 UTC
+Last updated 2018-11-09 14:03:21 UTC
 </div>
 </div>
 </body>
