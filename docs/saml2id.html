@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-11-09</p>
+<p>2018-11-27</p>
 </td>
 </tr>
 <tr>
@@ -890,7 +890,7 @@ NOT", "RECOMMENDED" or "NOT RECOMMENDED".</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Deployments MUST NOT produce any SAML protocol message that contains a (DTD) Document Type Definition. Deployments SHOULD reject messages that contain them.</p>
+<p>Deployments MUST NOT produce any SAML protocol message that contains a (DTD) Document Type Definition.</p>
 </div>
 </div>
 </div>
@@ -1211,25 +1211,8 @@ least one encryption certificate with the <code>use</code> attribute set to
 <div class="paragraph">
 <p>The content of the <code>&lt;mdui:Logo&gt;</code> element MUST be either an <code>https</code> URL or an in-line image embedded in a <code>data</code> URI element. The size of the <code>data</code> URI used in a <code>&lt;mdui:Logo&gt;</code> element is not limited to 256 characters.</p>
 </div>
-</div>
-</div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
-</div>
-<hr>
-<div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-MD11]</em></strong></p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>At least one <code>&lt;mdui:Logo&gt;</code> element MUST have a <code>height</code> attribute of <code>60</code> and a <code>width</code> attribute of <code>80</code>.</p>
-</div>
-<div class="paragraph">
-<p>An entity SHOULD include an <code>&lt;mdui:Logo&gt;</code> element with a <code>height</code> attribute of <code>16</code> and a <code>width</code> attribute of <code>16</code>.</p>
-</div>
-<div class="paragraph">
-<p>Any logo referenced by an <code>&lt;mdui:Logo&gt;</code> element MUST be in PNG format with a transparent background.</p>
+<p><em>Specific details around logo formats including image size, encoding and aspect ratio should be coordinated with the common practice of the entity&#8217;s community of SAML peers.</em></p>
 </div>
 </div>
 </div>
@@ -1573,10 +1556,10 @@ published at
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>If a successful authentication response lacks sufficient or appropriate attributes (including subject identifiers) for successful SP operation, the SP MUST display a meaningful status message to the user. This message MUST direct the user to appropriate support resources offered by the SP or, alternatively, to the <code>errorURL</code> attribute in an IdP&#8217;s metadata.</p>
+<p>If a successful authentication response lacks sufficient or appropriate SAML Attributes (including subject identifiers) for successful SP operation, the SP MUST display a meaningful status message to the user. This message MUST direct the user to appropriate support resources offered by the SP or, alternatively, to the <code>errorURL</code> attribute in an IdP&#8217;s metadata.</p>
 </div>
 <div class="paragraph">
-<p><em>There are many reasons an SP may be unable or choose not to provide service to a user based on an given authentication response. IdP&#8217;s failing to release the necessary attributes is the most prevalent interoperability issue encountered in larger, general purpose federations, which is why this scenario is singled out here.</em></p>
+<p><em>There are many reasons an SP may be unable or choose not to provide service to a user based on an given authentication response. IdPs failing to release the necessary SAML Attributes is the most prevalent interoperability issue encountered in larger, general purpose federations, which is why this scenario is singled out here.</em></p>
 </div>
 </div>
 </div>
@@ -1620,7 +1603,10 @@ offered by the SP.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>SPs MUST NOT require the presence of a <code>&lt;saml:NameID&gt;</code> element and MUST NOT rely on the content of this element for long term identification of subjects;  <code>&lt;saml:Attribute&gt;</code> elements MUST be used for this purpose in the manner detailed below.</p>
+<p>SPs MUST NOT require the presence of a <code>&lt;saml:NameID&gt;</code> element.</p>
+</div>
+<div class="paragraph">
+<p><em>Use of <code>&lt;saml:NameID&gt;</code> elements in this profile is restricted to their role in the Single Logout Profile, and not for long term identification of subjects. Standardized SAML Attributes are used instead, as described below.</em></p>
 </div>
 </div>
 </div>
@@ -1640,10 +1626,10 @@ offered by the SP.</p>
 <p>If an SP requires persistent tracking/identification of its users (as most do), then it MUST support one or both of the SAML Attributes defined by <a href="#SAML2SubjId">[SAML2SubjId]</a> for this purpose.</p>
 </div>
 <div class="paragraph">
-<p><em>If an SP requires coordination and/or correlation of user activity between itself and other SPs, then the SAML Attribute named <code>urn:oasis:names:tc:SAML:attribute:subject-id</code> is appropriate. Otherwise the SAML Attribute named <code>urn:oasis:names:tc:SAML:attribute:pairwise-id</code> can be used.</em></p>
+<p>SPs MAY support legacy or historical <code>&lt;saml:NameID&gt;</code> and <code>&lt;saml:Attribute&gt;</code> identifier content for compatibility reasons but MUST NOT require their use.</p>
 </div>
 <div class="paragraph">
-<p><em>SPs MAY support legacy or historical <code>&lt;saml:NameID&gt;</code> and <code>&lt;saml:Attribute&gt;</code> identifier content for compatibility reasons but MUST NOT require their use.</em></p>
+<p><em>If an SP requires coordination and/or correlation of user activity between itself and other SPs, then the SAML Attribute named <code>urn:oasis:names:tc:SAML:attribute:subject-id</code> is appropriate. Otherwise the SAML Attribute named <code>urn:oasis:names:tc:SAML:attribute:pairwise-id</code> can be used.</em></p>
 </div>
 </div>
 </div>
@@ -1729,7 +1715,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>SPs requiring the display of identifiers to users, the identification of other users via searching, selection, etc., and similar use cases SHOULD rely on additional suitable SAML Attributes such as (<a href="#X500SAMLattr">[X500SAMLattr]</a>):</p>
+<p>SPs requiring the display of identifiers to users, the identification of other users via searching, selection, etc., and similar use cases SHOULD rely on additional suitable SAML Attributes such as:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1748,7 +1734,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </ul>
 </div>
 <div class="paragraph">
-<p><em>Note that most standardized Attributes of this sort tend to be defined as multi-valued.</em></p>
+<p><em>Note that most standardized SAML Attributes of this sort tend to be defined as multi-valued.</em></p>
 </div>
 </div>
 </div>
@@ -1843,9 +1829,6 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <li>
 <p>at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>encryption</code></p>
 </li>
-<li>
-<p>if the SP generates single logout requests: at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>signing</code></p>
-</li>
 </ul>
 </div>
 </li>
@@ -1865,7 +1848,20 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In addition, an SP&#8217;s metadata MUST contain:</p>
+<p>If the SP supports the Single Logout Profile, then its metadata MUST contain (within its <code>&lt;md:SPSSODescriptor&gt;</code> role element):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>signing</code></p>
+</li>
+<li>
+<p>at least one <code>&lt;md:SingleLogoutService&gt;</code> endpoint element (this MAY be omitted if the SP solely issues <code>&lt;samlp:LogoutRequest&gt;</code> messages containing the <code>&lt;aslo:Asynchronous&gt;</code> extension <a href="#SAML2ASLO">[SAML2ASLO]</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Finally, an SP&#8217;s metadata MUST also contain:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1873,9 +1869,6 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <p>an <code>&lt;md:ContactPerson&gt;</code> element with a <code>contactType</code> of <code>technical</code> and an <code>&lt;md:EmailAddress&gt;</code> element</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>An <code>&lt;md:SingleLogoutService&gt;</code> element MAY be omitted in the event that an SP either does not support the Single Logout Profile, or solely issues <code>&lt;samlp:LogoutRequest&gt;</code> messages containing the <code>&lt;aslo:Asynchronous&gt;</code> extension <a href="#SAML2ASLO">[SAML2ASLO]</a>.</p>
 </div>
 </div>
 </div>
@@ -2098,7 +2091,7 @@ and french.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Successful responses MUST be directly signed using a <code>&lt;ds:Signature&gt;</code> element within the <code>&lt;samlp:Response&gt;</code> element.  Error responses MAY be signed.</p>
+<p>Successful responses MUST be directly signed using a <code>&lt;ds:Signature&gt;</code> element within the <code>&lt;samlp:Response&gt;</code> element. Error responses MAY be unsigned.</p>
 </div>
 </div>
 </div>
@@ -2202,10 +2195,10 @@ such as logout.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>IdPs MUST enumerate the scope(s) of the subject identifiers they support in their metadata by means of the <code>&lt;shibmd:Scope&gt;</code> extension element, as defined in <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
+<p>IdPs MUST enumerate the scope(s) of the subject identifiers they support in their metadata by means of the <code>&lt;shibmd:Scope&gt;</code> extension element, as defined in <a href="#SAML2SubjId">[SAML2SubjId]</a>. They MUST NOT contain a regular expression (i.e., each element&#8217;s <code>regexp</code> attribute MUST be set to <code>false</code> or <code>0</code>).</p>
 </div>
 <div class="paragraph">
-<p>The element(s) MAY be positioned as an extension of the <code>&lt;md:EntityDescriptor&gt;</code> or <code>&lt;md:IDPSSODescriptor&gt;</code> as deemed appropriate. They MUST NOT contain a regular expression (i.e., each element&#8217;s <code>regexp</code> attribute MUST be set to <code>false</code> or <code>0</code>).</p>
+<p>The element(s) may be positioned as an extension of either the <code>&lt;md:EntityDescriptor&gt;</code> or <code>&lt;md:IDPSSODescriptor&gt;</code> as deemed appropriate.</p>
 </div>
 <div class="paragraph">
 <p><em>Note that while common, it is not a requirement for the scope(s) to be contained within the IdP&#8217;s entityID, nor for it to bear any relationship to other data asserted by the IdP, such as email addresses.</em></p>
@@ -2258,7 +2251,7 @@ such as logout.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>In the absence of any signaling by an SP, an IdP MAY supply either, both, or neither SAML Attribute, or return an error as it sees fit.</p>
+<p>In the absence of any signaling by an SP, an IdP MAY supply either, both, or neither of the SAML Attributes defined in <a href="#SAML2SubjId">[SAML2SubjId]</a>, or return an error as it sees fit.</p>
 </div>
 </div>
 </div>
@@ -2279,7 +2272,7 @@ such as logout.</p>
 <p><code>&lt;saml:Attribute&gt;</code> elements MUST contain a NameFormat of <code>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</code>.</p>
 </div>
 <div class="paragraph">
-<p><em>This requirement ensures unique, non-conflicting naming of Attributes even in cases involving custom requirements for which no standard Attributes may exist.</em></p>
+<p><em>This requirement ensures unique, non-conflicting naming of SAML Attributes even in cases involving custom requirements for which no standard SAML Attributes may exist.</em></p>
 </div>
 </div>
 </div>
@@ -2299,7 +2292,7 @@ such as logout.</p>
 <p>It is RECOMMENDED that the content of each <code>&lt;saml:AttributeValue&gt;</code> element be limited to a single child text node (i.e., a simple string value).</p>
 </div>
 <div class="paragraph">
-<p><em>Note that this refers to <code>&lt;saml:AttributeValue&gt;</code> elements, not <code>&lt;saml:Attribute&gt;</code> elements, and refers to the form of each individual value. It discourages the use of complex XML content models within the value of an Attribute.</em></p>
+<p><em>Note that this refers to <code>&lt;saml:AttributeValue&gt;</code> elements, not <code>&lt;saml:Attribute&gt;</code> elements, and refers to the form of each individual value. It discourages the use of complex XML content models within the value of a SAML Attribute.</em></p>
 </div>
 </div>
 </div>
@@ -2756,7 +2749,7 @@ on behalf of other proxies in the chain.</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-09 14:03:21 UTC
+Last updated 2018-11-27 14:36:36 UTC
 </div>
 </div>
 </body>
