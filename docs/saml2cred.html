@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-11-27</p>
+<p>2018-12-04</p>
 </td>
 </tr>
 <tr>
@@ -907,7 +907,7 @@ NOT", "RECOMMENDED" or "NOT RECOMMENDED".</p>
 <p>Deployments MUST be named via an absolute URI whose total length MUST NOT exceed 256 characters.</p>
 </div>
 <div class="paragraph">
-<p><em>An entityID SHOULD be chosen in a manner that minimizes the likelihood of it changing for political or technical reasons, including for example a change to a different software implementation or hosting provider.</em></p>
+<p><em>An entityID should be chosen in a manner that minimizes the likelihood of it changing for political or technical reasons, including for example a change to a different software implementation or hosting provider.</em></p>
 </div>
 </div>
 </div>
@@ -1031,7 +1031,7 @@ signature applied by Shared Services Canada.</p>
 <p>Deployments MUST have the ability to provide SAML metadata capturing their requirements and characteristics in the areas identified above in a secure fashion, the specifics of which will necessarily vary by context and community. The use of services offering third-party validation, curation, signing, and publishing of metadata is a recommended practice.</p>
 </div>
 <div class="paragraph">
-<p>Metadata MAY include content indicating support for profiles or features beyond the bounds of this profile, but metadata MUST NOT contain content that advertises profile support or features that aren&#8217;t supported by a deployment.</p>
+<p>An entity&#8217;s metadata MUST NOT contain content that advertises profile support or features that aren&#8217;t supported by that entity&#8217;s deployment, but it MAY include content indicating support for profiles or features beyond the scope of this profile.</p>
 </div>
 <div class="paragraph">
 <p><em>As an example, deployments that lack support for, or have not tested and integrated an implementation&#8217;s support for the HTTP-Artifact binding <a href="#SAML2Bind">[SAML2Bind]</a> MUST omit such endpoints.</em></p>
@@ -1075,7 +1075,7 @@ validation, curation, signing, and publishing of metadata.</p>
 <p><em>do not use expired certificates</em></p>
 </li>
 <li>
-<p><em>do not sign certificates with MD5- or SHA1-based signature algorithms.</em></p>
+<p><em>do not sign certificates with MD5- or SHA1-based signature algorithms</em></p>
 </li>
 </ul>
 </div>
@@ -1443,7 +1443,8 @@ the topology of a federation. This is why this profile has not adopted
 <p>The <code>AssertionConsumerServiceURL</code> value, if present, MUST match an endpoint location expressed in the SP&#8217;s metadata exactly, without requiring URL canonicalization/normalization.</p>
 </div>
 <div class="paragraph">
-<p><em>As an example, the SP MUST NOT use a hostname with port number (such as <a href="https://sp.example.com:443/acs" class="bare">https://sp.example.com:443/acs</a>) in its request and without (such as <a href="https://sp.example.com/acs" class="bare">https://sp.example.com/acs</a>) in its metadata.</em></p>
+<p><em>As an example, the SP cannot specify URLs that include a port number (e.g., <a href="https://sp.example.com:443/acs" class="bare">https://sp.example.com:443/acs</a>)
+in its requests unless it also includes that port number in the URLs specified in its metadata, and vice versa.</em></p>
 </div>
 </div>
 </div>
@@ -1840,7 +1841,10 @@ described in <a href="#SAML2Core">[SAML2Core]</a>.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Applications SHOULD, and collaborative applications MUST, support deep linking. Deep linking implies maintaining support for such links across the boundary of a Web Browser SSO profile interaction involving any IdP necessary to complete the login process. That is, it SHOULD be possible to request a resource and (authorization permitting) have it supplied as the result of a successful Web Browser SSO profile exchange.</p>
+<p>Applications SHOULD, and collaborative applications MUST, support deep linking. Deep linking implies maintaining support for such links across the boundary of a Web Browser SSO profile interaction involving any IdP necessary to complete the login process.</p>
+</div>
+<div class="paragraph">
+<p><em>It should be possible to request a resource and (authorization permitting) have it supplied as the result of a successful Web Browser SSO profile exchange.</em></p>
 </div>
 </div>
 </div>
@@ -1988,7 +1992,7 @@ support cross-origin resource sharing <a href="#CORS">[CORS]</a> so that the IdP
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Requests MUST be signed (via a signature created in accordance with the HTTP=Redirect binding [SAML2Bind]).</p>
+<p>Requests MUST be signed (via a signature created in accordance with the HTTP-Redirect binding [SAML2Bind]).</p>
 </div>
 </div>
 </div>
@@ -2091,7 +2095,7 @@ the SOAP binding.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Responses MUST be signed (via a signature created in accordance with the HTTP=Redirect binding [SAML2Bind]).</p>
+<p>Responses MUST be signed (via a signature created in accordance with the HTTP-Redirect binding [SAML2Bind]).</p>
 </div>
 </div>
 </div>
@@ -2482,7 +2486,7 @@ with the <code>Binding</code> attribute value of
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Successful responses MUST contain one and only one SAML assertion, and the assertion MUST contain exactly one <code>&lt;saml:AuthnStatement&gt;</code> element and MAY contain zero or one <code>&lt;saml:AttributeStatement&gt;</code> elements. The assertion within the response MAY be directly signed.</p>
+<p>Successful responses MUST contain exactly one SAML assertion. The assertion MUST contain exactly one <code>&lt;saml:AuthnStatement&gt;</code> element and MUST contain zero or one <code>&lt;saml:AttributeStatement&gt;</code> elements. The assertion within the response MAY be directly signed.</p>
 </div>
 </div>
 </div>
@@ -3326,7 +3330,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-27 14:36:12 UTC
+Last updated 2018-12-04 13:52:35 UTC
 </div>
 </div>
 </body>
