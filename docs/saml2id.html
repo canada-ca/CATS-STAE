@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-12-04</p>
+<p>2018-12-10</p>
 </td>
 </tr>
 <tr>
@@ -989,7 +989,7 @@ following areas:</p>
 <p>Consumption of metadata MUST be contingent on verification of a signature (STRONGLY RECOMMENDED) or TLS server certificate. The key ultimately used to establish trust in metadata MUST NOT itself appear within the same metadata in a <code>&lt;md:KeyDescriptor&gt;</code> element.</p>
 </div>
 <div class="paragraph">
-<p><em>In most cases, the previous requirement implies that a key communicated via metadata may not also be used to sign and verify the same metadata, but it is possible to envision scenarios in which this may happen if metadata verification relies on a chain of certificates signed by an ultimately trusted Certificate Authority. However, it MUST be possible to seamlessly communicate new keys without necessarily changing the key used to establish trust in the metadata, which implies some level of indirection is required.</em></p>
+<p><em>In most cases, the previous requirement implies that a key communicated via metadata may not also be used to sign and verify the same metadata, but it is possible to envision scenarios in which this may happen if metadata verification relies on a chain of certificates signed by an ultimately trusted Certificate Authority. However, it must be possible to seamlessly communicate new keys without necessarily changing the key used to establish trust in the metadata, which implies some level of indirection is required.</em></p>
 </div>
 </div>
 </div>
@@ -1037,7 +1037,7 @@ signature applied by Shared Services Canada.</p>
 <p>An entity&#8217;s metadata MUST NOT contain content that advertises profile support or features that aren&#8217;t supported by that entity&#8217;s deployment, but it MAY include content indicating support for profiles or features beyond the scope of this profile.</p>
 </div>
 <div class="paragraph">
-<p><em>As an example, deployments that lack support for, or have not tested and integrated an implementation&#8217;s support for the HTTP-Artifact binding <a href="#SAML2Bind">[SAML2Bind]</a> MUST omit such endpoints.</em></p>
+<p><em>As an example, deployments that lack support for, or have not tested and integrated an implementation&#8217;s support for the HTTP-Artifact binding <a href="#SAML2Bind">[SAML2Bind]</a> must omit such endpoints.</em></p>
 </div>
 <div class="paragraph">
 <p><em>This profile does not mandate any specific automated support for the production of metadata by a deployment. In fact, automatic generation of metadata has a strong tendency to undermine the correct functioning of peer deployments in the face of key rollover or changes to endpoints or other software features because it tends to change too suddenly to accommodate a graceful transition between states.</em></p>
@@ -1573,26 +1573,6 @@ offered by the SP.</p>
 </div>
 <hr>
 </div>
-<div class="sect4">
-<h5 id="_forced_re_authentication">5.1.2.4. Forced Re-Authentication</h5>
-<div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP13]</em></strong></p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>SPs that include a <code>ForceAuthn</code> attribute of <code>true</code> in their requests SHOULD test the currency of the <code>AuthnInstant</code> element in the received assertions to verify the currency of the authentication event.</p>
-</div>
-<div class="paragraph">
-<p><em>This is necessary because clients can freely generate requests that do not specify this attribute, potentially bypassing the SP&#8217;s intent.</em></p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
-</div>
-<hr>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_subject_identification">5.1.3. Subject Identification</h4>
@@ -1756,7 +1736,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <p>When consuming SAML Attributes with standardized definitions in external specifications, SPs MUST NOT impose constraints beyond the definitions of those attributes.</p>
 </div>
 <div class="paragraph">
-<p><em>For example, the definition of the <code>mail</code> attribute (in SAML, <code>urn:oid:0.9.2342.19200300.100.1.3</code>) explicitly allows for multiple values, so an SP that consumes it for some purpose MUST necessarily allow for that possibility.</em></p>
+<p><em>For example, the definition of the <code>mail</code> attribute (in SAML, <code>urn:oid:0.9.2342.19200300.100.1.3</code>) explicitly allows for multiple values, so an SP that consumes it for some purpose must necessarily allow for that possibility.</em></p>
 </div>
 </div>
 </div>
@@ -2045,7 +2025,7 @@ and french.</p>
 <hr>
 </div>
 <div class="sect4">
-<h5 id="_forced_re_authentication_2">6.1.1.4. Forced Re-Authentication</h5>
+<h5 id="_forced_re_authentication">6.1.1.4. Forced Re-Authentication</h5>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP07]</em></strong></p>
 </div>
@@ -2750,7 +2730,7 @@ on behalf of other proxies in the chain.</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-04 13:53:00 UTC
+Last updated 2018-12-10 16:14:01 UTC
 </div>
 </div>
 </body>
