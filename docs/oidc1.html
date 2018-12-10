@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-10-26</p>
+<p>2018-12-10</p>
 </td>
 </tr>
 <tr>
@@ -627,7 +627,7 @@ represents, and unnecessary to do so for the purposes of this document.</p>
 <p>The requirements specified are in addition to all normative requirements of the
 underlying specifications, including the International Government Assurance
 Profiles (iGov) for OAuth 2.0 <a href="#iGov-OAuth2">[iGov-OAuth2]</a> and OpenID connect <a href="#iGov-OIDC">[iGov-OIDC]</a>,
-the OpenID Connect specifications for back-channel &lt;OIDC-BC&gt;&gt; and front-channel
+the OpenID Connect specifications for back-channel <a href="#OIDC-BC">[OIDC-BC]</a> and front-channel
 <a href="#OIDC-FC">[OIDC-FC]</a> logout, and all other specifications normatively referenced therein.
 Readers are assumed to be familiar with all relevant reference documents. Any
 such requirements are not repeated here except where deemed necessary to
@@ -842,6 +842,39 @@ official language.</p>
 the receipt of logout tokens. An SP MAY support the OpenID front-channel logout
 <a href="#OIDC-FC">[OIDC-FC]</a> in the event that their implementation does not support <a href="#OIDC-BC">[OIDC-BC]</a>.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_usability">5.1.2. Usability</h4>
+<div class="paragraph">
+<p><strong>[ODP-RP04]</strong> RP implementations MUST include the <code>claims</code> parameter in all
+authentication requests that, as a minimum, requests the <code>locale</code> claim. The
+<code>claims</code> parameter SHOULD request that the <code>locale</code> claim be returned in the ID
+token. RP applications MUST examine the value of the returned <code>locale</code> claim to
+determine if the user changed their preferred official language while
+interacting with the OP, in which case the RP application MUST display all
+subequent content in the newly selected language.</p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-RP04]</strong> Applications SHOULD, and collaborative applications MUST, support
+deep linking. Deep linking implies maintaining support for such links across the
+boundary of an OpenID Connect profile interaction involving any OP necessary to
+complete the login process.</p>
+</div>
+<div class="paragraph">
+<p><em>It should be possible to request a resource and (authorization permitting) have
+it supplied as the result of a successful OpenID Connect profile exchange.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-RP05]</strong> It is RECOMMENDED that RPs support the preservation of POST bodies
+across a successful OpenID Connect profile exchange, subject to size limitations
+dictated by policy or implementation constraints.</p>
+</div>
+<div class="paragraph">
+<p>_Deep linking implies support for RP-initiated SSO, i.e., the direct generation
+of authentication request messages in response to unauthenticated or
+insufficiently-authenticated access attempts to an application as a whole, or to
+specific protected content.</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -880,7 +913,34 @@ key pair to the client as part of the registration process.</p>
 <div class="sect2">
 <h3 id="_cats_specific_requirements_3">6.2. CATS-specific requirements</h3>
 <div class="sect3">
-<h4 id="_single_logout_2">6.2.1. Single Logout</h4>
+<h4 id="_claims">6.2.1. Claims</h4>
+<div class="paragraph">
+<p>OP deployments SHOULD prioritize the use of the standard claim
+names before defining custom claims. Use of the
+following profiles are RECCOMENDED in descending order of preference:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The standard OpenID Connect claims defined in section 5.1 of <a href="#OIDC">[OIDC]</a>.</p>
+</li>
+<li>
+<p>The claims associated with the <code>doc</code> scope described in section 4 of
+<a href="#iGov-OIDC">[iGov-OIDC]</a>.</p>
+</li>
+<li>
+<p>The Identity Metasystem Interoperability claim types defined in section 7.5 of
+<a href="#IMI">[IMI]</a>.</p>
+</li>
+<li>
+<p>Public claims that follow the URI naming convention described in the
+SAML V2.0 X.500/LDAP Attribute Profile <a href="#X500SAMLattr">[X500SAMLattr]</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_single_logout_2">6.2.2. Single Logout</h4>
 <div class="paragraph">
 <p><strong>[ODP-OP02]</strong></p>
 </div>
@@ -978,6 +1038,12 @@ different vocabularies as required.</p>
 <li>
 <p><a id="ITSP.40.062"></a>[ITSP.40.062] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. <a href="https://cyber.gc.ca/en/guidance/guidance-securely-configuring-network-protocols-itsp40062" class="bare">https://cyber.gc.ca/en/guidance/guidance-securely-configuring-network-protocols-itsp40062</a></p>
 </li>
+<li>
+<p><a id="IMI"></a>[IMI] OASIS Standard, Identity Metasystem Interoperability Version 1.0. <a href="http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf" class="bare">http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf</a></p>
+</li>
+<li>
+<p><a id="X500SAMLattr"></a>[X500SAMLattr] OASIS Committee Specification, SAML V2.0 X.500/LDAP Attribute Profile, March 2008. <a href="http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-attribute-x500-cs-01.pdf" class="bare">http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-attribute-x500-cs-01.pdf</a></p>
+</li>
 </ul>
 </div>
 </div>
@@ -998,7 +1064,7 @@ different vocabularies as required.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-26 12:42:24 UTC
+Last updated 2018-12-10 16:03:12 UTC
 </div>
 </div>
 </body>
