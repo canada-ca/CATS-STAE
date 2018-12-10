@@ -21,6 +21,20 @@ key pair to the client as part of the registration process.
 
 === CATS-specific requirements
 
+==== Claims
+
+OP deployments SHOULD prioritize the use of the standard claim
+names before defining custom claims. Use of the
+following profiles are RECCOMENDED in descending order of preference:
+
+* The standard OpenID Connect claims defined in section 5.1 of <<OIDC>>. 
+* The claims associated with the `doc` scope described in section 4 of
+  <<iGov-OIDC>>.
+* The Identity Metasystem Interoperability claim types defined in section 7.5 of
+  <<IMI>>.
+* Public claims that follow the URI naming convention described in the
+  SAML V2.0 X.500/LDAP Attribute Profile <<X500SAMLattr>>.
+
 ==== Single Logout
 
 *[ODP-OP02]*
