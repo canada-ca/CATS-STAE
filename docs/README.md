@@ -51,7 +51,7 @@ Federated identity relies on more than just technology to work. The consumers
 and providers of secure authentication services also have to agree on (and abide
 to) a common trust framework. To learn more about the Government of Canada's
 work in this area, check out the
-[Pan-Canadian Trust Framework](https://github.com/canada-ca/PCTF).
+[Pan-Canadian Trust Framework](https://github.com/canada-ca/PCTF-CCP).
 
 # Technologie d’authentification électronique
 
@@ -108,4 +108,4 @@ et les fournisseurs de services d’authentification
 sécurisés doivent également s’entendre sur un cadre de confiance commun et s’y
 conformer. Pour en apprendre davantage sur les efforts  déployés par le
 gouvernement du Canada dans ce domaine, veuillez consulter le
-[Cadre pancanadien de la fiabilité de l’identité](https://github.com/canada-ca/PCTF).
+[Cadre pancanadien de la fiabilité de l’identité](https://github.com/canada-ca/PCTF-CCP).

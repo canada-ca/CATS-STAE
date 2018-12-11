@@ -24,4 +24,4 @@
 [bibliography]
 
 - [[[PCTF]]] Identity Management Subcomittee, Pan-Canadian Trust Framework.
- https://github.com/canada-ca/PCTF
+ https://github.com/canada-ca/PCTF-CCP
