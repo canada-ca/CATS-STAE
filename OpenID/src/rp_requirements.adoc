@@ -30,7 +30,7 @@ the receipt of logout tokens. An SP MAY support the OpenID front-channel logout
 
 ==== Usability
 
-*[ODP-RP04]* RP implementations MUST include the `claims` parameter in all
+*[ODP-RP03]* RP implementations MUST include the `claims` parameter in all
 authentication requests that, as a minimum, requests the `locale` claim. The
 `claims` parameter SHOULD request that the `locale` claim be returned in the ID
 token. RP applications MUST examine the value of the returned `locale` claim to
