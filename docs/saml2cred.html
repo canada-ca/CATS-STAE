@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2018-12-10</p>
+<p>2019-01-23</p>
 </td>
 </tr>
 <tr>
@@ -1188,7 +1188,7 @@ with the <code>use</code> attribute set to <code>encryption</code>.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Metadata MUST include an <code>&lt;mdui:UIInfo&gt;</code> element as defined in <a href="#MetaUI">[MetaUI]</a> containing at least the child elements <code>&lt;mdui:DisplayName&gt;</code>, <code>&lt;mdui:Logo&gt;</code>, and <code>&lt;mdui:InformationURL&gt;</code>.</p>
+<p>Metadata MUST include an <code>&lt;mdui:UIInfo&gt;</code> element as defined in <a href="#MetaUI">[MetaUI]</a> containing at least the child elements <code>&lt;mdui:DisplayName&gt;</code> and <code>&lt;mdui:Logo&gt;</code>. An SP&#8217;s metadata MUST include the child element <code>&lt;PrivacyStatementURL&gt;</code></p>
 </div>
 </div>
 </div>
@@ -1209,6 +1209,20 @@ with the <code>use</code> attribute set to <code>encryption</code>.</p>
 </div>
 <div class="paragraph">
 <p><em>Specific details around logo formats including image size, encoding and aspect ratio should be coordinated with the common practice of the entity&#8217;s community of SAML peers.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-MD11]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Metadata MUST include an <code>&lt;md:ContactPerson&gt;</code> element with a contactType of <code>technical</code> and an <code>&lt;md:EmailAddress&gt;</code> element.</p>
 </div>
 </div>
 </div>
@@ -2198,7 +2212,7 @@ the SOAP binding.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>an <code>&lt;md:SPSSODescriptor&gt;</code> role element</p>
+<p>an <code>&lt;md:SPSSODescriptor&gt;</code> role element containing</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2207,15 +2221,18 @@ the SOAP binding.</p>
 <li>
 <p>at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>encryption</code></p>
 </li>
+<li>
+<p>an <code>&lt;md:ContactPerson&gt;</code> element with a <code>contactType</code> of <code>technical</code> and an <code>&lt;md:EmailAddress&gt;</code> element</p>
+</li>
 </ul>
 </div>
 </li>
 <li>
-<p>an <code>&lt;md:Extensions&gt;</code> element</p>
+<p>an <code>&lt;md:Extensions&gt;</code> element at the role level containing</p>
 <div class="ulist">
 <ul>
 <li>
-<p>an <code>&lt;mdui:UIInfo&gt;</code> extension element with previously prescribed content and <code>&lt;mdui:PrivacyStatementURL&gt;</code></p>
+<p>an <code>&lt;mdui:UIInfo&gt;</code> extension element containing the child elements <code>&lt;mdui:DisplayName&gt;</code>, <code>&lt;mdui:Logo&gt;</code>, and <code>&lt;mdui:PrivacyStatementURL&gt;</code></p>
 </li>
 <li>
 <p>an <code>&lt;mdattr:EntityAttributes&gt;</code> extension element for signaling Subject Identifier requirements with previously prescribed content</p>
@@ -2235,16 +2252,6 @@ the SOAP binding.</p>
 </li>
 <li>
 <p>at least one <code>&lt;md:SingleLogoutService&gt;</code> endpoint element (this MAY be omitted if the SP solely issues <code>&lt;samlp:LogoutRequest&gt;</code> messages containing the <code>&lt;aslo:Asynchronous&gt;</code> extension <a href="#SAML2ASLO">[SAML2ASLO]</a>)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Finally, an SP&#8217;s metadata MUST also contain:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>an <code>&lt;md:ContactPerson&gt;</code> element with a <code>contactType</code> of <code>technical</code> and an <code>&lt;md:EmailAddress&gt;</code> element</p>
 </li>
 </ul>
 </div>
@@ -2802,7 +2809,7 @@ not be able to respond to the SP that initiated the logout.</em></p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Requests MUST be signed ((via a signature created in accordance with the HTTP=Redirect binding [SAML2Bind]).</p>
+<p>Requests MUST be signed ((via a signature created in accordance with the HTTP-Redirect binding [SAML2Bind]).</p>
 </div>
 </div>
 </div>
@@ -2884,7 +2891,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Responses MUST be signed (via a signature created in accordance with the HTTP=Redirect binding [SAML2Bind]).</p>
+<p>Responses MUST be signed (via a signature created in accordance with the HTTP-Redirect binding [SAML2Bind]).</p>
 </div>
 </div>
 </div>
@@ -2944,7 +2951,7 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>an <code>&lt;md:IDPSSODescriptor&gt;</code> role element</p>
+<p>an <code>&lt;md:IDPSSODescriptor&gt;</code> role element containing</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2956,34 +2963,34 @@ increase the size of the <code>&lt;samlp:LogoutRequest&gt;</code> message.</p>
 <li>
 <p>at least one <code>&lt;md:KeyDescriptor&gt;</code> element whose <code>use</code> attribute is omitted or set to <code>signing</code></p>
 </li>
+<li>
+<p>an <code>&lt;md:ContactPerson&gt;</code> element with a <code>contactType</code> of <code>technical</code> and an <code>&lt;md:EmailAddress&gt;</code> element</p>
+</li>
 </ul>
 </div>
 </li>
 <li>
-<p>an <code>&lt;md:Extensions&gt;</code> element at the role level</p>
+<p>an <code>&lt;md:Extensions&gt;</code> element at the role level containing</p>
 <div class="ulist">
 <ul>
 <li>
-<p>an <code>&lt;mdui:UIInfo&gt;</code> extension element with previously prescribed content</p>
+<p>an <code>&lt;mdui:UIInfo&gt;</code> extension element containing the child elements <code>&lt;mdui:DisplayName&gt;</code> and <code>&lt;mdui:Logo&gt;</code></p>
+</li>
+<li>
+<p>at least one <code>&lt;shibmd:Scope&gt;</code> element</p>
+<div class="ulist">
+<ul>
+<li>
+<p>alternately, the <code>&lt;shibmd:Scope&gt;</code> element(s) MAY instead reside in an <code>&lt;md:Extensions&gt;</code> element at the root (<code>&lt;md:EntityDescriptor&gt;</code>) level</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
 <p>an <code>errorURL</code> attribute containing an https URL resolving to an HTML page suitable for referral by SPs in the event they receive insufficient attributes from the IdP to proceed</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In addition, an IdP&#8217;s metadata MUST contain:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>at least one <code>&lt;shibmd:Scope&gt;</code> element, within an <code>&lt;md:Extensions&gt;</code> element at either the <code>&lt;md:EntityDescriptor&gt;</code> or <code>&lt;md:IDPSSODescriptor&gt;</code> level.</p>
-</li>
-<li>
-<p>an <code>&lt;md:ContactPerson&gt;</code> element with a <code>contactType</code> of <code>technical</code> and an <code>&lt;md:EmailAddress&gt;</code> element</p>
 </li>
 </ul>
 </div>
@@ -3290,7 +3297,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </li>
 <li>
 <p><a id="PCTF"></a>[PCTF] Identity Management Subcomittee, Pan-Canadian Trust Framework.
-<a href="https://github.com/canada-ca/PCTF" class="bare">https://github.com/canada-ca/PCTF</a></p>
+<a href="https://github.com/canada-ca/PCTF-CCP" class="bare">https://github.com/canada-ca/PCTF-CCP</a></p>
 </li>
 <li>
 <p><a id="XMLEncBreak"></a>[XMLEncBreak] Jager and Somorovsky, How to Break XML Encryption, October 2011. <a href="http://www.nds.rub.de/media/nds/veroeffentlichungen/2011/10/22/HowToBreakXMLenc.pdf" class="bare">http://www.nds.rub.de/media/nds/veroeffentlichungen/2011/10/22/HowToBreakXMLenc.pdf</a></p>
@@ -3310,7 +3317,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-10 16:13:38 UTC
+Last updated 2019-01-23 17:09:06 UTC
 </div>
 </div>
 </body>
