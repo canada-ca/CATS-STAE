@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2019-01-23</p>
+<p>2019-01-30</p>
 </td>
 </tr>
 <tr>
@@ -1421,7 +1421,7 @@ is requesting identity authentication and not credential authentication.</em></p
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>The message SHOULD contain an <code>AssertionConsumerServiceURL</code> attribute and MUST NOT contain an 'AssertionConsumerServiceIndex' attribute (i.e., the desired endpoint MUST be the default, or identified via the <code>AssertionConsumerServiceURL</code> attribute).</p>
+<p>The message SHOULD contain an <code>AssertionConsumerServiceURL</code> attribute and MUST NOT contain an <code>AssertionConsumerServiceIndex</code> attribute (i.e., the desired endpoint MUST be the default, or identified via the <code>AssertionConsumerServiceURL</code> attribute).</p>
 </div>
 </div>
 </div>
@@ -1470,8 +1470,9 @@ in its requests unless it also includes that port number in the URLs specified i
 <p><strong>CATS Support</strong>: <em>Constrained</em></p>
 </div>
 <div class="paragraph">
-<p>SP deployments MUST include <code>&lt;samlp:RequestedAuthnContext&gt;</code> with the
-<code>Comparison</code> attribute set to <code>exact</code>.</p>
+<p>SP deployments MUST include <code>&lt;samlp:RequestedAuthnContext&gt;</code>. The optional
+<code>Comparison</code> attribute MAY be included, in which case it MUST have the value
+<code>exact</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>&lt;samlp:RequestedAuthnContext&gt;</code> MUST include a Level of Assurance as
@@ -2737,7 +2738,7 @@ on behalf of other proxies in the chain.</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-23 17:09:29 UTC
+Last updated 2019-01-30 20:24:54 UTC
 </div>
 </div>
 </body>
