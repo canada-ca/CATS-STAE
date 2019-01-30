@@ -1,5 +1,6 @@
-SP deployments MUST include `<samlp:RequestedAuthnContext>` with the
-`Comparison` attribute set to `exact`.
+SP deployments MUST include `<samlp:RequestedAuthnContext>`. The optional
+`Comparison` attribute MAY be included, in which case it MUST have the value
+`exact`.
 
 The `<samlp:RequestedAuthnContext>` MUST include a Level of Assurance as
 specified in <<SAML2Assur>>.
