@@ -24,6 +24,6 @@ requirements. These are specified at the end of each applicable section, as well
 as in section 7.
 
 Deployments owned by Government of Canada departments and agencies MUST obtain
-approval from the Chief Information Officer Branch of Treasury Board Secretariat
-before ignoring any requirements labelled with the key words "SHOULD", "SHOULD
-NOT", "RECOMMENDED" or "NOT RECOMMENDED".
+approval from the Office of the Chief Information Officer, Treasury Board
+Secretariat before ignoring any requirements labelled with the key words
+"SHOULD", "SHOULD NOT", "RECOMMENDED" or "NOT RECOMMENDED".
