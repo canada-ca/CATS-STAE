@@ -38,6 +38,6 @@ Further details are then provided to fully explain the CATS requirement.
 This profile also has requirements which are specific to this profile.
 
 Deployments owned by Government of Canada departments and agencies MUST obtain
-approval from the Chief Information Officer Branch of Treasury Board Secretariat
-before ignoring any requirements labelled with the key words "SHOULD", "SHOULD
-NOT", "RECOMMENDED" or "NOT RECOMMENDED".
+approval from the Office of the Chief Information Officer, Treasury Board
+Secretariat before ignoring any requirements labelled with the key words
+"SHOULD", "SHOULD NOT", "RECOMMENDED" or "NOT RECOMMENDED".
