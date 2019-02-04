@@ -1,5 +1,0 @@
-The SOAP <<SAML2Bind>> binding SHOULD be used for the transmission of
-<samlp:LogoutResponse> messages.
-
-The HTTP-Redirect binding MAY be used if the SP implementation does not support
-the SOAP binding.

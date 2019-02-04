@@ -1,3 +1,0 @@
-SPs MUST support the Single Logout Profile for the sending
-of `<samlp:LogoutRequest>` messages and SHOULD support the receipt
-of `<samlp:LogoutRequest>` messages.

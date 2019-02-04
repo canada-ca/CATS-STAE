@@ -1,9 +1,5 @@
-The `<saml:NameID>` element SHOULD be encrypted via the `<saml:EncryptedID>`
-element.
+The SOAP <<SAML2Bind>> binding SHOULD be used for the transmission of
+<samlp:LogoutResponse> messages.
 
-_This profile uses persistent identifiers which should be protected._
-
-_Note that encrypting the NameID increases the size of the SAML message
-significantly, which has historically caused problems with very old browsers
-that do not support long URLs. SP software should be configured to not include
-unnecessary elements such as `<ds:X509Data>` in `<saml:EncryptedID>`._
+The HTTP-Redirect binding MAY be used if the SP implementation does not support
+the SOAP binding.

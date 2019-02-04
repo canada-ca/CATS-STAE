@@ -1,5 +1,3 @@
-SP deployments participating in the Sign in Canada federation MUST NOT support
-<<IDPDisco>>.
-
-_Discovery services are provided by the Sign in Canada Acceptance Platform as
-part of authentication request processing._
+SPs MUST support the Single Logout Profile for the sending
+of `<samlp:LogoutRequest>` messages and SHOULD support the receipt
+of `<samlp:LogoutRequest>` messages.

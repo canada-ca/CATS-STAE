@@ -1,5 +1,0 @@
-SP deployments MUST NOT implement <<SAML2SubjId>>.
-
-SP deployments MUST support `<saml:NameID>` and the
-`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` name identifier format as
-described in <<SAML2Core>>.
