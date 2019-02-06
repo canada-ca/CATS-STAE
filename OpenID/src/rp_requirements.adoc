@@ -20,9 +20,16 @@ _Typically the value will be either `en-CA` or `fr-CA`._
 
 === CATS-Specific Requirements
 
-==== Single Logout
+==== Authentication Requests
 
 *[ODP-RP02]*
+
+RP implementations MUST include the `max_age` parameter in all authentication
+requests. The value of `max_age` MUST be no greater than 1200 (20 minutes).
+
+==== Single Logout
+
+*[ODP-RP03]*
 
 RP implementations SHOULD support OpenID back-channel logout <<OIDC-BC>> for
 the receipt of logout tokens. An SP MAY support the OpenID front-channel logout
@@ -30,7 +37,7 @@ the receipt of logout tokens. An SP MAY support the OpenID front-channel logout
 
 ==== Usability
 
-*[ODP-RP03]* RP implementations MUST include the `claims` parameter in all
+*[ODP-RP04]* RP implementations MUST include the `claims` parameter in all
 authentication requests that, as a minimum, requests the `locale` claim. The
 `claims` parameter SHOULD request that the `locale` claim be returned in the ID
 token. RP applications MUST examine the value of the returned `locale` claim to
@@ -38,7 +45,7 @@ determine if the user changed their preferred official language while
 interacting with the OP, in which case the RP application MUST display all
 subequent content in the newly selected language.
 
-*[ODP-RP04]* Applications SHOULD, and collaborative applications MUST, support
+*[ODP-RP05]* Applications SHOULD, and collaborative applications MUST, support
 deep linking. Deep linking implies maintaining support for such links across the
 boundary of an OpenID Connect profile interaction involving any OP necessary to
 complete the login process.
@@ -46,11 +53,11 @@ complete the login process.
 _It should be possible to request a resource and (authorization permitting) have
 it supplied as the result of a successful OpenID Connect profile exchange._
 
-*[ODP-RP05]* It is RECOMMENDED that RPs support the preservation of POST bodies
+*[ODP-RP06]* It is RECOMMENDED that RPs support the preservation of POST bodies
 across a successful OpenID Connect profile exchange, subject to size limitations
 dictated by policy or implementation constraints.
 
 _Deep linking implies support for RP-initiated SSO, i.e., the direct generation
 of authentication request messages in response to unauthenticated or
 insufficiently-authenticated access attempts to an application as a whole, or to
-specific protected content.
+specific protected content._

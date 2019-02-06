@@ -35,17 +35,26 @@ following profiles are RECCOMENDED in descending order of preference:
 * Public claims that follow the URI naming convention described in the
   SAML V2.0 X.500/LDAP Attribute Profile <<X500SAMLattr>>.
 
-==== Single Logout
+==== Session Management and Single Logout
 
 *[ODP-OP02]*
 
-OpenID Provider deployments MUST support both the OpenID back-channel
-<<OIDC-BC>> and front-channel <<OIDC-FC>> logout specifications and MUST conform
-to all normative requirements therein.
+OpenID Provider deployments participating as a session authority MUST support
+both the OpenID back-channel <<OIDC-BC>> and front-channel <<OIDC-FC>> logout
+specifications and MUST conform to all normative requirements therein.
 
 *[ODP-OP03]*
 
 In cases where multiple RPs are participating in a session, OpenID providers
-MUST first use back-channel logout to send logout tokens to all RPs that support
-back-channel logout before initiating front-channel logout for any RPs that do
-not support back-channel logout.
+participating as a session authority MUST first use back-channel logout to send
+logout tokens to all RPs that support back-channel logout before initiating
+front-channel logout for any RPs that do not support back-channel logout.
+
+*[ODP-OP04]*
+
+Once an IdP participating as a session authority has issued the first
+authorization code for a new session, it MUST retain sufficient session state to
+successfully propagate single-logout of a subject's session for a minimum of 8
+hours.
+
+The IdP MAY retain this session state for longer than 8 hours.
