@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2019-01-30</p>
+<p>2019-02-06</p>
 </td>
 </tr>
 <tr>
@@ -830,9 +830,9 @@ as in section 7.</p>
 </div>
 <div class="paragraph">
 <p>Deployments owned by Government of Canada departments and agencies MUST obtain
-approval from the Chief Information Officer Branch of Treasury Board Secretariat
-before ignoring any requirements labelled with the key words "SHOULD", "SHOULD
-NOT", "RECOMMENDED" or "NOT RECOMMENDED".</p>
+approval from the Office of the Chief Information Officer, Treasury Board
+Secretariat before ignoring any requirements labelled with the key words
+"SHOULD", "SHOULD NOT", "RECOMMENDED" or "NOT RECOMMENDED".</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1234,6 +1234,23 @@ least one encryption certificate with the <code>use</code> attribute set to
 <p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-MD12]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>An IdP&#8217;s metadata MUST include the <code>errorURL</code> attribute on its <code>&lt;md:IDPSSODescriptor&gt;</code> element. The content of the <code>errorURL</code> attribute MUST be an https URL resolving to an HTML page.</p>
+</div>
+<div class="paragraph">
+<p><em>The errorURL HTML page should be suitable for referral by SPs if they receive insufficient attributes from the IdP to successfully authenticate or authorize the user&#8217;s access. The page should provide information targeted at the end user explaining how to contact the operator of the IdP to request addition of the necessary attributes to the assertions.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
 </div>
 </div>
 </div>
@@ -1342,6 +1359,9 @@ information and the integrity of information to the medium injury level.</em></p
 <div class="sect1">
 <h2 id="_sp_requirements">5. SP Requirements</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section provides requirements specific to SPs, in addition to the Common Requirements above.</p>
+</div>
 <div class="sect2">
 <h3 id="_web_browser_sso">5.1. Web Browser SSO</h3>
 <div class="paragraph">
@@ -1594,7 +1614,7 @@ offered by the SP.</p>
 <div class="sect4">
 <h5 id="_nameid_formats">5.1.3.1. NameID Formats</h5>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP14]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP13]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1614,7 +1634,7 @@ offered by the SP.</p>
 <div class="sect4">
 <h5 id="_subject_identifiers">5.1.3.2. Subject Identifiers</h5>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP15]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP14]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1646,7 +1666,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <div class="sect4">
 <h5 id="_subject_identifier_requirements_signaling">5.1.3.3. Subject Identifier Requirements Signaling</h5>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP16]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP15]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1663,7 +1683,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <div class="sect4">
 <h5 id="_identifier_scoping">5.1.3.4. Identifier Scoping</h5>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP17]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP16]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1677,7 +1697,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP18]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP17]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1706,7 +1726,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <p>The required identifier types above are opaque, unknown to users in most cases, and unsuitable for display.</p>
 </div>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP19]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP18]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1743,7 +1763,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <div class="sect3">
 <h4 id="_attribute_value_constraints">5.1.4. Attribute Value Constraints</h4>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP20]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP19]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1769,7 +1789,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <p>The ability to perform seamless key migration depends upon proper support for consuming and/or leveraging multiple keys at the same time.</p>
 </div>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP38]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP37]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1786,7 +1806,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP39]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP38]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1806,7 +1826,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 <div class="sect3">
 <h4 id="_metadata_content">5.2.2. Metadata Content</h4>
 <div class="paragraph">
-<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP40]</em></strong></p>
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP39]</em></strong></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1926,6 +1946,9 @@ and french.</p>
 <div class="sect1">
 <h2 id="_idp_requirements">6. IdP Requirements</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section provides requirements specific to IdPs, in addition to the Common Requirements above.</p>
+</div>
 <div class="sect2">
 <h3 id="_web_browser_sso_2">6.1. Web Browser SSO</h3>
 <div class="paragraph">
@@ -2355,6 +2378,9 @@ such as logout.</p>
 <li>
 <p>an <code>&lt;md:ContactPerson&gt;</code> element with a <code>contactType</code> of <code>technical</code> and an <code>&lt;md:EmailAddress&gt;</code> element</p>
 </li>
+<li>
+<p>an <code>errorURL</code> attribute</p>
+</li>
 </ul>
 </div>
 </li>
@@ -2377,9 +2403,6 @@ such as logout.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>an <code>errorURL</code> attribute containing an https URL resolving to an HTML page suitable for referral by SPs in the event they receive insufficient attributes from the IdP to proceed</p>
 </li>
 </ul>
 </div>
@@ -2673,7 +2696,7 @@ on behalf of other proxies in the chain.</em></p>
 <p><a id="SAML2Assur"></a>[SAML2Assur] OASIS Committee Specification, SAML V2.0 Identity Assurance Profiles Version 1.0,  November 2010. <a href="http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-assurance-profile.pdf" class="bare">http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-assurance-profile.pdf</a></p>
 </li>
 <li>
-<p><a id="SAML2SubjId"></a>[SAML2SubjId] OASIS Committee Draft, SAMLV2.0 Subject Identifier Attributes Profile Version 1.0, September 2018. <a href="http://docs.oasis-open.org/security/saml-subject-id-attr/v1.0/csprd03/saml-subject-id-attr-v1.0-csprd03.pdf" class="bare">http://docs.oasis-open.org/security/saml-subject-id-attr/v1.0/csprd03/saml-subject-id-attr-v1.0-csprd03.pdf</a></p>
+<p><a id="SAML2SubjId"></a>[SAML2SubjId] OASIS Committee Specification, SAMLV2.0 Subject Identifier Attributes Profile Version 1.0, January 2019. <a href="https://docs.oasis-open.org/security/saml-subject-id-attr/v1.0/cs01/saml-subject-id-attr-v1.0-cs01.pdf" class="bare">https://docs.oasis-open.org/security/saml-subject-id-attr/v1.0/cs01/saml-subject-id-attr-v1.0-cs01.pdf</a></p>
 </li>
 <li>
 <p><a id="SAML2ASLO"></a>[SAML2ASLO] OASIS Committee Specification, SAML V2.0 Asynchronous Single Logout Profile Extension Version 1.0, November 2012. <a href="http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf" class="bare">http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf</a></p>
@@ -2738,7 +2761,7 @@ on behalf of other proxies in the chain.</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-30 20:24:54 UTC
+Last updated 2019-02-06 19:32:54 UTC
 </div>
 </div>
 </body>
