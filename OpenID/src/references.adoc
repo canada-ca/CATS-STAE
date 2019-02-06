@@ -6,8 +6,8 @@
 
 - [[[RFC2119]]] IETF RFC 2119, Key words for use in RFCs to Indicate Requirement Levels, March 1997. http://www.ietf.org/rfc/rfc2119.txt
 - [[[RFC8174]]] IETF RFC 8174, Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words, May 2017. http://www.ietf.org/rfc/rfc8174.txt
-- [[[iGov-OIDC]]] OpenID Foundation, International Government Assurance Profile (iGov) for OpenID Connect 1.0 - Draft 03, October 2018, https://openid.bitbucket.io/iGov/openid-igov-profile-id1.html
-- [[[iGov-OAuth]]] OpenID Foundation, International Government Assurance Profile (iGov) for OAuth 2.0 - draft 01, September 2018, https://openid.bitbucket.io/iGov/openid-igov-oauth2-id1.html
+- [[[iGov-OIDC]]] OpenID Foundation, International Government Assurance Profile (iGov) for OpenID Connect 1.0 - Draft 03, October 2018, http://openid.net/specs/openid-igov-openid-connect-1_0-ID1.html
+- [[[iGov-OAuth]]] OpenID Foundation, International Government Assurance Profile (iGov) for OAuth 2.0 - Draft 03, October 2018, http://openid.net/specs/openid-igov-oauth2-1_0-ID1.html
 - [[[OIDC]]] OpenID Foundation, OpenID Connect Core 1.0 incorporating errata set 1, November 2014, https://openid.net/specs/openid-connect-core-1_0.html
 - [[[OIDC-BC]]] OpenID Foundation, OpenID Connect Back-Channel Logout 1.0 - draft 04, Jaqnuary 2017, https://openid.net/specs/openid-connect-backchannel-1_0.html
 - [[[OIDC-FC]]] OpenID Foundation, OpenID Connect Front-Channel Logout 1.0 - draft 02, January 2017, https://openid.net/specs/openid-connect-frontchannel-1_0.html
