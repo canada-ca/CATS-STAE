@@ -3,7 +3,7 @@
 # Clone the latest Kantara saml2iop sources
 echo -n "Obtaining the latest Kantara specifications..."
 if [[ -d ./Kantara ]] ; then
-   pushd ./Kantara/SAMLProfiles > /dev/null
+   pushd ./Kantara/SAMLprofiles > /dev/null
    git pull
    popd > /dev/null
 else
@@ -16,7 +16,7 @@ echo "Done"
 
 # Enumerate the upstream requirements files
 
-pushd ./Kantara/SAMLProfiles/edit/saml2int  > /dev/null
+pushd ./Kantara/SAMLprofiles/edit/saml2int  > /dev/null
 FILES=$(find . -name '*requirements.adoc' -print)
 popd > /dev/null
 
@@ -33,7 +33,7 @@ for spec in cred id ; do
     fi
 
     for FILE in $FILES ; do
-    ../../tools/merge.sh < ../../Kantara/SAMLProfiles/edit/saml2int/$FILE \
+    ../../tools/merge.sh < ../../Kantara/SAMLprofiles/edit/saml2int/$FILE \
                     > ../../merged/$FILE
     done
 
