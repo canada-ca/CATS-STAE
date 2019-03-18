@@ -34,14 +34,14 @@ for spec in cred id ; do
 
     for FILE in $FILES ; do
     ../../tools/merge.sh < ../../Kantara/SAMLprofiles/edit/saml2int/$FILE \
-                    > ../../merged/$FILE
+                    > ../../merged/$(cut -d "." -f2 <<< $FILE)-en.adoc
     done
 
     popd > /dev/null
 
     if [[ "$spec" = "id" ]] ; then # remove non-applicable sections
-      sed -i '/^==== Usability/,/^=== Metadata and Trust Management/{/^=== Metadata and Trust Management/b;d}' ./merged/sp_requirements.adoc
-      sed -i '/^=== Single Logout/,/^=== Metadata and Trust Management/{/^=== Metadata and Trust Management/b;d}' ./merged/idp_requirements.adoc
+      sed -i '/^==== Usability/,/^=== Metadata and Trust Management/{/^=== Metadata and Trust Management/b;d}' ./merged/sp_requirements-en.adoc
+      sed -i '/^=== Single Logout/,/^=== Metadata and Trust Management/{/^=== Metadata and Trust Management/b;d}' ./merged/idp_requirements-en.adoc
     fi
 
     echo "Done"
@@ -52,13 +52,13 @@ for spec in cred id ; do
     cp -R ./src/${spec}auth/images ../docs
     docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
     asciidoctor --source-dir SAML/src/${spec}auth --destination-dir docs \
-    -o saml2${spec}.html SAML/src/${spec}auth/main.adoc
+    -o saml2${spec}-en.html SAML/src/${spec}auth/main-en.adoc
 
     echo -n "Producing PDF..."
     docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
     asciidoctor-pdf --source-dir SAML/src/${spec}auth --destination-dir docs \
     -a pdf-stylesdir=./SAML/tools -a pdf-style=cats \
-    -o saml2${spec}.pdf SAML/src/${spec}auth/main.adoc
+    -o saml2${spec}-en.pdf SAML/src/${spec}auth/main-en.adoc
 
     echo "Done"
 done

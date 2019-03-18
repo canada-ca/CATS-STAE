@@ -26,7 +26,7 @@ function endRequirement() {
 }
 
 declare -A applicable
-source ./applicable.dat
+source ./applicable-en.dat
 
 REQUIREMENT=
 while read SOURCE_LINE; do

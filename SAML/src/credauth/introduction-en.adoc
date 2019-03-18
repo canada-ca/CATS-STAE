@@ -42,5 +42,5 @@ Technical Committee (SSTC) of the Organization for the Advancement of Structured
 Information Standards (OASIS).
 
 .CATS Profile Building Blocks
-image::BuildingBlocks.png[]
+image::BuildingBlocks-en.png[]
 

@@ -39,4 +39,4 @@ OpenID Connect Back Channel <<OIDC-BC>> and Front Channel <<OIDC-FC>> Logout
 specifications are leveraged to support session termination.
 
 .CATS Profile Building Blocks
-image::BuildingBlocks.png[]
+image::BuildingBlocks-en.png[]

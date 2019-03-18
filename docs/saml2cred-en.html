@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
-<title>Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Identity Authentication (Draft)</title>
+<title>Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Credential Authentication (Draft)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,7 +432,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Identity Authentication (Draft)</h1>
+<h1>Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Credential Authentication (Draft)</h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2019-02-06</p>
+<p>2019-03-18</p>
 </td>
 </tr>
 <tr>
@@ -476,7 +476,7 @@ Status
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_of_the_cats_saml_2_0_deployment_profile_for_identity_authentication">1.1. Overview of the CATS SAML 2.0 Deployment Profile for Identity Authentication</a></li>
+<li><a href="#_overview_of_the_cats_saml_2_0_deployment_profile_for_credential_authentication">1.1. Overview of the CATS SAML 2.0 Deployment Profile for Credential Authentication</a></li>
 </ul>
 </li>
 <li><a href="#_notation_and_terminology">2. Notation and Terminology</a>
@@ -485,7 +485,7 @@ Status
 <li><a href="#_terminology">2.2. Terminology</a></li>
 </ul>
 </li>
-<li><a href="#_compliance_to_the_cats_saml_2_0_deployment_profiles">3. Compliance to the CATS SAML 2.0 Deployment Profiles</a></li>
+<li><a href="#_compliance_to_the_cats_saml_2_0_deployment_profile">3. Compliance to the CATS SAML 2.0 Deployment Profile</a></li>
 <li><a href="#_common_requirements">4. Common Requirements</a>
 <ul class="sectlevel2">
 <li><a href="#_general">4.1. General</a></li>
@@ -496,15 +496,17 @@ Status
 <li><a href="#_sp_requirements">5. SP Requirements</a>
 <ul class="sectlevel2">
 <li><a href="#_web_browser_sso">5.1. Web Browser SSO</a></li>
-<li><a href="#_metadata_and_trust_management_2">5.2. Metadata and Trust Management</a></li>
-<li><a href="#_cats_specific_requirements">5.3. CATS-Specific Requirements</a></li>
+<li><a href="#_single_logout">5.2. Single Logout</a></li>
+<li><a href="#_metadata_and_trust_management_2">5.3. Metadata and Trust Management</a></li>
+<li><a href="#_cats_specific_requirements">5.4. CATS-Specific Requirements</a></li>
 </ul>
 </li>
 <li><a href="#_idp_requirements">6. IdP Requirements</a>
 <ul class="sectlevel2">
 <li><a href="#_web_browser_sso_2">6.1. Web Browser SSO</a></li>
-<li><a href="#_metadata_and_trust_management_4">6.2. Metadata and Trust Management</a></li>
-<li><a href="#_cats_specific_requirements_2">6.3. CATS-Specific Requirements</a></li>
+<li><a href="#_single_logout_2">6.2. Single Logout</a></li>
+<li><a href="#_metadata_and_trust_management_3">6.3. Metadata and Trust Management</a></li>
+<li><a href="#_cats_specific_requirements_2">6.4. CATS-Specific Requirements</a></li>
 </ul>
 </li>
 <li><a href="#_cats_specific_proxy_requirements">7. CATS-Specific Proxy Requirements</a></li>
@@ -538,25 +540,34 @@ which actual deployments may be tested. This document provides a
 deployment profile for use by members of the Sign in Canada federation.</p>
 </div>
 <div class="sect2">
-<h3 id="_overview_of_the_cats_saml_2_0_deployment_profile_for_identity_authentication">1.1. Overview of the CATS SAML 2.0 Deployment Profile for Identity Authentication</h3>
+<h3 id="_overview_of_the_cats_saml_2_0_deployment_profile_for_credential_authentication">1.1. Overview of the CATS SAML 2.0 Deployment Profile for Credential Authentication</h3>
 <div class="paragraph">
-<p>This deployment profile of SAML 2.0 supports one of the six
-trusted processes that make up the Verified Person Component of the Pan-Canadian
-Trust Framework <a href="#PCTF">[PCTF]</a>:</p>
+<p>This deployment profile of SAML 2.0 supports three of the eight trusted
+processes that make up the Verified Login Component of the Pan-Canadian Trust
+Framework <a href="#PCTF">[PCTF]</a>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Identity Verification</strong> is the confirmation that the identity information being
-presented relates to the person who is making the claim.</p>
+<p><strong>Authentication</strong> establishes the confidence, or Level of Assurance, that a
+Subject has control over their issued credential and that the credential is
+currently valid (i.e., not suspended or revoked).</p>
+</li>
+<li>
+<p><strong>Authentication Session Initiation</strong> enables a persistent interaction between a
+Subject and an end-point, such as a CSP or RP, while removing the need to
+continuously repeat the authentication process between interactions.</p>
+</li>
+<li>
+<p><strong>Authentication Session Termination</strong> an explicit logout event, session
+expiration due to inactivity or maximum duration, or other means.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>A companion profile, <a href="#CATS-SAML2Cred">[CATS-SAML2Cred]</a>, can be used in tandem with this
-profile. <a href="#CATS-SAML2Cred">[CATS-SAML2Cred]</a> supports <strong>Authentication</strong>, <strong>Authentication Session
-Initiation</strong>, and <strong>Authentication Session Terminiation</strong>, three of the trusted
-processes that make up the Verified Login component of the <a href="#PCTF">[PCTF]</a>.</p>
+<p>A companion profile, <a href="#CATS-SAML2Id">[CATS-SAML2Id]</a>, can be used in tandem with this profile.
+<a href="#CATS-SAML2Id">[CATS-SAML2Id]</a> supports <strong>Identity Verification</strong>, one of the trusted processes
+that make up the Verified Person component of the <a href="#PCTF">[PCTF]</a>.</p>
 </div>
 <div class="paragraph">
 <p>This deployment profile is based on the draft SAML V2.0 Interoperability
@@ -567,7 +578,7 @@ Information Standards (OASIS).</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/BuildingBlocks.png" alt="BuildingBlocks">
+<img src="images/BuildingBlocks-en.png" alt="BuildingBlocks en">
 </div>
 <div class="title">Figure 1. CATS Profile Building Blocks</div>
 </div>
@@ -665,20 +676,6 @@ Protocol Extension specification <a href="#SAML2ASLO">[SAML2ASLO]</a>, the follo
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>When referring to attributes from the W3C XML Schema Definition Language
-<a href="#XMLSchema">[XMLSchema]</a>, the following syntax is used:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>xs:Attribute</code> - for attributes from the schema namespace</p>
-</li>
-<li>
-<p><code>xsi:Atribute</code> - for attributes from the schema instance namespace</p>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_terminology">2.2. Terminology</h3>
@@ -762,7 +759,7 @@ trust relationships and standards to support interoperability.</p>
 </dd>
 <dt class="hdlist1">Relying Party (RP)</dt>
 <dd>
-<p>A federation member who relies on assurances of identity
+<p>A federation member who relies on assurances of credential
 from other federation members (i.e. “Authoritative Parties”).</p>
 </dd>
 <dt class="hdlist1">Sign in Canada Acceptance Platform</dt>
@@ -799,15 +796,15 @@ represents, and unnecessary to do so for the purposes of this document.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_compliance_to_the_cats_saml_2_0_deployment_profiles">3. Compliance to the CATS SAML 2.0 Deployment Profiles</h2>
+<h2 id="_compliance_to_the_cats_saml_2_0_deployment_profile">3. Compliance to the CATS SAML 2.0 Deployment Profile</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The requirements specified are in addition to all normative requirements of the
-underlying Web Browser SSO profile <a href="#SAML2Prof">[SAML2Prof]</a>, as modified by the Approved
-Errata <a href="#SAML2Err">[SAML2Err]</a>, and readers are assumed to be familiar with all relevant
-reference documents. Any such requirements are not repeated here except where
-deemed necessary to highlight a point of discussion or draw attention to an
-issue addressed in errata, but remain implied.</p>
+underlying Web Browser SSO and Single Logout profiles <a href="#SAML2Prof">[SAML2Prof]</a>, as modified
+by the Approved Errata <a href="#SAML2Err">[SAML2Err]</a>, and readers are assumed to be familiar with
+all relevant reference documents. Any such requirements are not repeated here
+except where deemed necessary to highlight a point of discussion or draw
+attention to an issue addressed in errata, but remain implied.</p>
 </div>
 <div class="paragraph">
 <p>Note that SAML features that are optional, or lack mandatory processing rules,
@@ -963,21 +960,7 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>Deployments MUST NOT use SAML metadata to provision their behaviour in the
-following areas:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>determination of the trustworthiness of TLS client and server certificates</p>
-</li>
-<li>
-<p>determination of subject identifier SAML Attribute(s) to provide</p>
-</li>
-</ul>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -994,12 +977,7 @@ following areas:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>Consumption of metadata by the Sign in Canada acceptance platform and all
-deployments federating with it MUST be contingent on verification of a
-signature applied by Shared Services Canada.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="sect4">
@@ -1045,12 +1023,7 @@ signature applied by Shared Services Canada.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>Deployments federating with the Sign in Canada acceptance platform MUST
-provide their metadata to Shared Services Canada who performs third-party
-validation, curation, signing, and publishing of metadata.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="sect4">
@@ -1085,54 +1058,7 @@ validation, curation, signing, and publishing of metadata.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>Deployments owned by Government of Canada departments and agencies MUST use
-X.509 certificates issued by the Government Shared Services (GSS) Certificate
-Authority for signing and encryption of SAML messages.</p>
-</div>
-<div class="paragraph">
-<p>X.509 certificates used for TLS server authentication MUST be issued by a
-certificate authority that is recognized by all of the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.apple.com/certificateauthority/ca_program.html">The Apple Trusted Root Certificate Program</a></p>
-</li>
-<li>
-<p><a href="http://www.oracle.com/technetwork/java/javase/javasecarootcertsprogram-1876540.html">The Java Trusted Root Certificate Program</a></p>
-</li>
-<li>
-<p><a href="https://technet.microsoft.com/en-ca/library/cc751157.aspx">The Microsoft Trusted Root Certificate Program</a></p>
-</li>
-<li>
-<p><a href="https://wiki.mozilla.org/CA">The Mozilla Trusted Root Certificate Program</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Deployments MUST NOT accept expired certificates.</p>
-</div>
-<div class="paragraph">
-<p>Deployments SHOULD NOT perform runtime path validation or revocation checking of
-X.509 certificates used for signing or encryption of SAML messages.</p>
-</div>
-<div class="paragraph">
-<p><em>Using revocation checking mechanisms such as certificate revocation lists
-(CRLs) and the Online Certificate Status Protocol (OCSP) during runtime creates
-a dependency that can reduce the availability of a deployment. In the event of a
-private key compromise, Shared Services Canada will revoke the affected
-deployment&#8217;s SAML metadata.</em></p>
-</div>
-<div class="paragraph">
-<p>Deployments MUST perform path validation and check the revocation status of
-X.509 certificates used for TLS server authentication.</p>
-</div>
-<div class="paragraph">
-<p><em>This profile does not contain any requirement for using TLS client
-authentication.</em></p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1174,13 +1100,7 @@ authentication.</em></p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>The metadata of IdPs and SPs MUST contain at least one signing certificate with
-the <code>use</code> attribute set to <code>signing</code>. The metadata of SPs MUST contain at
-least one encryption certificate with the <code>use</code> attribute set to
-<code>encryption</code>.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
@@ -1197,10 +1117,7 @@ least one encryption certificate with the <code>use</code> attribute set to
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>Metadata MAY include a <code>&lt;mdui:UIInfo&gt;</code> element with any child elements.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1333,23 +1250,7 @@ least one encryption certificate with the <code>use</code> attribute set to
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>IdP deployments MUST also support the use of
-<code><a href="http://www.w3.org/2001/04/xmlenc#aes128-cbc" class="bare">http://www.w3.org/2001/04/xmlenc#aes128-cbc</a></code> <a href="#XMLEnc">[XMLEnc]</a> to encrypt Assertions
-for any SP that has specified this algorithm in its metadata.</p>
-</div>
-<div class="paragraph">
-<p>The use of block encryption algorithms using the Galois/Counter Mode (GCM) mode
-of option is RECCOMMENDED for SP deployments, however
-<code><a href="http://www.w3.org/2001/04/xmlenc#aes128-cbc" class="bare">http://www.w3.org/2001/04/xmlenc#aes128-cbc</a></code> MAY be used if the SP software
-does not support GCM algorithms.</p>
-</div>
-<div class="paragraph">
-<p><em>As per <a href="#ITSP.40.111">[ITSP.40.111]</a>, these encryption and signature algorithms are approved
-for use to protect the confidentiality of PROTECTED A and PROTECTED B
-information and the integrity of information to the medium injury level.</em></p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div style="page-break-after: always;"></div>
@@ -1424,15 +1325,7 @@ information and the integrity of information to the medium injury level.</em></p
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p><code>&lt;samlp:NameIDPolicy&gt;</code> MAY contain a <code>Format</code> attribute, in which case its value
-MUST be <code>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</code>.</p>
-</div>
-<div class="paragraph">
-<p><em>Service providers can use the <code>Format</code> attribute to signal to the IdP that it
-is requesting identity authentication and not credential authentication.</em></p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1487,29 +1380,7 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>SP deployments MUST include <code>&lt;samlp:RequestedAuthnContext&gt;</code>. The optional
-<code>Comparison</code> attribute MAY be included, in which case it MUST have the value
-<code>exact</code>.</p>
-</div>
-<div class="paragraph">
-<p>The <code>&lt;samlp:RequestedAuthnContext&gt;</code> MUST include a Level of Assurance as
-specified in <a href="#SAML2Assur">[SAML2Assur]</a>.</p>
-</div>
-<div class="paragraph">
-<p>The SP MAY indicate a willingness to accept more than one level of assurance, by
-including multiple <code>&lt;samlp:RequestedAuthnContext&gt;</code> elements.</p>
-</div>
-<div class="paragraph">
-<p><em>This is useful when a certain minimum level of assurance is required, but the
-SP is willing to accept a higher level of assurance.</em></p>
-</div>
-<div class="paragraph">
-<p><em>The AuthnContext Schema for the Sign in Canada levels of assurance are
-published at
-<a href="https://github.com/canada-ca/CATS-STAE/tree/master/SAML/src/schemas" class="bare">https://github.com/canada-ca/CATS-STAE/tree/master/SAML/src/schemas</a>.</em></p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
@@ -1543,10 +1414,7 @@ published at
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>TLS MUST be configured according to <a href="#ITSP.40.062">[ITSP.40.062]</a>.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
@@ -1563,10 +1431,7 @@ published at
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>SPs MUST also support decryption of <code>&lt;saml:EncryptedAttribute&gt;</code> elements.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
@@ -1600,11 +1465,7 @@ published at
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>The response to such errors MUST direct users to appropriate support resources
-offered by the SP.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
@@ -1650,16 +1511,7 @@ offered by the SP.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>SP deployments MUST NOT use this profile for the persistent
-tracking/identification of users.</p>
-</div>
-<div class="paragraph">
-<p><em>Persistent identification of users is accomplished by binding an identiy,
-authenticated using this profile, to a credential, authenticated using
-the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
@@ -1776,15 +1628,337 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </div>
 </div>
 <div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Not Applicable</em></p>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="_usability">5.1.5. Usability</h4>
+<div class="paragraph">
+<p>Silo-oriented, multi-tenant approaches to federated application deployment create an inherent friction with the intended design of the web, user behavior and experience, and the needs of collaboration inherent in many applications. SSO, when integrated poorly, can negatively impact usability, and the following sections, while not strictly matters of SAML interoperability, have a significant effect on the perception of the system as a whole and on the successful adoption of SSO, regardless of the protocol.</p>
+</div>
+<div class="paragraph">
+<p>The web inherently operates on the basis of <em>addressability</em> of resources; that is, users expect to be able to access a piece of information or an application function directly, without regard for their identity, current level of access, or what is convenient for an application developer to support. This leads naturally to the ability to create bookmarks to what matters to them, and users will consistently route around attempts to force them through proxies, portals, and other artificial access paths.</p>
+</div>
+<div class="paragraph">
+<p>At a high level, these issues fall under the term <code>deep linking</code>.</p>
+</div>
+<div class="paragraph">
+<p>For a wide range of applications in the collaborative space, this notion is not merely convenient, but utterly essential, because such applications presume the sharing of resources with peers between organizations.</p>
+</div>
+<div class="paragraph">
+<p>For the purposes of the following requirements, we will refer to applications that rely on the exposure of resource URLs that may be shared between users from multiple organizations as "collaborative" applications, even if their purpose may not specifically align with that term.</p>
+</div>
+<div class="sect4">
+<h5 id="_support_for_multiple_idps">5.1.5.1. Support for Multiple IdPs</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP20]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>SPs MUST allow for the possibility that any given request requiring authentication may be potentially satisfied by more than one IdP. That is, any scenario in which a piece of content, policy, configuration, or decision on the part of an application is bound to an IdP MUST be constructed in a fashion such that more than one IdP may be so bound.</p>
+</div>
+<div class="paragraph">
+<p><em>This requirement flows from both the inherent requirements of collaborative applications described above, and from the simple reality that enterprises vary in their structure. Some organizations rely on more than one IdP due to administrative boundaries, but frequently contract for or access services as a single body. Thus, any presumed mapping between a contract or set of access policies and a single SAML IdP is too constraining. This constraint imposes a need for complex proxying of SSO by many organizations and SPs are cautioned to avoid it.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+<div class="sect4">
+<h5 id="_deep_linking">5.1.5.2. Deep Linking</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP21]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Applications SHOULD, and collaborative applications MUST, support deep linking. Deep linking implies maintaining support for such links across the boundary of a Web Browser SSO profile interaction involving any IdP necessary to complete the login process.</p>
+</div>
+<div class="paragraph">
+<p><em>It should be possible to request a resource and (authorization permitting) have it supplied as the result of a successful Web Browser SSO profile exchange.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP22]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>It is RECOMMENDED that SPs support the preservation of POST bodies across a successful SSO profile exchange, subject to size limitations dictated by policy or implementation constraints.</p>
+</div>
+<div class="paragraph">
+<p><em>Deep linking implies support for SP-initiated SSO, i.e., the direct generation of authentication request messages in response to unauthenticated or insufficiently-authenticated access attempts to an application as a whole, or to specific protected content. Deep linking may co-exist with support for unsolicited responses (so-called IdP-initiated SSO), but precludes its requirement.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+<div class="sect4">
+<h5 id="_discovery">5.1.5.3. Discovery</h5>
+<div class="paragraph">
+<p>Deep linking also implies support for some form of IdP "discovery", the process by which an SP establishes which IdP to use on behalf of a subject. Use of IdP-initiated SSO is a common workaround for supporting discovery, but cannot be required if deep linking is supported, in addition to having other drawbacks.</p>
+</div>
+<div class="paragraph">
+<p>A common means of discovery is the mapping of resource/application URL (typically virtual host, sometimes path) to a specific IdP. This is strongly discouraged, and is disallowed for collaborative applications, since it makes the sharing of URLs between users from multiple organizations impossible (or at best highly inconvenient).</p>
+</div>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP23]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>SPs SHOULD support the Identity Provider Discovery Service Protocol and Profile defined in <a href="#IdPDisco">[IdPDisco]</a> as it provides a general, composable building block. SPs are free to support other mechanisms and caching solutions (e.g., cookies) as desired, to reduce the frequency of discovery.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_single_logout">5.2. Single Logout</h3>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP24]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>SPs MAY support the Single Logout Profile <a href="#SAML2Prof">[SAML2Prof]</a>, as updated by the Approved Errata <a href="#SAML2Err">[SAML2Err]</a>. The following requirements apply in the case of such support.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="_requests_2">5.2.1. Requests</h4>
+<div class="sect4">
+<h5 id="_binding_3">5.2.1.1. Binding</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP25]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The HTTP-Redirect binding <a href="#SAML2Bind">[SAML2Bind]</a> MUST be used for the transmission of <code>&lt;samlp:LogoutRequest&gt;</code> messages.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP26]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>SPs MUST support the HTTP-Redirect <a href="#SAML2Bind">[SAML2Bind]</a> binding for the receipt of <code>&lt;samlp:LogoutRequest&gt;</code> messages, in the event that inbound <code>&lt;samlp:LogoutRequest&gt;</code> messages are supported.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP27]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Requests MUST NOT be issued inside an HTML frame or via any mechanism that would require the use of third-party cookies by the IdP to establish or recover a session with the User Agent. This will typically imply that requests must involve a full-frame redirect, in order that the top level window origin be associated with the IdP.</p>
+</div>
+<div class="paragraph">
+<p><em>The full-frame requirement is also necessary to ensure that full control of the user interface is released to the IdP.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+<div class="sect4">
+<h5 id="_request_content_2">5.2.1.2. Request Content</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP28]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Requests MUST be signed (via a signature created in accordance with the HTTP-Redirect binding [SAML2Bind]).</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP29]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>&lt;saml:NameID&gt;</code> element included in <code>&lt;samlp:LogoutRequest&gt;</code> messages MUST exactly match the corresponding element received from the IdP, including its element content and all XML attributes included therein.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP30]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>&lt;saml:NameID&gt;</code> element in <code>&lt;samlp:LogoutRequest&gt;</code> messages MUST NOT be encrypted.</p>
+</div>
+<div class="paragraph">
+<p><em>The normative requirement for the use of transient identifiers is intended to obviate the need for XML Encryption.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_responses_2">5.2.2. Responses</h4>
+<div class="sect4">
+<h5 id="_binding_4">5.2.2.1. Binding</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP31]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The HTTP-Redirect binding <a href="#SAML2Bind">[SAML2Bind]</a> MUST be used for the transmission of <code>&lt;samlp:LogoutResponse&gt;</code> messages.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP32]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>SPs MUST support the HTTP-Redirect <a href="#SAML2Bind">[SAML2Bind]</a> binding for the receipt of <code>&lt;samlp:LogoutResponse&gt;</code> messages, in the event that they do not include the <code>&lt;aslo:Asynchronous&gt;</code> extension <a href="#SAML2ASLO">[SAML2ASLO]</a> in all of their requests.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+<div class="sect4">
+<h5 id="_response_content">5.2.2.2. Response Content</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP33]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Responses MUST be signed (via a signature created in accordance with the HTTP-Redirect binding [SAML2Bind]).</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_behavioral_requirements">5.2.3. Behavioral Requirements</h4>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP34]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>SPs MUST terminate a subject&#8217;s local session before issuing a <code>&lt;samlp:LogoutRequest&gt;</code> message to the IdP.</p>
+</div>
+<div class="paragraph">
+<p><em>This ensures the safest possible result for subjects in the event that logout fails for some reason, as it often will.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP35]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>SPs MUST NOT issue a <code>&lt;samlp:LogoutRequest&gt;</code> message as the result of an idle activity timeout.</p>
+</div>
+<div class="paragraph">
+<p><em>Timeout of a single application/service must not trigger logout of an SSO session because this imposes a single service&#8217;s requirements on an entire IdP deployment. Applications with sensitive requirements should consider other mechanisms, such as the <code>ForceAuthn</code> attribute, to achieve their goals.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="_logout_and_virtual_hosting">5.2.4. Logout and Virtual Hosting</h4>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP36]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>An SP that maintains distinct sessions across multiple virtual hosts SHOULD identify itself by means of a distinct entityID (with associated metadata) for each virtual host.</p>
+</div>
+<div class="paragraph">
+<p><em>A single entity can have only one well-defined <code>&lt;SingleLogoutService&gt;</code> endpoint per binding. Cookies are typically host-based and logout cannot typically be implemented easily across virtual hosts. Unlike during SSO, a <code>&lt;samlp:LogoutRequest&gt;</code> message cannot specify a particular response endpoint, so this scenario is generally not viable.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
 <p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_metadata_and_trust_management_2">5.2. Metadata and Trust Management</h3>
+<h3 id="_metadata_and_trust_management_2">5.3. Metadata and Trust Management</h3>
 <div class="sect3">
-<h4 id="_support_for_multiple_keys">5.2.1. Support for Multiple Keys</h4>
+<h4 id="_support_for_multiple_keys">5.3.1. Support for Multiple Keys</h4>
 <div class="paragraph">
 <p>The ability to perform seamless key migration depends upon proper support for consuming and/or leveraging multiple keys at the same time.</p>
 </div>
@@ -1799,10 +1973,7 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>SP deployments SHOULD support multiple signing certificates in IdP metadata.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1816,15 +1987,12 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>SP deployments SHOULD support multiple decryption keys.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
 <div class="sect3">
-<h4 id="_metadata_content">5.2.2. Metadata Content</h4>
+<h4 id="_metadata_content">5.3.2. Metadata Content</h4>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-SP39]</em></strong></p>
 </div>
@@ -1882,61 +2050,20 @@ the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>The metadata of SPs MUST contain at least one signing certificate with
-the <code>use</code> attribute set to <code>signing</code> and at least one encryption certificate
-with the <code>use</code> attribute set to <code>encryption</code>.</p>
-</div>
-<div class="paragraph">
-<p>SP metadata MAY include an <code>&lt;md:Extensions&gt;</code> element containing an
-<code>&lt;mdui:UIInfo&gt;</code> extension element, but it MUST NOT include an
-<code>&lt;mdattr:EntityAttributes&gt;</code> extension element.</p>
-</div>
-<div class="paragraph">
-<p>The <code>&lt;md:SPSSODescriptor&gt;</code> element of an SP&#8217;s metadata MUST also include an
-<code>AuthnRequestsSigned</code> attribute set to <code>true</code> or <code>1</code> and a
-<code>WantAssertionsSigned</code> attribute set to <code>true</code> or <code>1</code>.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cats_specific_requirements">5.3. CATS-Specific Requirements</h3>
+<h3 id="_cats_specific_requirements">5.4. CATS-Specific Requirements</h3>
 <div class="sect3">
-<h4 id="_authentication_request_signing">5.3.1. Authentication Request Signing</h4>
+<h4 id="_authentication_request_signing">5.4.1. Authentication Request Signing</h4>
 <div class="paragraph">
-<p><strong>[CIP-SP01]</strong></p>
+<p><strong>[CDP-SP01]</strong></p>
 </div>
 <div class="paragraph">
 <p><code>&lt;samlp:AuthnRequest&gt;</code> messages MUST be signed using the SHA-256 algorithm.</p>
-</div>
-<div class="paragraph">
-<p><strong>[CIP-SP02]</strong></p>
-</div>
-<div class="paragraph">
-<p><code>&lt;samlp:AuthnRequest&gt;</code> messages SHOULD NOT include an <code>isPassive</code> attribute. If
-the SP implementation is unable to omit the <code>isPassive</code> attribute then it MUST
-have a value of  <code>false</code> or <code>0</code>.</p>
-</div>
-<div class="paragraph">
-<p><em>In all cases of identity authentication, the IdP must interact with the
-end-user in order to obtain their informed consent.</em></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_metadata_and_trust_management_3">5.3.2. Metadata and Trust Management</h4>
-<div class="paragraph">
-<p><strong>[CIP-SP03]</strong></p>
-</div>
-<div class="paragraph">
-<p>The <code>&lt;md:SPSSODescriptor&gt;</code> element of SP metadata MUST contain at least one
-<code>&lt;md:AttributeConsumingService&gt;</code> element that specifies the attributes required
-or desired by the relying party. <code>&lt;md:AttributeConsumingService&gt;</code> MUST include
-two <code>&lt;md:ServiceName&gt;</code> elements, one in english and one in french.
-<code>&lt;md:ServiceDescription&gt;</code>, if present, MUST also be included for both english
-and french.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1966,9 +2093,9 @@ and french.</p>
 </div>
 <hr>
 <div class="sect3">
-<h4 id="_requests_2">6.1.1. Requests</h4>
+<h4 id="_requests_3">6.1.1. Requests</h4>
 <div class="sect4">
-<h5 id="_binding_3">6.1.1.1. Binding</h5>
+<h5 id="_binding_5">6.1.1.1. Binding</h5>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP02]</em></strong></p>
 </div>
@@ -1994,10 +2121,7 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>TLS MUST be configured according to <a href="#ITSP.40.062">[ITSP.40.062]</a>.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
@@ -2077,9 +2201,9 @@ and french.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_responses_2">6.1.2. Responses</h4>
+<h4 id="_responses_3">6.1.2. Responses</h4>
 <div class="sect4">
-<h5 id="_binding_4">6.1.2.1. Binding</h5>
+<h5 id="_binding_6">6.1.2.1. Binding</h5>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP08]</em></strong></p>
 </div>
@@ -2096,7 +2220,7 @@ and french.</p>
 <hr>
 </div>
 <div class="sect4">
-<h5 id="_response_content">6.1.2.2. Response Content</h5>
+<h5 id="_response_content_2">6.1.2.2. Response Content</h5>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP09]</em></strong></p>
 </div>
@@ -2108,7 +2232,7 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Needs Discussion</em></p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2122,19 +2246,7 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>The assertion within the response MUST be directly signed.</p>
-</div>
-<div class="paragraph">
-<p>The <code>&lt;saml:AuthnStatement&gt;</code> MUST include exactly one <code>&lt;saml:AuthnContext&gt;</code>
-element that specifies the level of assurance <a href="#SAML2Assur">[SAML2Assur]</a>
-to which the subject was authenticated.</p>
-</div>
-<div class="paragraph">
-<p>The <code>&lt;saml:Assertion&gt;</code> MUST contain exactly one <code>&lt;saml:AttributeStatement&gt;</code>
-element.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2151,13 +2263,7 @@ element.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>Attributes contained in responses sent to a proxying identity provider that
-contain personal information intended for the use of a proxied service provider
-SHOULD be further encrypted for the proxied SP via the
-<code>&lt;saml:EncryptedAttribute&gt;</code> construct.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
@@ -2175,13 +2281,7 @@ SHOULD be further encrypted for the proxied SP via the
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>Assertions MUST contain a <code>&lt;saml:NameID&gt;</code> element with the
-<code>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</code> Format for the purposes of
-interoperability. This profile does not implement session management constructs
-such as logout.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2195,10 +2295,7 @@ such as logout.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>IdP deployments MUST NOT implement <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2218,10 +2315,7 @@ such as logout.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>IdP deployments MUST NOT implement <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 <div class="sect4">
@@ -2289,10 +2383,7 @@ such as logout.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>See section 6.3.4: "Attributes".</p>
+<p><strong>CATS Support</strong>: <em>Not Applicable</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2309,7 +2400,7 @@ such as logout.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Not Applicable</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2329,9 +2420,190 @@ such as logout.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_metadata_and_trust_management_4">6.2. Metadata and Trust Management</h3>
+<h3 id="_single_logout_2">6.2. Single Logout</h3>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP21]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>IdPs MUST support the Single Logout Profile <a href="#SAML2Prof">[SAML2Prof]</a>, as updated by the Approved Errata <a href="#SAML2Err">[SAML2Err]</a>, with behavior, capabilities, and options consistent with the additional constraints specified in this section.</p>
+</div>
+<div class="paragraph">
+<p><em>The term "IdP session" is used to refer to the ongoing state between the IdP and its clients allowing for SSO. Support for logout implies supporting termination of a subject&#8217;s IdP session in response to receiving a <code>&lt;samlp:LogoutRequest&gt;</code> or upon some administrative signal.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP22]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>IdPs MAY allow a subject the option to maintain their IdP session rather than unilaterally terminating it.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP23]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>IdPs MAY support the propagation of logout signaling to SPs.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
 <div class="sect3">
-<h4 id="_support_for_multiple_keys_2">6.2.1. Support for Multiple Keys</h4>
+<h4 id="_requests_4">6.2.1. Requests</h4>
+<div class="sect4">
+<h5 id="_binding_7">6.2.1.1. Binding</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP24]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The HTTP-Redirect binding [SAML2Bind] MUST be used for the transmission of <code>&lt;samlp:LogoutRequest&gt;</code> messages, in the event that propagation is supported.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP25]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>IdPs MUST support the HTTP-Redirect [SAML2Bind] binding for the receipt of <code>&lt;samlp:LogoutRequest&gt;</code> messages.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_request_content_3">6.2.2. Request Content</h4>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP26]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Requests MUST be signed (via a signature created in accordance with the HTTP-Redirect binding [SAML2Bind]).</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP27]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>&lt;saml:NameID&gt;</code> element in <code>&lt;samlp:LogoutRequest&gt;</code> messages MUST NOT be encrypted.</p>
+</div>
+<div class="paragraph">
+<p><em>The normative requirement for the use of transient identifiers is intended to obviate the need for XML Encryption.</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="_responses_4">6.2.3. Responses</h4>
+<div class="sect4">
+<h5 id="_binding_8">6.2.3.1. Binding</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP28]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The HTTP-Redirect binding [SAML2Bind] MUST be used for the transmission of <code>&lt;samlp:LogoutResponse&gt;</code> messages.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP29]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>IdPs MUST support the HTTP-Redirect [SAML2Bind] binding for the receipt of <code>&lt;samlp:LogoutResponse&gt;</code> messages, in the event that <code>&lt;samlp:LogoutRequest&gt;</code> propagation is supported.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+<div class="sect4">
+<h5 id="_response_content_3">6.2.3.2. Response Content</h5>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP30]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Responses MUST be signed (via a signature created in accordance with the HTTP-Redirect binding [SAML2Bind]).</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP31]</em></strong></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>&lt;samlp:StatusCode&gt;</code> in the response issued by the IdP MUST reflect whether the IdP session was successfully terminated.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_metadata_and_trust_management_3">6.3. Metadata and Trust Management</h3>
+<div class="sect3">
+<h4 id="_support_for_multiple_keys_2">6.3.1. Support for Multiple Keys</h4>
 <div class="paragraph">
 <p>The ability to perform seamless key migration depends upon proper support for consuming and/or leveraging multiple keys at the same time.</p>
 </div>
@@ -2351,7 +2623,7 @@ such as logout.</p>
 <hr>
 </div>
 <div class="sect3">
-<h4 id="_metadata_content_2">6.2.2. Metadata Content</h4>
+<h4 id="_metadata_content_2">6.3.2. Metadata Content</h4>
 <div class="paragraph">
 <p><strong>Kantara Requirement</strong>: <strong><em>[SDP-IDP33]</em></strong></p>
 </div>
@@ -2409,33 +2681,15 @@ such as logout.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Constrained</em></p>
-</div>
-<div class="paragraph">
-<p>The <code>use</code> attribute of the <code>&lt;md:KeyDescriptor&gt;</code> element(s) MUST be set to
-<code>signing</code>.</p>
-</div>
-<div class="paragraph">
-<p>IdP metadata MUST NOT contain a <code>&lt;md:SingleLogoutService&gt;</code> endpoint element.</p>
-</div>
-<div class="paragraph">
-<p>IdP metadata MAY include an <code>&lt;md:Extensions&gt;</code> element containing an
-<code>&lt;mdui:UIInfo&gt;</code> extension element, but it MUST NOT include an
-<code>&lt;mdattr:EntityAttributes&gt;</code> extension element.</p>
-</div>
-<div class="paragraph">
-<p>IdP metadata SHOULD NOT include an <code>ErrorURL</code> attribute.</p>
-</div>
-<div class="paragraph">
-<p>IdP metadata MUST NOT contain a &lt;shibmd:Scope&gt; element.</p>
+<p><strong>CATS Support</strong>: <em>Supported</em></p>
 </div>
 <hr>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cats_specific_requirements_2">6.3. CATS-Specific Requirements</h3>
+<h3 id="_cats_specific_requirements_2">6.4. CATS-Specific Requirements</h3>
 <div class="sect3">
-<h4 id="_metadata_content_3">6.3.1. Metadata Content</h4>
+<h4 id="_metadata_content_3">6.4.1. Metadata Content</h4>
 <div class="paragraph">
 <p><strong>[CDP-IDP01]</strong></p>
 </div>
@@ -2446,9 +2700,9 @@ Identity Assurance Certification Attribute Profile <a href="#SAML2Assur">[SAML2A
 </div>
 </div>
 <div class="sect3">
-<h4 id="_responses_3">6.3.2. Responses</h4>
+<h4 id="_responses_5">6.4.2. Responses</h4>
 <div class="paragraph">
-<p><strong>[CIP-IDP01]</strong></p>
+<p><strong>[CDP-IDP02]</strong></p>
 </div>
 <div class="paragraph">
 <p>IdP deployments MUST support the issuance of <code>&lt;saml2p:Response&gt;</code> messages (with
@@ -2458,127 +2712,88 @@ remains available.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_security">6.3.3. Security</h4>
+<h4 id="_session_management_and_timeouts">6.4.3. Session Management and Timeouts</h4>
 <div class="paragraph">
-<p><strong>[CIP-IDP02]</strong></p>
+<p><strong>[CDP-IDP03]</strong></p>
+</div>
+<div class="paragraph">
+<p><code>&lt;saml:AuthnStatement&gt;</code> elements MUST NOT include a <code>SessionNotOnOrAfter</code>
+attribute.</p>
+</div>
+<div class="paragraph">
+<p><strong>[CDP-IDP04]</strong></p>
+</div>
+<div class="paragraph">
+<p>IdPs MUST NOT issue a <code>&lt;saml:Assertion&gt;</code> with an <code>IssueInstant</code> attribute value
+that exceeds the value of the <code>AuthnInstant</code> attribute of the included
+<code>&lt;saml:AuthnStatement&gt;</code> by more than 20 minutes.</p>
+</div>
+<div class="paragraph">
+<p><em>This effectively prohibits the passive fulfilment of authentication requests
+(single sign-on) for a subject after 20 minutes have passed since their
+most recent authentication event.</em></p>
+</div>
+<div class="paragraph">
+<p>Once 20 minutes have passed since the most recent authentication event,
+IDPs MUST issue a <code>&lt;saml:Repsonse&gt;</code> with a second-level <code>&lt;samlp:StatusCode&gt;</code> of
+<code>urn:oasis:names:tc:SAML:2.0:status:NoPassive</code> in response to any
+<code>&lt;samlp:AuthnRequest&gt;</code> with an <code>IsPassive</code> attribute value of <code>true</code> or <code>1</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>[CDP-IDP05]</strong></p>
+</div>
+<div class="paragraph">
+<p>IdPs participating as a session authority MUST include the <code>SessionIndex</code>
+attribute of <code>&lt;saml:AuthnStatement&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>[CDP-IDP06]</strong></p>
+</div>
+<div class="paragraph">
+<p>Once an IdP participating as a session authority has issued the first
+<code>&lt;saml:AuthnStatement&gt;</code> containing the <code>SessionIndex</code> for a new session, it MUST
+retain sufficient session state to successfully process <code>&lt;samlp:LogoutRequest&gt;</code>
+messages that specify a matching <code>&lt;samlp:SessionIndex&gt;</code> value for no less than 8
+hours.</p>
+</div>
+<div class="paragraph">
+<p><em>This ensures that the IdP will be able to propagate single-logout of a
+subject&#8217;s session for up to 8 hours after issuing the first assertion for that
+session.</em></p>
+</div>
+<div class="paragraph">
+<p>The IdP MAY retain this session state for longer than 8 hours.</p>
+</div>
+<div class="paragraph">
+<p>The IdP MAY discard all state associated with a <code>SessionIndex</code> after processing
+a <code>&lt;samlp:LogoutRequest&gt;</code> for the session.</p>
+</div>
+<div class="paragraph">
+<p><strong>[CDP-IDP07]</strong></p>
+</div>
+<div class="paragraph">
+<p>IdPs participating as a session authority MUST administratively perform a global
+logout of any current subject&#8217;s session whenever an authentication event within
+that session results in the authentication of a different subject.</p>
+</div>
+<div class="paragraph">
+<p><em>For example, say the IdP has issued the first <code>&lt;saml:AuthnStatement&gt;</code> for
+subject A within the last 8 hours, and subsequently receives a
+<code>&lt;samlp:AuthnRequest&gt;</code> from the same user agent triggering a new authentication
+event. If the end-user authenticates with a different credential (subject B)
+than the one originally used by subject A, then the IdP must peform a global
+logout of subject A&#8217;s session, before starting a new session for subject B.</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_security">6.4.4. Security</h4>
+<div class="paragraph">
+<p><strong>[CDP-IDP08]</strong></p>
 </div>
 <div class="paragraph">
 <p>The private keys of an IdPs signing certificates MUST be protected within the
 boundary of a FIPS 140-2 Level 2 or higher validated hardware cryptographic
 module.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_attributes_2">6.3.4. Attributes</h4>
-<div class="paragraph">
-<p><strong>[CIP-IDP03]</strong></p>
-</div>
-<div class="paragraph">
-<p>IdP deployments SHOULD prioritize the use of standard attribute
-name and definition profiles before defining custom attributes. Use of the
-following profiles are RECCOMENDED in descending order of preference:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The standard OpenID Connect claims defined in section 5.1 of <a href="#OIDC">[OIDC]</a>. (See
-<strong>[CIP-IDP05]</strong> below).</p>
-</li>
-<li>
-<p>The Identity Metasystem Interoperability claim types
-defined in section 7.5 of <a href="#IMI">[IMI]</a>.</p>
-</li>
-<li>
-<p>The SAML V2.0 X.500/LDAP Attribute Profile <a href="#X500SAMLattr">[X500SAMLattr]</a>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>[CIP-IDP04]</strong></p>
-</div>
-<div class="paragraph">
-<p>&lt;saml:Attribute&gt; elements MUST use a <code>NameFormat</code> value of either
-<code>urn:oasis:names:tc:SAML:2.0:attrname-format:basic</code> or
-<code>urn:oasis:names:tc:SAML:2.0:attrname-format:uri</code>.</p>
-</div>
-<div class="paragraph">
-<p><strong>[CIP-IDP05]</strong></p>
-</div>
-<div class="paragraph">
-<p>The name and value of  <code>&lt;saml:Attribute&gt;</code> elements with a <code>NameFormat</code> of
-<code>urn:oasis:names:tc:SAML:2.0:attrname-format:basic</code> MUST correspond to one of
-the standard claims defined in section 5.1 of <a href="#OIDC">[OIDC]</a> as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The value of the <code>Name</code> attribute of <code>&lt;saml:Attribute&gt;</code> must match the JSON
-member name in <a href="#OIDC">[OIDC]</a>.</p>
-</li>
-<li>
-<p>The <code>xsi:type</code> attribute of <code>&lt;saml:AttributeValue&gt;</code> must specify the XML
-Schema type that corresponds to the JSON type in <a href="#OIDC">[OIDC]</a>:</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 40%;">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">JSON Type</th>
-<th class="tableblock halign-left valign-top">XML Schema Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">xs:string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">xs:boolean</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">xs:decimal</p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>address</code> claim MUST NOT be used. <em>Refer to requirement <strong>[SDP-IDP18]</strong>.</em></p>
-</li>
-<li>
-<p>The following properties of the <code>address</code> claim MAY be used as standalone
-attributes:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>street_address</p>
-</li>
-<li>
-<p>locality</p>
-</li>
-<li>
-<p>region</p>
-</li>
-<li>
-<p>postal_code</p>
-</li>
-<li>
-<p>country</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The <code>formatted</code> member of the <code>address</code> claim SHOULD NOT be used.</p>
-</li>
-</ul>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -2589,47 +2804,58 @@ attributes:</p>
 <h2 id="_cats_specific_proxy_requirements">7. CATS-Specific Proxy Requirements</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>[CIP-PIP01]</strong></p>
+<p><strong>[CDP-PIP01]</strong></p>
 </div>
 <div class="paragraph">
 <p>Proxying Identity Provider deployments MUST support the mapping of incoming to
-outgoing <code>&lt;samlp:RequestedAuthnContext&gt;</code> elements, to pass through values or
-map between different vocabularies as required.</p>
+outgoing <code>&lt;saml:NameID&gt;</code> elements, to pass through values or map between
+different vocabularies as required.</p>
 </div>
 <div class="paragraph">
-<p><strong>[CIP-PIP02]</strong></p>
+<p><strong>[CDP-PIP02]</strong></p>
 </div>
 <div class="paragraph">
-<p>Proxying Identity Provider deployments MUST include at least one
-<code>&lt;samlp:RequesterID&gt;</code> element in the <code>&lt;samlp:Scoping&gt;</code> element of outgoing
-<code>&lt;samlp:AuthnRequest&gt;</code> messages that identifies the SP that originated the
-request.</p>
+<p>Proxying Identity Provider deployments MUST support the suppression/eliding of
+<code>&lt;saml:AttributeStatement&gt;</code> elements from the <code>&lt;saml:Assertion&gt;</code> of outgoing
+<code>&lt;samlp:Response&gt;</code> messages to allow for hiding the identity of the subject
+from SPs.</p>
 </div>
 <div class="paragraph">
-<p><em>Proxied Identity Providers must know the identity of the target relying party
-in order to obtain informed consent from the end-user.</em></p>
-</div>
-<div class="paragraph">
-<p><strong>[CIP-PIP03]</strong></p>
+<p><strong>[CDP-PIP03]</strong></p>
 </div>
 <div class="paragraph">
 <p>Proxying Identity Provider deployments MUST support the mapping of incoming to
-outgoing <code>&lt;saml:AuthnContext&gt;</code> elements as well as the generation of a new
-<code>&lt;saml:AuthnContext&gt;</code> element using information from other elements of the
-<code>&lt;saml:Assertion&gt;</code> (such as the <code>Issuer</code> or <code>&lt;saml:AttributeStatement&gt;</code>), to
-pass through values or map between different vocabularies as required.</p>
+outgoing <code>&lt;samlp:RequestedAuthnContext&gt;</code> and <code>&lt;samlp:NameIDPolicy&gt;</code> elements,
+to pass through values or map between different vocabularies as required.</p>
 </div>
 <div class="paragraph">
-<p><strong>[CIP-PIP04]</strong></p>
+<p><strong>[CDP-PIP04]</strong></p>
 </div>
 <div class="paragraph">
-<p>Proxying Identity Provider deployments MUST include at least one
-<code>&lt;saml:AuthenticatingAuthority&gt;</code> element in outgoing <code>&lt;saml:AuthnContext&gt;</code>
-elements to discolose the identity of the proxied Identity Provider to
+<p>Proxying Identity Provider deployments MUST support the suppression/eliding
+of <code>&lt;samlp:RequesterID&gt;</code> elements from outgoing <code>&lt;samlp:AuthnRequest&gt;</code> messages
+to allow for hiding the identity of the Service Provider from proxied Identity
+Providers.</p>
+</div>
+<div class="paragraph">
+<p><strong>[CDP-PIP05]</strong></p>
+</div>
+<div class="paragraph">
+<p>Proxying Identity Provider deployments MUST support the mapping of incoming to
+outgoing <code>&lt;saml:AuthnContext&gt;</code> elements, to pass through values or map between
+different vocabularies as required.</p>
+</div>
+<div class="paragraph">
+<p><strong>[CDP-PIP06]</strong></p>
+</div>
+<div class="paragraph">
+<p>Proxying Identity Provider deployments MUST support the suppression of
+<code>&lt;saml:AuthenticatingAuthority&gt;</code> elements from outgoing <code>&lt;saml:AuthnContext&gt;</code>
+elements to allow for hiding the identity of the proxied Identity Provider from
 Service Providers.</p>
 </div>
 <div class="paragraph">
-<p><strong>[CIP-PIP05]</strong></p>
+<p><strong>[CDP-PIP07]</strong></p>
 </div>
 <div class="paragraph">
 <p>Proxying Identity Provider deployments MUST support the use of a
@@ -2639,6 +2865,14 @@ and outgoing <code>&lt;samlp:AuthnRequest&gt;</code> messages.</p>
 <div class="paragraph">
 <p><em>This allows one proxy in a chain of proxies to provide IdP discovery services
 on behalf of other proxies in the chain.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>[CDP-PIP08]</strong></p>
+</div>
+<div class="paragraph">
+<p><code>&lt;samlp:AuthnRequest&gt;</code> messages produced by Proxying Identity Provider
+deployments MUST include the <code>ForceAuthn</code> attribute with a value of <code>true</code> or
+<code>1</code>.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -2719,16 +2953,6 @@ on behalf of other proxies in the chain.</em></p>
 <li>
 <p><a id="ITSP.40.062"></a>[ITSP.40.062] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. <a href="https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.062-eng_0.pdf" class="bare">https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.062-eng_0.pdf</a></p>
 </li>
-<li>
-<p><a id="OIDC"></a>[OIDC] OpenID Foundation, OpenID Connect Core 1.0 incorporating errata set 1. <a href="https://openid.net/specs/openid-connect-core-1_0.html" class="bare">https://openid.net/specs/openid-connect-core-1_0.html</a></p>
-</li>
-<li>
-<p><a id="IMI"></a>[IMI] OASIS Standard, Identity Metasystem Interoperability Version 1.0. <a href="http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf" class="bare">http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf</a></p>
-</li>
-<li>
-<p><a id="XMLSchema"></a>[XMLSchema] W3C Reccomendation, W3C XML Schema Language (XSD) 1.1 Part 1: Structures.
-<a href="http://www.w3.org/TR/xmlschema11-1/" class="bare">http://www.w3.org/TR/xmlschema11-1/</a></p>
-</li>
 </ul>
 </div>
 </div>
@@ -2737,7 +2961,7 @@ on behalf of other proxies in the chain.</em></p>
 <div class="ulist bibliography">
 <ul class="bibliography">
 <li>
-<p><a id="SAML2Cred"></a>[SAML2Cred] Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Credential Authentication. <a href="https://canada-ca.github.io/CATS-STAE/saml2cred.html" class="bare">https://canada-ca.github.io/CATS-STAE/saml2cred.html</a></p>
+<p><a id="CATS-SAML2Id"></a>[CATS-SAML2Id] - Treasury Board Canada Secretariat, CATS SAML 2.0 Deployment Profile for Identity Authentication. <a href="https://canada-ca.github.io/CATS-STAE/saml2id.html" class="bare">https://canada-ca.github.io/CATS-STAE/saml2id.html</a></p>
 </li>
 <li>
 <p><a id="PCTF"></a>[PCTF] Identity Management Subcomittee, Pan-Canadian Trust Framework.
@@ -2761,7 +2985,7 @@ on behalf of other proxies in the chain.</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-06 19:32:54 UTC
+Last updated 2019-03-18 14:10:34 UTC
 </div>
 </div>
 </body>
