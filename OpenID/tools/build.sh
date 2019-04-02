@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Publish to HTML and PDF
-touch ./src/main.adoc
+touch ./src/main-en.adoc
 echo -n "Producing HTML..."
 cp -R ./src/images ../docs
 docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
