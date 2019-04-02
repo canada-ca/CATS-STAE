@@ -8,7 +8,7 @@ one of their web sites or web applications.
 
  [English Version](main-en.md)
 
-### Translation
+## Translation
 
 During this drafting period, translation is being done manually and continuously
 by contributors as well as with the following tools and services:
@@ -29,7 +29,7 @@ envisagent d'ajouter l'aide à la connexion sociale à l'un de leurs sites Web o
 
 [version française](main-fr.md)
 
-### Traduction
+## Traduction
 
 Durant la période d'ébauche, la traduction du contenu est faite de façon
 manuelle et continuelle par les contributrices et les contributeurs ainsi
