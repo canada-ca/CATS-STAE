@@ -3,8 +3,8 @@
 # Social Login
 
 Government of Canada **draft** security, privacy and technical guidance to
-Government of Canada departments and agencies who are considering adding
-support for social login to one of their web sites or web applications.
+departments and agencies who are considering adding support for social login to
+one of their web sites or web applications.
 
  [English Version](main-en.md)
 
