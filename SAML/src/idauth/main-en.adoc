@@ -1,0 +1,49 @@
+= Cyber Authentication Technology Solutions: SAML 2.0 Deployment Profile for Identity Authentication (Draft)
+:numbered:
+:toc:
+:toc-placement: preamble
+:imagesdir: images
+:docinfo:
+:sectnumlevels: 4
+
+[horizontal]
+Version:: 3.x
+Date:: {docdate}
+Status:: Community Draft
+
+.Required Information
+Document identifier: TBD
+
+<<<
+include::introduction-en.adoc[]
+
+<<<
+include::notation-en.adoc[]
+
+<<<
+include::compliance-en.adoc[]
+
+<<<
+include::../../merged/common_requirements-en.adoc[]
+include::common_requirements-en.adoc[]
+
+<<<
+include::../../merged/sp_requirements-en.adoc[]
+include::sp_requirements-en.adoc[]
+
+<<<
+
+include::../../merged/idp_requirements-en.adoc[]
+include::idp_requirements-en.adoc[]
+
+<<<
+
+include::proxy_requirements-en.adoc[]
+
+<<<
+
+include::references-en.adoc[]
+
+<<<
+
+include::contributors-en.adoc[]
