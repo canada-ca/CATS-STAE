@@ -47,7 +47,7 @@ for spec in cred id ; do
     echo "Done"
 
     # Publish to HTML and PDF
-    touch ./src/${spec}auth/main.adoc
+    touch ./src/${spec}auth/main-en.adoc
     echo -n "Producing HTML..."
     cp -R ./src/${spec}auth/images ../docs
     docker run --rm -v $(pwd)/..:/documents/ asciidoctor/docker-asciidoctor \
