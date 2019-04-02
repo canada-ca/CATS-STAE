@@ -84,9 +84,11 @@ other authentication challenges) when they log in to third-parties. Single
 sign-on provides convenience, but it can also be a security risk in cases where
 a computer or device is shared by multiple people. In order to mitigate this
 risk, single sign-on is normally subject to a timeout. The guidance provided in
-section 7.3 of ITSP 30.31 specifies a maximum single sign-on window of 12 hours,
-however many social media logins allow single-sign on to occur for significantly
-longer than this. Because of this, Government of Canada web sites and applications SHOULD force
+section 7.3 of [ITSP
+30.31](https://cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3)
+specifies a maximum single sign-on window of 12 hours, however many social media
+logins allow single-sign on to occur for significantly longer than this. Because
+of this, Government of Canada web sites and applications SHOULD force
 reauthentication of users if either:
 
   1. It is possible to determine that the last time the user was authenticated
