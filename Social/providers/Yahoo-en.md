@@ -1,25 +1,21 @@
 # Yahoo Login
-Yahoo supports the OpenID Connect 1.0 authentication protocol. While OpenID
-Connect is built on the OAuth 2.0 authorization protocol, GoC web sites and
-applications SHOULD use OpenID Connect instead of attempting to implement their
-own identity layer on top of OAuth. GoC applications SHOULD obtain the user’s
-unique ID from an OpenID Connect identity token, not from an OAuth access token.
+
+Yahoo supports the [OpenID Connect 1.0](../protocols/OIDC-en.md) authentication
+protocol.
 
 The following page provides technical details about Yahoo’s OpenID Connect APIs:
 
-https://developer.yahoo.com/oauth2/guide/openid_connect/
+<https://developer.yahoo.com/oauth2/guide/openid_connect/>
 
 Yahoo does not provide an SDK for integrating with their OpenID connect
-implementation, however there a numerous third-party libraries and products that
-support OpenID Connect. A list of these is available here:
+implementation, however tere are numerous third-party libraries and products
+that support OpenID Connect. A list of these is available here:
 
-https://openid.net/developers/certified/
+<https://openid.net/developers/certified/>
 
-Single-page web applications can use the implicit flow of OpenID Connect.
-Server-based applications SHOULD use the authorization code flow.
+## Initiating Yahoo Sign-In
 
-# Initiating Yahoo Sign-In
-When invoking Yahoo Sign-In, Government of Canada applications SHOULD not
+When invoking Yahoo Sign-In, Government of Canada applications SHOULD NOT
 request permissions that they do not need. In most cases where a Yahoo account
 is only being used as an anonymous credential, developers SHOULD only specify
 `"openid"` in the `scope` option of authentication requests. In order to meet the
@@ -28,7 +24,8 @@ is only being used as an anonymous credential, developers SHOULD only specify
 single sign-on window requirement, developers SHOULD also use the `max_age`
 parameter with a value of 12 hours (43200 seconds) or less.
 
-# Post-authentication processing
+## Post-authentication processing
+
 Server-based applications that use a browser-based OpenID Connect library MUST
 use service-side code to validate ID tokens obtained from the browser. All
 applications MUST also check that the ID token is no older than 5 minutes by
@@ -37,9 +34,10 @@ examining the value of the ID token’s `iat` (issued-at) timestamp.
 Once the application has received and validated the ID token, a unique
 identifier for the user can be found in the `sub` (Subject) field.
 
-# Logout
+## Logout
+
 Yahoo does not currently support the logout features of OpenID connect, however
 it does support [OAuth 2.0 token
 revocation](https://tools.ietf.org/html/rfc7009). The address of Yahoo’s token
 revocation endpoint is published in their OpenID connect discovery metadata at:
-https://developer.yahoo.com/oauth2/guide/openid_connect/discovery.html.
+<https://developer.yahoo.com/oauth2/guide/openid_connect/discovery.html.>
