@@ -3,7 +3,7 @@
 Application access to Instagram's login service is currently possible using the
 [Instagram Platform API](https://www.instagram.com/developer/). Facebook has
 announced that this API has been deprecated and it is scheduled to be
-disconinued in early 2020.
+discontinued in early 2020.
 
 The Instagram Platform API is being replaced by the [Instagram Graph
 API](https://developers.facebook.com/docs/instagram-api). At present, this new
@@ -17,7 +17,7 @@ post](https://developers.facebook.com/blog/post/2018/01/30/instagram-graph-api-u
 
 However this does not yet appear to be available and there is not yet any
 indication that this planned API will allow third-party web applications to
-support login with an Instagram account.
+support end-user login with an Instagram account.
 
-In light of this uncertainty, the use of Instagram login for Government of
-Candada applications is NOT RECCOMENDED at this time.
+In light of this uncertainty, the use of Instagram for logging in to Government
+of Canada applications is NOT RECCOMENDED at this time.
