@@ -452,7 +452,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2019-03-18</p>
+<p>2019-04-05</p>
 </td>
 </tr>
 <tr>
@@ -963,7 +963,21 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Deployments MUST NOT use SAML metadata to provision their behaviour in the
+following areas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>determination of the trustworthiness of TLS client and server certificates</p>
+</li>
+<li>
+<p>determination of subject identifier SAML Attribute(s) to provide</p>
+</li>
+</ul>
 </div>
 <hr>
 <div class="paragraph">
@@ -980,7 +994,12 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Consumption of metadata by the Sign in Canada acceptance platform and all
+deployments federating with it MUST be contingent on verification of a
+signature applied by Shared Services Canada.</p>
 </div>
 <hr>
 <div class="sect4">
@@ -1026,7 +1045,12 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Deployments federating with the Sign in Canada acceptance platform MUST
+provide their metadata to Shared Services Canada who performs third-party
+validation, curation, signing, and publishing of metadata.</p>
 </div>
 <hr>
 <div class="sect4">
@@ -1061,7 +1085,54 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Deployments owned by Government of Canada departments and agencies MUST use
+X.509 certificates issued by the Government Shared Services (GSS) Certificate
+Authority for signing and encryption of SAML messages.</p>
+</div>
+<div class="paragraph">
+<p>X.509 certificates used for TLS server authentication MUST be issued by a
+certificate authority that is recognized by all of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.apple.com/certificateauthority/ca_program.html">The Apple Trusted Root Certificate Program</a></p>
+</li>
+<li>
+<p><a href="http://www.oracle.com/technetwork/java/javase/javasecarootcertsprogram-1876540.html">The Java Trusted Root Certificate Program</a></p>
+</li>
+<li>
+<p><a href="https://technet.microsoft.com/en-ca/library/cc751157.aspx">The Microsoft Trusted Root Certificate Program</a></p>
+</li>
+<li>
+<p><a href="https://wiki.mozilla.org/CA">The Mozilla Trusted Root Certificate Program</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Deployments MUST NOT accept expired certificates.</p>
+</div>
+<div class="paragraph">
+<p>Deployments SHOULD NOT perform runtime path validation or revocation checking of
+X.509 certificates used for signing or encryption of SAML messages.</p>
+</div>
+<div class="paragraph">
+<p><em>Using revocation checking mechanisms such as certificate revocation lists
+(CRLs) and the Online Certificate Status Protocol (OCSP) during runtime creates
+a dependency that can reduce the availability of a deployment. In the event of a
+private key compromise, Shared Services Canada will revoke the affected
+deployment&#8217;s SAML metadata.</em></p>
+</div>
+<div class="paragraph">
+<p>Deployments MUST perform path validation and check the revocation status of
+X.509 certificates used for TLS server authentication.</p>
+</div>
+<div class="paragraph">
+<p><em>This profile does not contain any requirement for using TLS client
+authentication.</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1103,7 +1174,13 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>The metadata of IdPs and SPs MUST contain at least one signing certificate with
+the <code>use</code> attribute set to <code>signing</code>. The metadata of SPs MUST contain at
+least one encryption certificate with the <code>use</code> attribute set to
+<code>encryption</code>.</p>
 </div>
 <hr>
 </div>
@@ -1120,7 +1197,10 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Metadata MAY include a <code>&lt;mdui:UIInfo&gt;</code> element with any child elements.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1253,7 +1333,23 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>IdP deployments MUST also support the use of
+<code><a href="http://www.w3.org/2001/04/xmlenc#aes128-cbc" class="bare">http://www.w3.org/2001/04/xmlenc#aes128-cbc</a></code> <a href="#XMLEnc">[XMLEnc]</a> to encrypt Assertions
+for any SP that has specified this algorithm in its metadata.</p>
+</div>
+<div class="paragraph">
+<p>The use of block encryption algorithms using the Galois/Counter Mode (GCM) mode
+of option is RECCOMMENDED for SP deployments, however
+<code><a href="http://www.w3.org/2001/04/xmlenc#aes128-cbc" class="bare">http://www.w3.org/2001/04/xmlenc#aes128-cbc</a></code> MAY be used if the SP software
+does not support GCM algorithms.</p>
+</div>
+<div class="paragraph">
+<p><em>As per <a href="#ITSP.40.111">[ITSP.40.111]</a>, these encryption and signature algorithms are approved
+for use to protect the confidentiality of PROTECTED A and PROTECTED B
+information and the integrity of information to the medium injury level.</em></p>
 </div>
 <hr>
 <div style="page-break-after: always;"></div>
@@ -1328,7 +1424,15 @@ Secretariat before ignoring any requirements labelled with the key words
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p><code>&lt;samlp:NameIDPolicy&gt;</code> MAY contain a <code>Format</code> attribute, in which case its value
+MUST be <code>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</code>.</p>
+</div>
+<div class="paragraph">
+<p><em>Service providers can use the <code>Format</code> attribute to signal to the IdP that it
+is requesting identity authentication and not credential authentication.</em></p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1383,7 +1487,29 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>SP deployments MUST include <code>&lt;samlp:RequestedAuthnContext&gt;</code>. The optional
+<code>Comparison</code> attribute MAY be included, in which case it MUST have the value
+<code>exact</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>&lt;samlp:RequestedAuthnContext&gt;</code> MUST include a Level of Assurance as
+specified in <a href="#SAML2Assur">[SAML2Assur]</a>.</p>
+</div>
+<div class="paragraph">
+<p>The SP MAY indicate a willingness to accept more than one level of assurance, by
+including multiple <code>&lt;samlp:RequestedAuthnContext&gt;</code> elements.</p>
+</div>
+<div class="paragraph">
+<p><em>This is useful when a certain minimum level of assurance is required, but the
+SP is willing to accept a higher level of assurance.</em></p>
+</div>
+<div class="paragraph">
+<p><em>The AuthnContext Schema for the Sign in Canada levels of assurance are
+published at
+<a href="https://github.com/canada-ca/CATS-STAE/tree/master/SAML/src/schemas" class="bare">https://github.com/canada-ca/CATS-STAE/tree/master/SAML/src/schemas</a>.</em></p>
 </div>
 <hr>
 </div>
@@ -1417,7 +1543,10 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>TLS MUST be configured according to <a href="#ITSP.40.062">[ITSP.40.062]</a>.</p>
 </div>
 <hr>
 </div>
@@ -1434,7 +1563,10 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>SPs MUST also support decryption of <code>&lt;saml:EncryptedAttribute&gt;</code> elements.</p>
 </div>
 <hr>
 </div>
@@ -1468,7 +1600,11 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>The response to such errors MUST direct users to appropriate support resources
+offered by the SP.</p>
 </div>
 <hr>
 </div>
@@ -1514,7 +1650,16 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>SP deployments MUST NOT use this profile for the persistent
+tracking/identification of users.</p>
+</div>
+<div class="paragraph">
+<p><em>Persistent identification of users is accomplished by binding an identiy,
+authenticated using this profile, to a credential, authenticated using
+the <a href="#SAML2Cred">[SAML2Cred]</a> profile.</em></p>
 </div>
 <hr>
 </div>
@@ -1654,7 +1799,10 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>SP deployments SHOULD support multiple signing certificates in IdP metadata.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1668,7 +1816,10 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>SP deployments SHOULD support multiple decryption keys.</p>
 </div>
 <hr>
 </div>
@@ -1731,7 +1882,22 @@ in its requests unless it also includes that port number in the URLs specified i
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>The metadata of SPs MUST contain at least one signing certificate with
+the <code>use</code> attribute set to <code>signing</code> and at least one encryption certificate
+with the <code>use</code> attribute set to <code>encryption</code>.</p>
+</div>
+<div class="paragraph">
+<p>SP metadata MAY include an <code>&lt;md:Extensions&gt;</code> element containing an
+<code>&lt;mdui:UIInfo&gt;</code> extension element, but it MUST NOT include an
+<code>&lt;mdattr:EntityAttributes&gt;</code> extension element.</p>
+</div>
+<div class="paragraph">
+<p>The <code>&lt;md:SPSSODescriptor&gt;</code> element of an SP&#8217;s metadata MUST also include an
+<code>AuthnRequestsSigned</code> attribute set to <code>true</code> or <code>1</code> and a
+<code>WantAssertionsSigned</code> attribute set to <code>true</code> or <code>1</code>.</p>
 </div>
 <hr>
 </div>
@@ -1828,7 +1994,10 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>TLS MUST be configured according to <a href="#ITSP.40.062">[ITSP.40.062]</a>.</p>
 </div>
 <hr>
 </div>
@@ -1953,7 +2122,19 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>The assertion within the response MUST be directly signed.</p>
+</div>
+<div class="paragraph">
+<p>The <code>&lt;saml:AuthnStatement&gt;</code> MUST include exactly one <code>&lt;saml:AuthnContext&gt;</code>
+element that specifies the level of assurance <a href="#SAML2Assur">[SAML2Assur]</a>
+to which the subject was authenticated.</p>
+</div>
+<div class="paragraph">
+<p>The <code>&lt;saml:Assertion&gt;</code> MUST contain exactly one <code>&lt;saml:AttributeStatement&gt;</code>
+element.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -1970,7 +2151,13 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Attributes contained in responses sent to a proxying identity provider that
+contain personal information intended for the use of a proxied service provider
+SHOULD be further encrypted for the proxied SP via the
+<code>&lt;saml:EncryptedAttribute&gt;</code> construct.</p>
 </div>
 <hr>
 </div>
@@ -1988,7 +2175,13 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Assertions MUST contain a <code>&lt;saml:NameID&gt;</code> element with the
+<code>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</code> Format for the purposes of
+interoperability. This profile does not implement session management constructs
+such as logout.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2002,7 +2195,10 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>IdP deployments MUST NOT implement <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2022,7 +2218,10 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>IdP deployments MUST NOT implement <a href="#SAML2SubjId">[SAML2SubjId]</a>.</p>
 </div>
 <hr>
 <div class="sect4">
@@ -2090,7 +2289,10 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>See section 6.3.4: "Attributes".</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -2207,7 +2409,25 @@ and french.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>CATS Support</strong>: <em>Supported</em></p>
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>The <code>use</code> attribute of the <code>&lt;md:KeyDescriptor&gt;</code> element(s) MUST be set to
+<code>signing</code>.</p>
+</div>
+<div class="paragraph">
+<p>IdP metadata MUST NOT contain a <code>&lt;md:SingleLogoutService&gt;</code> endpoint element.</p>
+</div>
+<div class="paragraph">
+<p>IdP metadata MAY include an <code>&lt;md:Extensions&gt;</code> element containing an
+<code>&lt;mdui:UIInfo&gt;</code> extension element, but it MUST NOT include an
+<code>&lt;mdattr:EntityAttributes&gt;</code> extension element.</p>
+</div>
+<div class="paragraph">
+<p>IdP metadata SHOULD NOT include an <code>ErrorURL</code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>IdP metadata MUST NOT contain a &lt;shibmd:Scope&gt; element.</p>
 </div>
 <hr>
 </div>
@@ -2541,7 +2761,7 @@ on behalf of other proxies in the chain.</em></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-18 14:11:12 UTC
+Last updated 2019-04-05 17:52:54 UTC
 </div>
 </div>
 </body>
