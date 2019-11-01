@@ -18,8 +18,8 @@ X.509 certificates used for signing or encryption of SAML messages.
 _Using revocation checking mechanisms such as certificate revocation lists
 (CRLs) and the Online Certificate Status Protocol (OCSP) during runtime creates
 a dependency that can reduce the availability of a deployment. In the event of a
-private key compromise, Shared Services Canada will revoke the affected
-deployment's SAML metadata._
+private key compromise, the Sign in Canada Federation Operator will revoke the
+affected deployment's SAML metadata._
 
 Deployments MUST perform path validation and check the revocation status of
 X.509 certificates used for TLS server authentication.

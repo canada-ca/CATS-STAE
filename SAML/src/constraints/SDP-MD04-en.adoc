@@ -1,3 +1,3 @@
-Deployments federating with the Sign in Canada acceptance platform MUST
-provide their metadata to Shared Services Canada who performs third-party
-validation, curation, signing, and publishing of metadata.
+Members of the Sign in Canada Federation MUST provide their metadata to the Sign
+in Canada Federation Operator who performs third-party validation, curation,
+signing, and publishing of metadata.
