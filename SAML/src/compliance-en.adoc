@@ -1,4 +1,4 @@
-== Compliance to the CATS SAML 2.0 Deployment Profile
+== Compliance to the CATS Deployment Profile of SAML 2.0
 
 The requirements specified are in addition to all normative requirements of the
 underlying Web Browser SSO and Single Logout profiles <<SAML2Prof>>, as modified
@@ -23,7 +23,14 @@ This profile also has requirements which are additional to the <<SAML2Iop>>
 requirements. These are specified at the end of each applicable section, as well
 as in section 7.
 
-Deployments owned by Government of Canada departments and agencies MUST obtain
-approval from the Office of the Chief Information Officer, Treasury Board
-Secretariat before ignoring any requirements labelled with the key words
-"SHOULD", "SHOULD NOT", "RECOMMENDED" or "NOT RECOMMENDED".
+Compliance with all requirements labed "MANDATORY", "MUST", and "MUST NOT" is
+required for all members of the Sign in Canada Federation. Federation menmbers
+who wish to seek an exemption to one or more MANDATORY requirements may do so via
+the Government of Canada Trusted Digital Identity Committee (TDIC). The TDIC
+may, in its discretion, make adjustments to this specification in order to
+strengthen or relax requirements as warranted.
+
+Government of Canada departments and agencies who choose not to implement any
+requirements labelled with the key words "SHOULD", "SHOULD NOT", "RECOMMENDED"
+or "NOT RECOMMENDED" must docuemnt the implications and their reasons for doing
+so in a Security Assessment and a Privacy Impact Assessment.

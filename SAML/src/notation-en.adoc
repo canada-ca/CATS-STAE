@@ -70,14 +70,17 @@ identity.
 
 Assurance:: A measure of certainty that a statement or fact is true.
 
-Assurance of Credential (Credential Assurance):: The assurance that an
+Credential Assurance:: The assurance that an
 individual, organization or device has maintained control over what has been
 entrusted to him or her (e.g., a password, key, token, document or identifier)
 and that the credential has not been compromised (e.g., tampered with, modified
 or stolen).
 
+Identity Assurance:: A measure of certainty that an
+individual, organization or device is who or what it claims to be.
+
 Authoritative Party:: A federation member that provides assurances of credential
- to other federation members (i.e. “Relying Parties”).
+to other federation members (i.e. “Relying Parties”).
 
 Credential:: A unique physical or electronic object (or identifier) issued to,
 or associated with, a person, organization, or device (e.g. key, token,
@@ -97,16 +100,29 @@ Relying Party (RP):: A federation member who relies on assurances of credential
 from other federation members (i.e. “Authoritative Parties”).
 
 Sign in Canada Acceptance Platform:: A Government of Canada service that acts as
-a trusted intermediary between Credential Service Providers and Government of
-Canada Relying Parties. The Acceptance Platform operates as a Proxying Identity
-Provider and centralized Session Authority.
+a trusted intermediary between Credential Service Providers / Trusted Digital
+Identity Providers and Government of Canada Relying Parties. The Acceptance
+Platform operates as a Proxying Identity Provider and centralized Session
+Authority.
 
 Sign in Canada Federation:: A Federation whose members include the Sign in
 Canada Acceptance Platform and all Relying Parties who use it.
 
+Trusted Digital Identity:: An electronic representation of a person, used
+exclusively by that same person, to receive valued services and to carry out
+transactions with trust and confidence.
+
+Trusted Identity Provider:: An Identity Provider that authenticates Trusted
+Digital Identities and provides Verified Claims about their owner.
+
 User Agent:: Software that is acting on behalf of a user. For example, a web
 browser or native mobile application.
 
+Verified Claim:: a qualification, achievement, quality, or piece of information
+about a person's background such as a name, government ID, payment provider,
+home address, or university degree. Such a claim describes a quality or
+qualities, property or properties of a person which establish their existence and
+uniqueness.
 
 Whether explicit or implicit, all the requirements in this document are meant to
 apply to deployments of SAML profiles and may involve explicit support for
