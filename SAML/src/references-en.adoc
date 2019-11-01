@@ -27,6 +27,7 @@
 - [[[CORS]]] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. http://www.w3.org/TR/cors/
 - [[[ITSP.40.111]]] Communications Security Establishment, Cryptographic Algorithms for UNCLASSIFIED, PROTECTED A, and PROTECTED B Information. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.111-eng_0.pdf
 - [[[ITSP.40.062]]] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.062-eng_0.pdf
+- [[[ITPIN-2018-01]]] - Treasury Board Canada Secretariat, Implementing HTTPS for Secure Web Connections: Information Technology Policy Implementation Notice (ITPIN). https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/policy-implementation-notices/implementing-https-secure-web-connections-itpin.html
 
 === Non-Normative
 
