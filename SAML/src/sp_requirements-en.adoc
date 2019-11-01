@@ -1,7 +1,16 @@
 === CATS-Specific Requirements
 
-==== Authentication Request Signing
+==== Authentication Requests
 
 *[CDP-SP01]*
 
-``<samlp:AuthnRequest>`` messages MUST be signed using the SHA-256 algorithm.
+`<samlp:AuthnRequest>` messages MUST be signed using the SHA-256 algorithm.
+
+*[CDP-SP02]*
+
+`<samlp:AuthnRequest>` messages MAY include the `AttributeConsumingServiceIndex`
+attribute with a value specifying the index of an
+`<md:AttributeConsumingService>` defined in the service provider's metadata.
+
+_This provides the mechanism whereby a service provider can explicitly request a
+defined set of attributes, only when required._
