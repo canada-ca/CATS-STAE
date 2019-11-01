@@ -1,16 +1,10 @@
 `<samlp:NameIDPolicy>` MAY contain a `Format` attribute, in which case its value
 MUST be `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`.
 
-_Service providers can use the `Format` attribute to signal to the IdP that it
-is requesting credential authentication and not identity authentication._
-
-An `SPNameQualifier` attribute MAY also be present to indicate:
-
-.. the SP's membership in an affiliation of SPs, or
-.. the SP's desire to request a persistent `<saml:NameID>` value assigned to an
-entityID previously used by the same SP, or
-.. a Proxying Identity Provider's desire to request a persistent `<saml:NameID>`
-value on behalf of one of its client SPs.
+An `SPNameQualifier` attribute MAY also be present to request that the assertion
+subject's identifier be returned (or created) in the namespace of a service
+provider other than the requester, or in the namespace of an affiliation group
+of service providers.
 
 _``SPNameQualifier`` provides critical functionality that supports changes in
 the topology of a federation. This is why this profile has not adopted
