@@ -25,7 +25,7 @@ as in section 7.
 
 Compliance with all requirements labed "REQUIRED" "MANDATORY", "MUST", and "MUST
 NOT" is required for all members of the Sign in Canada Federation. Federation
-menmbers who wish to seek an exemption to one or more MANDATORY requirements may
+members who wish to seek an exemption to one or more MANDATORY requirements may
 do so via the Government of Canada Trusted Digital Identity Committee (TDIC).
 The TDIC may, at its discretion, direct adjustments to this specification that
 strengthen or relax requirements as warranted.
