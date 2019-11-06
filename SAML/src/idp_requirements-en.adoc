@@ -61,7 +61,6 @@ The IdP MAY retain this session state for longer than 8 hours.
 The IdP MAY discard all state associated with a `SessionIndex` after processing
 a `<samlp:LogoutRequest>` for the session.
 
-
 *[CDP-IDP07]*
 
 IdPs participating as a session authority MUST administratively perform a global
@@ -82,3 +81,63 @@ logout of subject A's session, before starting a new session for subject B._
 The private keys of an IdPs signing certificates MUST be protected within the
 boundary of a FIPS 140-2 Level 2 or higher validated hardware cryptographic
 module.
+
+==== Attributes
+
+*[CDP-IDP09]*
+Identity Provider deployments MUST be capable of determining whether or not to
+include specific SAML attributes (or specific values) in a response based on the
+presence of `<md:AttributeConsumingService>` elements (containing
+`<md:RequestedAttribute>` elements) found in the metadata for a relying party,
+including the value of the enclosed `isRequired` XML attribute. Accordingly,
+they MUST support the `AttributeConsumingServiceIndex` attribute in
+`<samlp:AuthnRequest>`` messages as a means of determining the appropriate
+`<md:AttributeConsumingService>` element to process.
+
+
+*[CDP-IDP10]*
+
+IdP deployments SHOULD prioritize the use of standard attribute
+name and definition profiles before defining custom attributes. Use of the
+following profiles are RECCOMENDED in descending order of preference:
+
+* The standard OpenID Connect claims defined in section 5.1 of <<OIDC>>. (See
+  *[CDP-IDP12]* below). 
+* The Identity Metasystem Interoperability claim types
+  defined in section 7.5 of <<IMI>>.
+* The SAML V2.0 X.500/LDAP Attribute Profile <<X500SAMLattr>>.
+
+*[CDP-IDP11]*
+
+<saml:Attribute> elements MUST use a `NameFormat` value of either
+`urn:oasis:names:tc:SAML:2.0:attrname-format:basic` or
+`urn:oasis:names:tc:SAML:2.0:attrname-format:uri`.
+
+*[CDP-IDP12]*
+
+The name and value of  `<saml:Attribute>` elements with a `NameFormat` of
+`urn:oasis:names:tc:SAML:2.0:attrname-format:basic` MUST correspond to one of
+the standard claims defined in section 5.1 of <<OIDC>> as follows:
+
+* The value of the `Name` attribute of `<saml:Attribute>` must match the JSON
+ member name in <<OIDC>>.
+* The `xsi:type` attribute of `<saml:AttributeValue>` must specify the XML
+ Schema type that corresponds to the JSON type in <<OIDC>>:
+
+[width="40%", align="center", options="header"]
+|===========================
+|JSON Type |XML Schema Type
+|string    |xs:string
+|boolean   |xs:boolean
+|number    |xs:decimal
+|===========================
+
+* The `address` claim MUST NOT be used. _Refer to requirement *[SDP-IDP18]*._
+* The following properties of the `address` claim MAY be used as standalone
+ attributes:
+** street_address
+** locality
+** region
+** postal_code
+** country
+* The `formatted` member of the `address` claim SHOULD NOT be used.

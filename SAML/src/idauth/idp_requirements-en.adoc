@@ -28,6 +28,17 @@ module.
 
 ==== Attributes
 
+*[IIP-IDP04]*
+Identity Provider deployments MUST be capable of determining whether or not to
+include specific SAML attributes (or specific values) in a response based on the
+presence of `<md:AttributeConsumingService>` elements (containing
+`<md:RequestedAttribute>` elements) found in the metadata for a relying party,
+including the value of the enclosed `isRequired` XML attribute. Accordingly,
+they MUST support the `AttributeConsumingServiceIndex` attribute in
+`<samlp:AuthnRequest>`` messages as a means of determining the appropriate
+`<md:AttributeConsumingService>` element to process.
+
+
 *[CIP-IDP03]*
 
 IdP deployments SHOULD prioritize the use of standard attribute
