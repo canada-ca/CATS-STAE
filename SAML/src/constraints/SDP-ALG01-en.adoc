@@ -11,4 +11,4 @@ _As per <<ITSP.40.111>>, these encryption and signature algorithms are approved
 for use to protect the confidentiality of PROTECTED A and PROTECTED B
 information and the integrity of information to the medium injury level._
 
-Deployments MUST configure TLS according to [ITSP.40.062] and [ITPIN-2018-01].
+Deployments MUST configure TLS according to <<ITSP.40.062>> and <<ITPIN-2018-01>>.
