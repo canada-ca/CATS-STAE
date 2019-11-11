@@ -18,12 +18,14 @@
 - [[[SAML2Err]]] OASIS Approved Errata, SAML Version 2.0 Errata 05, May 2012. http://docs.oasis-open.org/security/saml/v2.0/sstc-saml-approved-errata-2.0.pdf
 - [[[XMLEnc]]] D. Eastlake et al. XML Encryption Syntax and Processing. W3C Recommendation, April 2013. https://www.w3.org/TR/xmlenc-core1/
 - [[[XMLSig]]] D. Eastlake et al. XML-Signature Syntax and Processing, Version 1.1. W3C Recommendation, April 2013. https://www.w3.org/TR/xmldsig-core1/
+- [[[XMLSchema]]] W3C Recommendation, XML Schema Part 2: Datatypes Second Edition, October 2004. https://www.w3.org/TR/xmlschema-2/
 - [[[SAML2Assur]]] OASIS Committee Specification, SAML V2.0 Identity Assurance Profiles Version 1.0,  November 2010. http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-assurance-profile.pdf
 - [[[SAML2SubjId]]] OASIS Committee Specification, SAMLV2.0 Subject Identifier Attributes Profile Version 1.0, January 2019. https://docs.oasis-open.org/security/saml-subject-id-attr/v1.0/cs01/saml-subject-id-attr-v1.0-cs01.pdf
 - [[[SAML2ASLO]]] OASIS Committee Specification, SAML V2.0 Asynchronous Single Logout Profile Extension Version 1.0, November 2012. http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf
 - [[[MetaUI]]] OASIS Standard, SAML V2.0 Metadata Extensions for Login and Discovery User Interface Version 1.0, October 2019. http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-metadata-ui/v1.0/os/sstc-saml-metadata-ui-v1.0-os.pdf
 - [[[MetaAttr]]] OASIS Committee Specification, SAML V2.0 Metadata Extension for Entity Attributes Version 1.0, August 2009. http://docs.oasis-open.org/security/saml/Post2.0/sstc-metadata-attr-cs-01.pdf
 - [[[SAML2Iop]]] Kantara Initiative, SAML V2.0 Interoperability Deployment Profile V1.0 (Draft). https://kantarainitiative.github.io/SAMLprofiles/saml2int.html
+- [[[OIDC]]] OpenID Foundation Specification, OpenID Connect Core 1.0 incorporating errata set 1, November 8, 2014. https://openid.net/specs/openid-connect-core-1_0.html
 - [[[CORS]]] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. http://www.w3.org/TR/cors/
 - [[[ITSP.40.111]]] Communications Security Establishment, Cryptographic Algorithms for UNCLASSIFIED, PROTECTED A, and PROTECTED B Information. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.111-eng_0.pdf
 - [[[ITSP.40.062]]] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.062-eng_0.pdf

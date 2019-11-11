@@ -38,6 +38,10 @@ include::idp_requirements-en.adoc[]
 
 <<<
 
+include::attribute_profiles-en.adoc[]
+
+<<<
+
 include::proxy_requirements-en.adoc[]
 
 <<<

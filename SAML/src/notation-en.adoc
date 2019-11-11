@@ -47,6 +47,16 @@ When referring to elements from the XML-Signature Syntax and Processing Version
 
 * `<ds:Element>`
 
+When refering to attributes from the XML Schema defaiult namespace
+`http://www.w3.org/2001/XMLSchema`, the following syntax is used:
+
+* `xs:Attribute`
+
+When referring to attributes from the XML Schema instance namespace
+`http://www.w3.org/2001/XMLSchema-instance`, the following syntax is used:
+
+* `xsi:Attribute`
+
 === Terminology
 
 The following SAML standard terms and abbreviations are used in a manner
