@@ -1,4 +1,0 @@
-Assertions MUST contain a `<saml:NameID>` element with the
-`urn:oasis:names:tc:SAML:2.0:nameid-format:transient` Format for the purposes of
-interoperability. This profile does not implement session management constructs
-such as logout.

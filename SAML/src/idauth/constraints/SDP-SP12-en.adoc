@@ -1,2 +1,0 @@
-The response to such errors MUST direct users to appropriate support resources
-offered by the SP.
