@@ -1,0 +1,11 @@
+`<samlp:NameIDPolicy>` MAY contain a `Format` attribute, in which case its value
+MUST be `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`.
+
+An `SPNameQualifier` attribute MAY also be present to request that the assertion
+subject's identifier be returned (or created) in the namespace of a service
+provider other than the requester, or in the namespace of an affiliation group
+of service providers.
+
+_``SPNameQualifier`` provides critical functionality that supports changes in
+the topology of a federation. This is why this profile has not adopted
+<<SAML2SubjAttr>> as it does not currently provide equivalent functionality._

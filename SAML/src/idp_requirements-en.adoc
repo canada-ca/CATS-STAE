@@ -1,0 +1,143 @@
+=== CATS-Specific Requirements
+
+==== Metadata Content
+
+*[CDP-IDP01]*
+
+In addition to the requirements of *[SDP-IDP31]*, an IdP’s metadata MUST also
+contain the levels of assurance to which it conforms, as specified by the
+Identity Assurance Certification Attribute Profile <<SAML2Assur>>.
+
+==== Responses
+
+*[CDP-IDP02]*
+
+IdP deployments MUST support the issuance of `<saml2p:Response>` messages (with
+appropriate status codes) in the event that a user indicates they wish to
+cancel/exit or if an error condition occurs, provided that the user agent
+remains available.
+
+==== Session Management and Timeouts
+
+*[CDP-IDP03]*
+
+`<saml:AuthnStatement>` elements MUST NOT include a `SessionNotOnOrAfter`
+attribute.
+
+*[CDP-IDP04]*
+
+IdPs MUST NOT issue a `<saml:Assertion>` with an `IssueInstant` attribute value
+that exceeds the value of the `AuthnInstant` attribute of the included
+`<saml:AuthnStatement>` by more than 20 minutes.
+
+_This effectively prohibits the passive fulfilment of authentication requests
+(single sign-on) for a subject after 20 minutes have passed since their
+most recent authentication event._
+
+Once 20 minutes have passed since the most recent authentication event,
+IDPs MUST issue a `<saml:Repsonse>` with a second-level `<samlp:StatusCode>` of
+`urn:oasis:names:tc:SAML:2.0:status:NoPassive` in response to any
+`<samlp:AuthnRequest>` with an `IsPassive` attribute value of `true` or `1`.
+
+*[CDP-IDP05]*
+
+IdPs participating as a session authority MUST include the `SessionIndex`
+attribute of `<saml:AuthnStatement>`.
+
+*[CDP-IDP06]*
+
+Once an IdP participating as a session authority has issued the first
+`<saml:AuthnStatement>` containing the `SessionIndex` for a new session, it MUST
+retain sufficient session state to successfully process `<samlp:LogoutRequest>`
+messages that specify a matching `<samlp:SessionIndex>` value for no less than 8
+hours.
+
+_This ensures that the IdP will be able to propagate single-logout of a
+subject's session for up to 8 hours after issuing the first assertion for that
+session._
+
+The IdP MAY retain this session state for longer than 8 hours.
+
+The IdP MAY discard all state associated with a `SessionIndex` after processing
+a `<samlp:LogoutRequest>` for the session.
+
+*[CDP-IDP07]*
+
+IdPs participating as a session authority MUST administratively perform a global
+logout of any current subject's session whenever an authentication event within
+that session results in the authentication of a different subject.
+
+_For example, say the IdP has issued the first `<saml:AuthnStatement>` for
+subject A within the last 8 hours, and subsequently receives a
+`<samlp:AuthnRequest>` from the same user agent triggering a new authentication
+event. If the end-user authenticates with a different credential (subject B)
+than the one originally used by subject A, then the IdP must peform a global
+logout of subject A's session, before starting a new session for subject B._
+
+==== Security
+
+*[CDP-IDP08]*
+
+The private keys of an IdPs signing certificates MUST be protected within the
+boundary of a FIPS 140-2 Level 2 or higher validated hardware cryptographic
+module.
+
+==== Attributes
+
+*[CDP-IDP09]*
+Identity Provider deployments MUST be capable of determining whether or not to
+include specific SAML attributes (or specific values) in a response based on the
+presence of `<md:AttributeConsumingService>` elements (containing
+`<md:RequestedAttribute>` elements) found in the metadata for a relying party,
+including the value of the enclosed `isRequired` XML attribute. Accordingly,
+they MUST support the `AttributeConsumingServiceIndex` attribute in
+`<samlp:AuthnRequest>`` messages as a means of determining the appropriate
+`<md:AttributeConsumingService>` element to process.
+
+
+*[CDP-IDP10]*
+
+IdP deployments SHOULD prioritize the use of standard attribute
+name and definition profiles before defining custom attributes. Use of the
+following profiles are RECCOMENDED in descending order of preference:
+
+* The standard OpenID Connect claims defined in section 5.1 of <<OIDC>>. (See
+  *[CDP-IDP12]* below). 
+* The Identity Metasystem Interoperability claim types
+  defined in section 7.5 of <<IMI>>.
+* The SAML V2.0 X.500/LDAP Attribute Profile <<X500SAMLattr>>.
+
+*[CDP-IDP11]*
+
+<saml:Attribute> elements MUST use a `NameFormat` value of either
+`urn:oasis:names:tc:SAML:2.0:attrname-format:basic` or
+`urn:oasis:names:tc:SAML:2.0:attrname-format:uri`.
+
+*[CDP-IDP12]*
+
+The name and value of  `<saml:Attribute>` elements with a `NameFormat` of
+`urn:oasis:names:tc:SAML:2.0:attrname-format:basic` MUST correspond to one of
+the standard claims defined in section 5.1 of <<OIDC>> as follows:
+
+* The value of the `Name` attribute of `<saml:Attribute>` must match the JSON
+ member name in <<OIDC>>.
+* The `xsi:type` attribute of `<saml:AttributeValue>` must specify the XML
+ Schema type that corresponds to the JSON type in <<OIDC>>:
+
+[width="40%", align="center", options="header"]
+|===========================
+|JSON Type |XML Schema Type
+|string    |xs:string
+|boolean   |xs:boolean
+|number    |xs:decimal
+|===========================
+
+* The `address` claim MUST NOT be used. _Refer to requirement *[SDP-IDP18]*._
+* The following properties of the `address` claim MAY be used as standalone
+ attributes:
+** street_address
+** locality
+** region
+** postal_code
+** country
+* The `formatted` member of the `address` claim SHOULD NOT be used.

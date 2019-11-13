@@ -1,1 +1,0 @@
-SPs MUST also support decryption of `<saml:EncryptedAttribute>` elements.

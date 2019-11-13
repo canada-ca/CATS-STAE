@@ -1,1 +1,0 @@
-Metadata MAY include a `<mdui:UIInfo>` element with any child elements.

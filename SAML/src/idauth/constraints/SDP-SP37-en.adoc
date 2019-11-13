@@ -1,1 +1,0 @@
-SP deployments SHOULD support multiple signing certificates in IdP metadata.

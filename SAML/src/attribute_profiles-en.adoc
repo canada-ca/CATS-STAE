@@ -1,0 +1,242 @@
+== Attribute Profiles
+
+This specification defines 3 new SAML Attribute profiles for use by members of
+the Sign in Canada Federation.
+
+
+
+=== CATS Distributed Claim Attribute Profile
+
+The CATS Distributed Claim attribute profile allow SAML relying parties to
+directly consume verified claims provided by OpenID Connect claims providers
+using the mechanism described in section 5.8.2 of <<OIDC>>.
+
+_This provides GC relying parties with an incremental path whereby they can
+continue to use SAML as an authentication protocol, but use a modern RESTFul API
+to obtain identityh claims._
+
+==== Identification
+
+`urn:gc-ca:cyber-auth:profiles:attribute:distributed-claim`
+
+==== SAML Attribute Naming
+
+The NameFormat XML attribute in `<Attribute>` elements MUST be
+`urn:oasis:names:tc:SAML:2.0:attrname-format:basic`.
+
+The Name XML attribute MUST be one of the following:
+
+* endpoint
+* access_token
+
+==== Attribute Name Comparison
+
+Two `<saml:Attribute>` elements refer to the same SAML attribute if and only if the
+values of their Name XML attributes are equal in the sense of Section 3.3.6 of
+<<XMLSchema>>.
+
+==== Profile-Specific XML Attributes
+
+No additional XML attributes are defined for use with the `<saml:Attribute>` element.
+
+==== Attribute Definitions
+
+===== Endpoint
+
+This single-valued attribute represents the OAuth 2.0 resource endpoint from
+which a JSON Web Token containing the verified claims can be retrieved.
+
+Attribute Name:: endpoint
+Attribute Value Type:: xsi:anyURI
+Required:: Yes
+
+===== Access Token
+
+This single-valued attribute represents an OAuth 2.0 access token enabling
+retrieval of the Claims from the endpoint URL by using the OAuth 2.0 Bearer
+Token Usage <<RFC6750>> protocol. Claims SHOULD be requested using the
+Authorization Request header field.
+
+Attribute Name:: access_token
+Attribute Value Type:: xsi:string
+Required:: Yes
+
+==== Example
+
+The following example shows a `<saml:AttributeStatement>` conveying a set of
+distributed claims:
+
+....
+<saml:AttributeStatement>
+   <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+                   Name="endpoint">
+      <saml:AttributeValue xsi:type="xs:anyURI">
+         https://idtest.gov.bc.ca/oauth2/userinfo?schema=openid
+      </saml:AttributeValue>
+   </saml:Attribute>
+   <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+                   Name="access_token">
+      <saml:AttributeValue xsi:type="xs:string">
+         eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJ1cm4uY2EuY2FuYWRhLnRicy5zaWMucWEiLCJpc3MiOiJodHRwczpcL1wvaWR0ZXN0Lmdvdi5iYy5jYVwvb2F1dGgyXC8iLCJleHAiOjE1NzE2OTEyOTksImlhdCI6MTU3MTY4NzY5OSwianRpIjoiZGUyNmQ3ZTgtNWVjMC00Y2I0LWJlY2QtMWViNWY4MDEzYTA2In0.GF2H3PsT9_V2Li6yUgcs2u9jnSZJO-qb3c0JhEY0uaKnUBMiN_vRbDT1fLn7LPIqYUJzTaBLyzULP-J1Y3BJIwJHImp1L2xNGg_xJFfNV50itRLX31ZSmN_HSxx2C0B_WwWA5gAy0YZ_viBnP4bEtnLOlxPQoCjxDGi38hjlOrKKn6rzQh8x7X57Bf373CRhJzK5q_kEkTpXgFT9x4AG4bTQ9xve0vjQDeBFnKhlzMvX8QqsuN-8cka2_gakbBb-CPWbeNf9lYhP1blOW6P905VxndR6g719MUlPSKvzBN4Mn1AUTAUe6YjshMr_W0ua4uqd1V0KiUtfraCKBVoueQ
+      </saml:AttributeValue>
+   </saml:Attribute>
+</saml:AttributeStatement>   
+....
+
+The followibg example shows an `<md:AttributeConsumingService>` element in
+service provider metadata advertising the ability to accept distributed claims:
+
+....
+<AttributeConsumingService index="1">
+    <ServiceName>urn:gc-ca:cyber-auth:profiles:attribute:distributed-claim</ServiceName>
+    <RequestedAttribute Name="endpoint" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" isRequired="true"/>
+    <RequestedAttribute Name="access_token" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" isRequired="true"/>
+</AttributeConsumingService>
+....
+
+=== CATS Basic Attribute Profile
+
+The CATS Basic attribute profile allow SAML relying parties to obtain a basic
+set of verified claims using the traditional SAML authnetication request
+protocol.
+
+_To minimize friction between SAML relying parties, and OpenID connect claims
+providers, this profile defines a correspondence between SAML attribute names
+and attribute value types and the the standard claims defined in section 5.1 of
+<<OIDC>>.
+
+==== Identification
+
+`urn:gc-ca:cyber-auth:profiles:attribute:basic`
+
+==== SAML Attribute Naming
+
+The NameFormat XML attribute in `<saml:Attribute>` elements MUST be
+`urn:oasis:names:tc:SAML:2.0:attrname-format:basic`.
+
+The Name XML attribute in  `<saml:Attribute>` elements MUST correspond to one of
+the standard claims defined in section 5.1 of <<OIDC>> as follows:
+
+* The value of the `Name` XML attribute of `<saml:Attribute>` elements MUST
+match the JSON member name of a standard claim in <<OIDC>>.
+* The `address` claim MUST NOT be used. _Refer to requirement *[SDP-IDP18]*._
+* The following properties of the `address` claim MAY be used as standalone
+ attributes:
+** street_address
+** locality
+** region
+** postal_code
+** country
+* The `formatted` member of the `address` claim SHOULD NOT be used.
+
+==== Attribute Name Comparison
+
+Two `<saml:Attribute>` elements refer to the same SAML attribute if and only if
+the values of their Name XML attributes are equal in the sense of Section 3.3.6
+of <<XMLSchema>>.
+
+==== Profile-Specific XML Attributes
+
+No additional XML attributes are defined for use with the `<saml:Attribute>`
+element.
+
+==== SAML Attribute Values
+
+The `xsi:type` attribute of `<saml:AttributeValue>` elements must specify the
+XML Schema type that corresponds to the JSON type in <<OIDC>>:
+
+[width="40%", align="center", options="header"]
+|===========================
+|JSON Type |XML Schema Type
+|string    |xs:string
+|boolean   |xs:boolean
+|number    |xs:decimal
+|===========================
+
+==== Example
+
+The following example shows a `<saml:AttributeStatement>` conveying a set of
+basic claims:
+
+....
+<saml2:AttributeStatement>
+   <saml2:Attribute Name="given_name" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml2:AttributeValue>Otto</saml2:AttributeValue>
+   </saml2:Attribute>
+   <saml2:Attribute Name="family_name" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml2:AttributeValue>Federate</saml2:AttributeValue>
+   </saml2:Attribute>
+   <saml2:Attribute Name="birthdate" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml2:AttributeValue>1998-10-21</saml2:AttributeValue>
+   </saml2:Attribute>
+   <saml2:Attribute Name="region" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml2:AttributeValue>ON</saml2:AttributeValue>
+   </saml2:Attribute>
+</saml2:AttributeStatement>
+....
+
+The followibg example shows an `<md:AttributeConsumingService>` element in
+service provider metadata advertising the ability to accept distributed claims:
+
+....
+<AttributeConsumingService index="2">
+   <ServiceName>urn:oasis:names:tc:SAML:2.0:attrname-format:basic</ServiceName>
+   <RequestedAttribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="family_name" isRequired="true" />
+   <RequestedAttribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="given_name" isRequired="true" />
+   <RequestedAttribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="birthdate" isRequired="true" />
+   <RequestedAttribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="region" isRequired="true" />
+</AttributeConsumingService>
+....
+
+=== CATS Null Attribute Profile
+
+The CATS Null attribute profile allow SAML relying parties to define an
+`<md:AttributeConsumingService>` that signals a desire to not receive any
+attributes. The XML schema definition of  `<md:AttributeConsumingService>`
+requires a minimum of one `<md:RequestedAttribute>` element. This profile
+defines a "null" attribute that can be used to satisft this requiremnt.
+ 
+==== Identification
+
+`urn:gc-ca:cyber-auth:profiles:attribute:null`
+
+==== SAML Attribute Naming
+
+The NameFormat XML attribute in the `<saml:Attribute>` element MUST be
+`urn:oasis:names:tc:SAML:2.0:attrname-format:uri`.
+
+The Name XML attribute in the `<saml:Attribute>` element MUST be `data:,null`.
+
+==== Attribute Name Comparison
+
+Two `<saml:Attribute>` elements refer to the same SAML attribute if and only if
+the values of their Name XML attributes are equal in the sense of Section 3.3.6
+of <<XMLSchema>>.
+
+==== Profile-Specific XML Attributes
+
+No additional XML attributes are defined for use with the `<saml:Attribute>`
+element.
+
+==== SAML Attribute Values
+
+Since the purpose of this profile is to not return any attributes, an IDP SHOULD
+NOT normally support this attribute. If an SP specifies this attribute as an
+<md:RequestedAttribute> with the `isRequired` attribute value of `true`, the IDP
+SHOULD return an error.
+
+==== Example
+
+The followibg example shows an `<md:AttributeConsumingService>` element in
+service provider metadata "requesting" no attributes:
+
+....
+<AttributeConsumingService index="0" isDefault="true">
+   <ServiceName>Null</ServiceName>
+   <RequestedAttribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" Name="data:,null" FriendlyName="null" isRequired="false" />
+</AttributeConsumingService>
+....
+
+
+
+

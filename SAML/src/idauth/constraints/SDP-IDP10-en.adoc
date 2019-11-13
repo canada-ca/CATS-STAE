@@ -1,8 +1,0 @@
-The assertion within the response MUST be directly signed.
-
-The `<saml:AuthnStatement>` MUST include exactly one `<saml:AuthnContext>`
-element that specifies the level of assurance <<SAML2Assur>>
-to which the subject was authenticated.
-
-The `<saml:Assertion>` MUST contain exactly one `<saml:AttributeStatement>`
-element.

@@ -1,0 +1,3 @@
+Consumption of metadata by the Sign in Canada acceptance platform and all
+deployments federating with it MUST be contingent on verification of a
+signature applied by the Sign in Canada Federation Operator.

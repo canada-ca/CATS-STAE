@@ -1,0 +1,38 @@
+The metadata of SPs MUST contain at least one signing certificate with
+the ``use`` attribute set to ``signing`` and at least one encryption certificate
+with the ``use`` attribute set to ``encryption``.
+
+SP metadata MAY include an `<md:Extensions>` element containing an
+`<mdui:UIInfo>` extension element, but it MUST NOT include an
+`<mdattr:EntityAttributes>` extension element.
+
+The ``<md:SPSSODescriptor>`` element of an SP's metadata MUST also include an
+``AuthnRequestsSigned`` attribute set to ``true`` or ``1`` and a
+``WantAssertionsSigned`` attribute set to ``true`` or ``1``.
+
+An SP's metadata SHOULD include two `<md:SingleLogoutService>` elements, one
+with the `Binding` attribute value of
+`urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`, the other with the
+`Binding` attribute value of `urn:oasis:names:tc:SAML:2.0:bindings:SOAP`.
+
+The `<md:SPSSODescriptor>` element of SP metadata MAY contain 0, 2 or more
+`<md:AttributeConsumingService>` elements that specify collections of attributes
+required or desired by the service provider. Each `<md:AttributeConsumingService>`
+MUST include two `<md:ServiceName>` elements, one in english and one in french.
+`<md:ServiceDescription>`, if present, MUST also be included for both english
+and french.
+
+If an SP metadata includes any `<md:AttributeConsumingService>` elements,
+exactly one of them must have the `isDefault` attribute set to `true` or `1`.
+This default `<md:AttributeConsumingService>` must contain exactly one
+`<md:RequestedAttribute>` element that specifies a "null" attribute as follows:
+
+....
+<RequestedAttribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"
+                    Name="data:,null" FriendlyName="null" isRequired="false"/>
+....
+
+_This provides a mechanism to prevent unecessary disclosure of personal
+information, whereby the IDP will not return any attributes unless explicitly
+requested by the SP using the `AttributeConsumingServiceIndex` attribute of
+the `<samlp:AuthnRequest>`._

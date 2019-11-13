@@ -1,4 +1,0 @@
-Attributes contained in responses sent to a proxying identity provider that
-contain personal information intended for the use of a proxied service provider
-SHOULD be further encrypted for the proxied SP via the
-`<saml:EncryptedAttribute>` construct.
