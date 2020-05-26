@@ -24,7 +24,7 @@
 - [[[SAML2ASLO]]] OASIS Committee Specification, SAML V2.0 Asynchronous Single Logout Profile Extension Version 1.0, November 2012. http://docs.oasis-open.org/security/saml/Post2.0/saml-async-slo/v1.0/cs01/saml-async-slo-v1.0-cs01.pdf
 - [[[MetaUI]]] OASIS Standard, SAML V2.0 Metadata Extensions for Login and Discovery User Interface Version 1.0, October 2019. http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-metadata-ui/v1.0/os/sstc-saml-metadata-ui-v1.0-os.pdf
 - [[[MetaAttr]]] OASIS Committee Specification, SAML V2.0 Metadata Extension for Entity Attributes Version 1.0, August 2009. http://docs.oasis-open.org/security/saml/Post2.0/sstc-metadata-attr-cs-01.pdf
-- [[[SAML2Iop]]] Kantara Initiative, SAML V2.0 Interoperability Deployment Profile V2.0 (Draft). https://kantarainitiative.github.io/SAMLprofiles/saml2int.html
+- [[[SAML2Iop]]] Kantara Initiative, SAML V2.0 Deployment Profile for Federation Interoperability. https://kantarainitiative.github.io/SAMLprofiles/saml2int.html
 - [[[OIDC]]] OpenID Foundation Specification, OpenID Connect Core 1.0 incorporating errata set 1, November 8, 2014. https://openid.net/specs/openid-connect-core-1_0.html
 - [[[CORS]]] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. http://www.w3.org/TR/cors/
 - [[[ITSP.40.111]]] Communications Security Establishment, Cryptographic Algorithms for UNCLASSIFIED, PROTECTED A, and PROTECTED B Information. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.111-eng_0.pdf

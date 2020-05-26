@@ -31,11 +31,11 @@ expiration due to inactivity or maximum duration, or other means.
 * *Identity Verification* is the confirmation that the identity information being
 presented relates to the person who is making the claim.
 
-This deployment profile is based on the draft SAML V2.0 Interoperability
-Deployment Profile V1.0 <<SAML2Iop>> published by the Kantara Initiative, which
-in turn is based on the SAML 2.0 specifications created by the Security Services
-Technical Committee (SSTC) of the Organization for the Advancement of Structured
-Information Standards (OASIS).
+This deployment profile is based on the SAML V2.0 Deployment Profile for
+Federation Interoperability version 2.0.0 <<SAML2Iop>> published by the Kantara
+Initiative, which in turn is based on the SAML 2.0 specifications created by the
+Security Services Technical Committee (SSTC) of the Organization for the
+Advancement of Structured Information Standards (OASIS).
 
 .CATS Profile Building Blocks
 image::BuildingBlocks-en.png[]
