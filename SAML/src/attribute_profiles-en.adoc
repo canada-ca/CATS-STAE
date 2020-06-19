@@ -194,7 +194,7 @@ The CATS Null attribute profile allow SAML relying parties to define an
 `<md:AttributeConsumingService>` that signals a desire to not receive any
 attributes. The XML schema definition of  `<md:AttributeConsumingService>`
 requires a minimum of one `<md:RequestedAttribute>` element. This profile
-defines a "null" attribute that can be used to satisft this requiremnt.
+defines a "null" attribute that can be used to satisfy this requiremnt.
  
 ==== Identification
 
