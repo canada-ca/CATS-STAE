@@ -32,7 +32,7 @@ requests. The value of `max_age` MUST be no greater than 1200 (20 minutes).
 *[ODP-RP03]*
 
 RP implementations SHOULD support OpenID back-channel logout <<OIDC-BC>> for
-the receipt of logout tokens. An SP MAY support the OpenID front-channel logout
+the receipt of logout tokens. An RP MAY support the OpenID front-channel logout
 <<OIDC-FC>> in the event that their implementation does not support <<OIDC-BC>>.
 
 ==== Usability
