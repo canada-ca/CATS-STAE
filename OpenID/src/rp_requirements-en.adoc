@@ -43,7 +43,7 @@ authentication requests that, as a minimum, requests the `locale` claim. The
 token. RP applications MUST examine the value of the returned `locale` claim to
 determine if the user changed their preferred official language while
 interacting with the OP, in which case the RP application MUST display all
-subequent content in the newly selected language.
+subsequent content in the newly selected language.
 
 *[ODP-RP05]* Applications SHOULD, and collaborative applications MUST, support
 deep linking. Deep linking implies maintaining support for such links across the
