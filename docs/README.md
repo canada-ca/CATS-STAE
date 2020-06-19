@@ -26,7 +26,7 @@ possible.
 
 ## Current Specifications
 
-* **[CATS 2.0 - SAML 2.0 Deployment Profile](https://canada-ca.github.io/CATS-STAE/archive/CATS_V2_0_Deployment_Profile_Final_r8_2_en.pdf)**: A deployment profile of version 2
+* **[CATS 2.0 - SAML 2.0 Deployment Profile](https://canada-ca.github.io/CATS-STAE/archive/CATS_V2_0_Deployment_Profile_Final_r8_4_en.pdf)**: A deployment profile of version 2
   of the
   [Security Assertion Markup Language](https://wiki.oasis-open.org/security/FrontPage "OASIS SAML Wiki")
   standard, based on the
