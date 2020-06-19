@@ -6,6 +6,12 @@ certificate authority that is recognized by all of the following:
 * https://technet.microsoft.com/en-ca/library/cc751157.aspx[The Microsoft Trusted Root Certificate Program]
 * https://wiki.mozilla.org/CA[The Mozilla Trusted Root Certificate Program]
 
+X.509 certificates used for TLS server authentication MUST comply with the
+following:
+
+* https://support.apple.com/en-gb/HT205280[Apple's Certificate Transparency policy]
+* https://github.com/chromium/ct-policy[Chromium Certificate Transparency Policy]
+
 Deployments MUST NOT accept expired certificates.
 
 Deployments SHOULD NOT perform runtime path validation or revocation checking of
