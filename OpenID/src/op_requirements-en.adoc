@@ -27,9 +27,8 @@ OP deployments SHOULD prioritize the use of the standard claim
 names before defining custom claims. Use of the
 following profiles are RECCOMENDED in descending order of preference:
 
-* The standard OpenID Connect claims defined in section 5.1 of <<OIDC>>. 
-* The claims associated with the `doc` scope described in section 4 of
-  <<iGov-OIDC>>.
+* The standard OpenID Connect claims defined in section 5.1 of <<OIDC>>.
+* The claims defined in sections 3 and 4 of <<OIDC-IA>>. 
 * The Identity Metasystem Interoperability claim types defined in section 7.5 of
   <<IMI>>.
 * Public claims that follow the URI naming convention described in the
@@ -39,22 +38,85 @@ following profiles are RECCOMENDED in descending order of preference:
 
 *[ODP-OP02]*
 
-OpenID Provider deployments participating as a session authority MUST support
-both the OpenID back-channel <<OIDC-BC>> and front-channel <<OIDC-FC>> logout
-specifications and MUST conform to all normative requirements therein.
+OP deployments MUST support a default value for the `max_age`
+request parameter, to be enforced if `max_age` is not provided by the RP in an
+authentication request. This default SHOULD be separately configuable for each
+registered RP.
+
+_Deployments should consult section 7.3 of <<ITSP.30.031 v3>> for guidance on
+an appropriate devault value for `max_age`._
 
 *[ODP-OP03]*
 
-In cases where multiple RPs are participating in a session, OpenID providers
-participating as a session authority MUST first use back-channel logout to send
-logout tokens to all RPs that support back-channel logout before initiating
-front-channel logout for any RPs that do not support back-channel logout.
+OpenID Provider deployments participating as a session authority MUST support
+both the OpenID back-channel <<OIDC-BC>> and front-channel <<OIDC-FC>> logout
+specifications and MUST conform to all normative requirements therein. The 
+OP's discovery metadata must include the `backchannel_logout_supported` and
+`frontchannel_logout_supported` values to indicate this support.
 
 *[ODP-OP04]*
 
-Once an IdP participating as a session authority has issued the first
-authorization code for a new session, it MUST retain sufficient session state to
+OpenID Provider deployments must support the `sid` (session ID) Claim used in ID
+Tokens, as a query parameter in frontchannel logout URI, and and as a Logout
+Token parameter, for those RPs that require it.  The OP's discovery metadata must
+include the `frontchannel_logout_session_supported` and
+`backchannel_logout_session_supported` values to indicate this support.
+
+*[ODP-OP05]*
+
+In cases where multiple RPs are participating in a session, OpenID providers
+participating as a session authority MUST send a logout token to every
+participant who has registered a `backchannel_logout_uri` and MUST render a
+page containg `<iframe src="frontchannel_logout_uri">` for every participant who
+has registered a `frontchannel_logout_uri`.
+
+_An OpenID Provider is obligated to fulfil its resposibilities as a session
+authority to notify *all* participating RPs that the user session has been
+terminated, regardless of any failure by one or more of those RPs. For example,
+if any RP fails to respond to a backchannel logout request, this must not
+interfere with the OPs obligation to send logout requests to all other
+participating RPs, or the OP's obligation to render the front-channel logout
+propogation page._
+
+An OP implementation SHOULD use non-blocking calls to send back-channel logout
+requests in parallel. If the OP is not able to perform both back-channel and
+front-channel logout concurrently, then the OP MUST peform back-channel logout first.
+
+*[ODP-OP06]*
+
+Once an OpenID Provider participating as a session authority has issued the first
+ID Token for a new session, it MUST retain sufficient session state to
 successfully propagate single-logout of a subject's session for a minimum of 8
 hours.
 
-The IdP MAY retain this session state for longer than 8 hours.
+The OP MAY retain this session state for longer than 8 hours.
+
+==== Usability and Official Languages
+
+*[ODP-OP06]*
+
+The user interface of OpenID providers MUST respect the End-User's preferred
+language as indicated by the `ui_locales` request parameter, whenever the
+primary language subtag indicates English `en` or French `fr`.
+
+*[ODP-OP07]*
+
+If an authentication request does not include the `ui_locales` request
+parameter, OpenID providers SHOULD make an effort to determine the End-User's
+preferred language by some other means.
+
+_Examples include other technical mechanisms for obtaining the preferred language from
+the RP (such as 1st-party cookie, or API), accepting the user's preferred
+language as provide by the browser in the `Accept-Language`  HTTP header, or by
+rendering a splash page to prompt the user for their preference._
+
+*[ODP-OP08]*
+
+The `locale` claim is REQUIRED in all ID Tokens issued by an OpenID provider.
+The value of this claim MUST reflect the End-User's most recently known language
+preference.
+
+*[ODP-OP09]*
+
+An OpenID Provider's UserInfo endpoint MUST also include the `locale` claim in all
+successful UserInfo responses.

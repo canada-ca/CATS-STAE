@@ -11,6 +11,7 @@
 - [[[OIDC]]] OpenID Foundation, OpenID Connect Core 1.0 incorporating errata set 1, November 2014, https://openid.net/specs/openid-connect-core-1_0.html
 - [[[OIDC-BC]]] OpenID Foundation, OpenID Connect Back-Channel Logout 1.0 - draft 04, Jaqnuary 2017, https://openid.net/specs/openid-connect-backchannel-1_0.html
 - [[[OIDC-FC]]] OpenID Foundation, OpenID Connect Front-Channel Logout 1.0 - draft 02, January 2017, https://openid.net/specs/openid-connect-frontchannel-1_0.html
+- [[[OIDC-IA]]] OpenID Foundation, OpenID Connect for Identity Assurance 1.0 - implementers draft 2, May 2020, https://openid.net/specs/openid-connect-4-identity-assurance-1_0-ID2.html
 - [[[RFC6749]]] IETF RFC6749, The OAuth 2.0 Authorization Framework, October 2012, https://tools.ietf.org/html/rfc6749
 - [[[RFC5646]]] IETF RFC5646, Tags for Identifying Languages, September 2009, https://tools.ietf.org/html/rfc5646
 - [[[CORS]]] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. http://www.w3.org/TR/cors/

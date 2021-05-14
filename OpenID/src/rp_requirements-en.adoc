@@ -1,5 +1,49 @@
 == Relying Party Requirements
 
+=== Requests to the Token Endpoint
+
+*[ODP-RP01]* _Reference <<iGov-OAuth>> Section 2.3.2
+
+====
+Full clients, native clients with dynamically registered keys, and direct
+access clients as defined above MUST authenticate to the authorization server's
+token endpoint using a JWT assertion as defined by the JWT Profile for OAuth 2.0
+Client Authentication and Authorization Grants using only the _private_key_jwt_
+method defined in OpenID Connect Core.
+====
+
+*CATS Support*: _Constrained_
+ 
+Clients SHOULD authenticate to the authorization server's token endpoint using a
+JWT assertion. Clients using software that cannot support the
+_private_key_jwt_ method MAY use the _client_secret_basic_ or
+_client_secret_post_ methods.
+
+*[ODP-RP01]* _Reference <<iGov-OIDC>> Section 2.2
+====
+In addition to the requirements specified in Section 2.1.2 of the iGov OAuth2 profile , the following claims MUST be included:
+
+The following parameters are specified:
+
+    grant_type
+           MUST be set to authorization_code.
+    code
+           The value of the code parameter returned in the authorization response.
+    client_assertion_type
+           MUST be set to urn:ietf:params:oauth:client-assertion-type:jwt-bearer .
+    client_assertion
+           The value of the signed client authentication JWT generated as described below.
+           The RP must generate a new assertion JWT for each call to the token endpoint.
+====
+*CATS Support*: _Constrained_
+
+Clients that do not support the _private_key_jwt_ authentication method MUST NOT
+include  _client_assertion_type_ and _client_assertion_.
+
+=== CATS-Specific Requirements
+
+==== Authentication Requests
+
 *[ODP-RP01]* _Reference <<OIDC>> Section 3.1.2.1
 
 ====
@@ -18,44 +62,38 @@ official language.
 
 _Typically the value will be either `en-CA` or `fr-CA`._
 
-=== CATS-Specific Requirements
-
-==== Authentication Requests
-
-*[ODP-RP02]*
-
-RP implementations MUST include the `max_age` parameter in all authentication
-requests. The value of `max_age` MUST be no greater than 1200 (20 minutes).
-
 ==== Single Logout
 
-*[ODP-RP03]*
+*[ODP-RP02]*
 
 RP implementations SHOULD support OpenID back-channel logout <<OIDC-BC>> for
 the receipt of logout tokens. An RP MAY support the OpenID front-channel logout
 <<OIDC-FC>> in the event that their implementation does not support <<OIDC-BC>>.
 
-==== Usability
+==== Usability and Official Languages
 
-*[ODP-RP04]* RP implementations MUST include the `claims` parameter in all
-authentication requests that, as a minimum, requests the `locale` claim. The
-`claims` parameter SHOULD request that the `locale` claim be returned in the ID
-token. RP applications MUST examine the value of the returned `locale` claim to
-determine if the user changed their preferred official language while
-interacting with the OP, in which case the RP application MUST display all
-subsequent content in the newly selected language.
+*[ODP-RP03]*
 
-*[ODP-RP05]* Applications SHOULD, and collaborative applications MUST, support
-deep linking. Deep linking implies maintaining support for such links across the
-boundary of an OpenID Connect profile interaction involving any OP necessary to
-complete the login process.
+RP implementations SHOULD examine the value of the `locale` claim
+returned by the OP in order to determine whether the user changed their
+preferred official language while interacting with the OP. The RP application
+SHOULD then display all subsequent content in the newly selected language.
+
+*[ODP-RP04]*
+
+Applications SHOULD, and collaborative applications MUST, support deep linking.
+Deep linking implies maintaining support for such links across the boundary of
+an OpenID Connect profile interaction involving any OP necessary to complete
+the login process.
 
 _It should be possible to request a resource and (authorization permitting) have
 it supplied as the result of a successful OpenID Connect profile exchange._
 
-*[ODP-RP06]* It is RECOMMENDED that RPs support the preservation of POST bodies
-across a successful OpenID Connect profile exchange, subject to size limitations
-dictated by policy or implementation constraints.
+*[ODP-RP05]*
+
+It is RECOMMENDED that RPs support the preservation of POST bodies across a
+successful OpenID Connect profile exchange, subject to size limitations dictated
+by policy or implementation constraints.
 
 _Deep linking implies support for RP-initiated SSO, i.e., the direct generation
 of authentication request messages in response to unauthenticated or
