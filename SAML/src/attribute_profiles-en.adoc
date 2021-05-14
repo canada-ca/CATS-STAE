@@ -97,13 +97,13 @@ service provider metadata advertising the ability to accept distributed claims:
 === CATS Basic Attribute Profile
 
 The CATS Basic attribute profile allow SAML relying parties to obtain a basic
-set of verified claims using the traditional SAML authnetication request
+set of verified claims using the traditional SAML authentication request
 protocol.
 
 _To minimize friction between SAML relying parties, and OpenID connect claims
 providers, this profile defines a correspondence between SAML attribute names
 and attribute value types and the the standard claims defined in section 5.1 of
-<<OIDC>>.
+<<OIDC>> and section 3.1 of <<OIDC-IA>>.
 
 ==== Identification
 
@@ -115,10 +115,11 @@ The NameFormat XML attribute in `<saml:Attribute>` elements MUST be
 `urn:oasis:names:tc:SAML:2.0:attrname-format:basic`.
 
 The Name XML attribute in  `<saml:Attribute>` elements MUST correspond to one of
-the standard claims defined in section 5.1 of <<OIDC>> as follows:
+the standard claims defined in section 5.1 of <<OIDC>>  or section 3.1 of
+<<OIDC-IA>> as follows:
 
 * The value of the `Name` XML attribute of `<saml:Attribute>` elements MUST
-match the JSON member name of a standard claim in <<OIDC>>.
+match the JSON member name of a standard claim in <<OIDC>> or <<OIDC-IA>>.
 * The `address` claim MUST NOT be used. _Refer to requirement *[SDP-IDP18]*._
 * The following properties of the `address` claim MAY be used as standalone
  attributes:
@@ -171,6 +172,9 @@ basic claims:
    </saml2:Attribute>
    <saml2:Attribute Name="region" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
       <saml2:AttributeValue>ON</saml2:AttributeValue>
+   </saml2:Attribute>
+   <saml2:Attribute Name="place_of_birth" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml2:AttributeValue>{"place_of_birth":{"country":"CA","region":"NS","locality":"Truro"}</saml2:AttributeValue>
    </saml2:Attribute>
 </saml2:AttributeStatement>
 ....
