@@ -1,4 +1,4 @@
-= Cyber Authentication Technology Solutions: Deployment Profile of OpenID Connect 1.0 (Draft)
+= Cyber Authentication Technology Solutions: Deployment Profile of OpenID Connect 1.0
 :numbered:
 :toc:
 :toc-placement: preamble
@@ -7,12 +7,9 @@
 :sectnumlevels: 4
 
 [horizontal]
-Version:: 3.x
+Version:: 3.0.0
 Date:: {docdate}
-Status:: Work in Progress
-
-.Required Information
-Document identifier: TBD
+Status:: Implementation Draft
 
 <<<
 include::introduction-en.adoc[]
