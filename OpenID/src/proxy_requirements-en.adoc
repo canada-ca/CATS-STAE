@@ -2,24 +2,26 @@
 
 *[ODP-PIP01]*
 
-Proxying Identity Provider deployments MUST support the mapping of incoming to
+Proxying OpenID Provider deployments MUST support the mapping of incoming to
 outgoing `sub` claims, to pass through values or map between different
 vocabularies as required.
 
 *[ODP-PIP02]*
 
-Proxying Identity Provider deployments MUST support the mapping of incoming to
-outgoing `acr_values` and `vtr` authentication request parameters, to pass
-through values or map between different vocabularies as required.
+Proxying OpenID Provider deployments MUST support the mapping of incoming to
+outgoing `ui_loales`, `scope`, `acr_values` and `vtr` authentication request
+parameters, to pass through values or map between different vocabularies as
+required.
 
 *[ODP-PIP03]*
 
-Proxying Identity Provider deployments MUST support the mapping of incoming to
+Proxying OpenID Provider deployments MUST support the mapping of incoming to
 outgoing `acr` or `vot` and `vtm` claims, as well as the generation of
 new `acr` or `vot` and `vtm` claims using information from other claims in
 the ID token (such as the `iss`), to pass through values or map between
 different vocabularies as required.
 
-*[ODP-PIP04]* Proxying Identity Provider deployments MUST support the
-consumption and production of aggregated and distributed claims as described in
-section 5.6.2 of <<OIDC>>.
+*[ODP-PIP04]*
+
+Proxying OpenID Provider deployments MUST support the consumption and production
+of aggregated and distributed claims as described in section 5.6.2 of <<OIDC>>.
