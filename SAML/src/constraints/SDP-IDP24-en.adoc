@@ -19,8 +19,8 @@ SPs concurrently using the same binding.
 _Doing so can improve the response time perceived by the user._
 
 When using the HTTP-Redirect binding to transmit <samlp:LogoutRequest> messages,
-an IdP SHOULD NOT employ mechanisms that could lead to loss of control of
-the user agent in situations where an SP fails to respond to the
+an IdP MUST NOT employ mechanisms that could lead to loss of control of
+the user-agent in situations where an SP fails to respond to the
 <samlp:LogoutRequest>.
 
 _For example, if the IdP employs a full-frame browser redirect to an SP that
