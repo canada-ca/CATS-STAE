@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Cyber Authentication Technology Solutions: Deployment Profile of OpenID Connect 1.0 (Draft)</title>
+<title>Cyber Authentication Technology Solutions: Deployment Profile of OpenID Connect 1.0</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Cyber Authentication Technology Solutions: Deployment Profile of OpenID Connect 1.0 (Draft)</h1>
+<h1>Cyber Authentication Technology Solutions: Deployment Profile of OpenID Connect 1.0</h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -450,7 +450,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 Version
 </td>
 <td class="hdlist2">
-<p>3.x</p>
+<p>3.0.0</p>
 </td>
 </tr>
 <tr>
@@ -458,7 +458,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2020-06-19</p>
+<p>2021-05-14</p>
 </td>
 </tr>
 <tr>
@@ -466,14 +466,10 @@ Date
 Status
 </td>
 <td class="hdlist2">
-<p>Work in Progress</p>
+<p>Implementation Draft</p>
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<div class="title">Required Information</div>
-<p>Document identifier: TBD</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -498,7 +494,8 @@ Status
 </li>
 <li><a href="#_relying_party_requirements">5. Relying Party Requirements</a>
 <ul class="sectlevel2">
-<li><a href="#_cats_specific_requirements_2">5.1. CATS-Specific Requirements</a></li>
+<li><a href="#_requests_to_the_token_endpoint">5.1. Requests to the Token Endpoint</a></li>
+<li><a href="#_cats_specific_requirements_2">5.2. CATS-Specific Requirements</a></li>
 </ul>
 </li>
 <li><a href="#_openid_provider_requirements">6. OpenID Provider Requirements</a>
@@ -689,10 +686,18 @@ Further details are then provided to fully explain the CATS requirement.</p>
 <p>This profile also has requirements which are specific to this profile.</p>
 </div>
 <div class="paragraph">
-<p>Deployments owned by Government of Canada departments and agencies MUST obtain
-approval from the Office of the Chief Information Officer, Treasury Board
-Secretariat before ignoring any requirements labelled with the key words
-"SHOULD", "SHOULD NOT", "RECOMMENDED" or "NOT RECOMMENDED".</p>
+<p>Government of Canada departments and agencies who choose not to implement any
+requirements labelled with the key words "SHOULD", "SHOULD NOT", "RECOMMENDED"
+or "NOT RECOMMENDED" must document the implications and their reasons for doing
+so in a Security Assessment and a Privacy Impact Assessment.</p>
+</div>
+<div class="paragraph">
+<p>Compliance with all requirements labed "REQUIRED" "MANDATORY", "MUST", and "MUST
+NOT" is required for all members of the Sign in Canada Federation. Federation
+members who wish to seek an exemption to one or more MANDATORY requirements may
+do so via the Government of Canada Trusted Digital Identity Committee (TDIC).
+The TDIC may, at its discretion, direct adjustments to this specification that
+strengthen or relax requirements as warranted.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -819,6 +824,69 @@ status of X.509 certificates used for TLS server authentication.</p>
 <div class="sect1">
 <h2 id="_relying_party_requirements">5. Relying Party Requirements</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_requests_to_the_token_endpoint">5.1. Requests to the Token Endpoint</h3>
+<div class="paragraph">
+<p><strong>[ODP-RP01]</strong> _Reference <a href="#iGov-OAuth">[iGov-OAuth]</a> Section 2.3.2</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Full clients, native clients with dynamically registered keys, and direct
+access clients as defined above MUST authenticate to the authorization server&#8217;s
+token endpoint using a JWT assertion as defined by the JWT Profile for OAuth 2.0
+Client Authentication and Authorization Grants using only the <em>private_key_jwt</em>
+method defined in OpenID Connect Core.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Clients SHOULD authenticate to the authorization server&#8217;s token endpoint using a
+JWT assertion. Clients using software that cannot support the
+<em>private_key_jwt</em> method MAY use the <em>client_secret_basic</em> or
+<em>client_secret_post</em> methods.</p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-RP01]</strong> _Reference <a href="#iGov-OIDC">[iGov-OIDC]</a> Section 2.2</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>In addition to the requirements specified in Section 2.1.2 of the iGov OAuth2 profile , the following claims MUST be included:</p>
+</div>
+<div class="paragraph">
+<p>The following parameters are specified:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>grant_type
+       MUST be set to authorization_code.
+code
+       The value of the code parameter returned in the authorization response.
+client_assertion_type
+       MUST be set to urn:ietf:params:oauth:client-assertion-type:jwt-bearer .
+client_assertion
+       The value of the signed client authentication JWT generated as described below.
+       The RP must generate a new assertion JWT for each call to the token endpoint.</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CATS Support</strong>: <em>Constrained</em></p>
+</div>
+<div class="paragraph">
+<p>Clients that do not support the <em>private_key_jwt</em> authentication method MUST NOT
+include  <em>client_assertion_type</em> and <em>client_assertion</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cats_specific_requirements_2">5.2. CATS-Specific Requirements</h3>
+<div class="sect3">
+<h4 id="_authentication_requests">5.2.1. Authentication Requests</h4>
 <div class="paragraph">
 <p><strong>[ODP-RP01]</strong> _Reference <a href="#OIDC">[OIDC]</a> Section 3.1.2.1</p>
 </div>
@@ -850,22 +918,11 @@ official language.</p>
 <div class="paragraph">
 <p><em>Typically the value will be either <code>en-CA</code> or <code>fr-CA</code>.</em></p>
 </div>
-<div class="sect2">
-<h3 id="_cats_specific_requirements_2">5.1. CATS-Specific Requirements</h3>
+</div>
 <div class="sect3">
-<h4 id="_authentication_requests">5.1.1. Authentication Requests</h4>
+<h4 id="_single_logout">5.2.2. Single Logout</h4>
 <div class="paragraph">
 <p><strong>[ODP-RP02]</strong></p>
-</div>
-<div class="paragraph">
-<p>RP implementations MUST include the <code>max_age</code> parameter in all authentication
-requests. The value of <code>max_age</code> MUST be no greater than 1200 (20 minutes).</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_single_logout">5.1.2. Single Logout</h4>
-<div class="paragraph">
-<p><strong>[ODP-RP03]</strong></p>
 </div>
 <div class="paragraph">
 <p>RP implementations SHOULD support OpenID back-channel logout <a href="#OIDC-BC">[OIDC-BC]</a> for
@@ -874,30 +931,36 @@ the receipt of logout tokens. An RP MAY support the OpenID front-channel logout
 </div>
 </div>
 <div class="sect3">
-<h4 id="_usability">5.1.3. Usability</h4>
+<h4 id="_usability_and_official_languages">5.2.3. Usability and Official Languages</h4>
 <div class="paragraph">
-<p><strong>[ODP-RP04]</strong> RP implementations MUST include the <code>claims</code> parameter in all
-authentication requests that, as a minimum, requests the <code>locale</code> claim. The
-<code>claims</code> parameter SHOULD request that the <code>locale</code> claim be returned in the ID
-token. RP applications MUST examine the value of the returned <code>locale</code> claim to
-determine if the user changed their preferred official language while
-interacting with the OP, in which case the RP application MUST display all
-subsequent content in the newly selected language.</p>
+<p><strong>[ODP-RP03]</strong></p>
 </div>
 <div class="paragraph">
-<p><strong>[ODP-RP05]</strong> Applications SHOULD, and collaborative applications MUST, support
-deep linking. Deep linking implies maintaining support for such links across the
-boundary of an OpenID Connect profile interaction involving any OP necessary to
-complete the login process.</p>
+<p>RP implementations SHOULD examine the value of the <code>locale</code> claim
+returned by the OP in order to determine whether the user changed their
+preferred official language while interacting with the OP. The RP application
+SHOULD then display all subsequent content in the newly selected language.</p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-RP04]</strong></p>
+</div>
+<div class="paragraph">
+<p>Applications SHOULD, and collaborative applications MUST, support deep linking.
+Deep linking implies maintaining support for such links across the boundary of
+an OpenID Connect profile interaction involving any OP necessary to complete
+the login process.</p>
 </div>
 <div class="paragraph">
 <p><em>It should be possible to request a resource and (authorization permitting) have
 it supplied as the result of a successful OpenID Connect profile exchange.</em></p>
 </div>
 <div class="paragraph">
-<p><strong>[ODP-RP06]</strong> It is RECOMMENDED that RPs support the preservation of POST bodies
-across a successful OpenID Connect profile exchange, subject to size limitations
-dictated by policy or implementation constraints.</p>
+<p><strong>[ODP-RP05]</strong></p>
+</div>
+<div class="paragraph">
+<p>It is RECOMMENDED that RPs support the preservation of POST bodies across a
+successful OpenID Connect profile exchange, subject to size limitations dictated
+by policy or implementation constraints.</p>
 </div>
 <div class="paragraph">
 <p><em>Deep linking implies support for RP-initiated SSO, i.e., the direct generation
@@ -955,8 +1018,7 @@ following profiles are RECCOMENDED in descending order of preference:</p>
 <p>The standard OpenID Connect claims defined in section 5.1 of <a href="#OIDC">[OIDC]</a>.</p>
 </li>
 <li>
-<p>The claims associated with the <code>doc</code> scope described in section 4 of
-<a href="#iGov-OIDC">[iGov-OIDC]</a>.</p>
+<p>The claims defined in sections 3 and 4 of <a href="#OIDC-IA">[OIDC-IA]</a>.</p>
 </li>
 <li>
 <p>The Identity Metasystem Interoperability claim types defined in section 7.5 of
@@ -975,30 +1037,110 @@ SAML V2.0 X.500/LDAP Attribute Profile <a href="#X500SAMLattr">[X500SAMLattr]</a
 <p><strong>[ODP-OP02]</strong></p>
 </div>
 <div class="paragraph">
-<p>OpenID Provider deployments participating as a session authority MUST support
-both the OpenID back-channel <a href="#OIDC-BC">[OIDC-BC]</a> and front-channel <a href="#OIDC-FC">[OIDC-FC]</a> logout
-specifications and MUST conform to all normative requirements therein.</p>
+<p>OP deployments MUST support a default value for the <code>max_age</code>
+request parameter, to be enforced if <code>max_age</code> is not provided by the RP in an
+authentication request. This default SHOULD be separately configuable for each
+registered RP.</p>
+</div>
+<div class="paragraph">
+<p><em>Deployments should consult section 7.3 of <a href="#ITSP.30.031 v3">[ITSP.30.031 v3]</a> for guidance on
+an appropriate devault value for <code>max_age</code>.</em></p>
 </div>
 <div class="paragraph">
 <p><strong>[ODP-OP03]</strong></p>
 </div>
 <div class="paragraph">
-<p>In cases where multiple RPs are participating in a session, OpenID providers
-participating as a session authority MUST first use back-channel logout to send
-logout tokens to all RPs that support back-channel logout before initiating
-front-channel logout for any RPs that do not support back-channel logout.</p>
+<p>OpenID Provider deployments participating as a session authority MUST support
+both the OpenID back-channel <a href="#OIDC-BC">[OIDC-BC]</a> and front-channel <a href="#OIDC-FC">[OIDC-FC]</a> logout
+specifications and MUST conform to all normative requirements therein. The
+OP&#8217;s discovery metadata must include the <code>backchannel_logout_supported</code> and
+<code>frontchannel_logout_supported</code> values to indicate this support.</p>
 </div>
 <div class="paragraph">
 <p><strong>[ODP-OP04]</strong></p>
 </div>
 <div class="paragraph">
-<p>Once an IdP participating as a session authority has issued the first
-authorization code for a new session, it MUST retain sufficient session state to
+<p>OpenID Provider deployments must support the <code>sid</code> (session ID) Claim used in ID
+Tokens, as a query parameter in frontchannel logout URI, and and as a Logout
+Token parameter, for those RPs that require it.  The OP&#8217;s discovery metadata must
+include the <code>frontchannel_logout_session_supported</code> and
+<code>backchannel_logout_session_supported</code> values to indicate this support.</p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-OP05]</strong></p>
+</div>
+<div class="paragraph">
+<p>In cases where multiple RPs are participating in a session, OpenID providers
+participating as a session authority MUST send a logout token to every
+participant who has registered a <code>backchannel_logout_uri</code> and MUST render a
+page containg <code>&lt;iframe src="frontchannel_logout_uri"&gt;</code> for every participant who
+has registered a <code>frontchannel_logout_uri</code>.</p>
+</div>
+<div class="paragraph">
+<p><em>An OpenID Provider is obligated to fulfil its resposibilities as a session
+authority to notify <strong>all</strong> participating RPs that the user session has been
+terminated, regardless of any failure by one or more of those RPs. For example,
+if any RP fails to respond to a backchannel logout request, this must not
+interfere with the OPs obligation to send logout requests to all other
+participating RPs, or the OP&#8217;s obligation to render the front-channel logout
+propogation page.</em></p>
+</div>
+<div class="paragraph">
+<p>An OP implementation SHOULD use non-blocking calls to send back-channel logout
+requests in parallel. If the OP is not able to perform both back-channel and
+front-channel logout concurrently, then the OP MUST peform back-channel logout first.</p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-OP06]</strong></p>
+</div>
+<div class="paragraph">
+<p>Once an OpenID Provider participating as a session authority has issued the first
+ID Token for a new session, it MUST retain sufficient session state to
 successfully propagate single-logout of a subject&#8217;s session for a minimum of 8
 hours.</p>
 </div>
 <div class="paragraph">
-<p>The IdP MAY retain this session state for longer than 8 hours.</p>
+<p>The OP MAY retain this session state for longer than 8 hours.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usability_and_official_languages_2">6.2.3. Usability and Official Languages</h4>
+<div class="paragraph">
+<p><strong>[ODP-OP06]</strong></p>
+</div>
+<div class="paragraph">
+<p>The user interface of OpenID providers MUST respect the End-User&#8217;s preferred
+language as indicated by the <code>ui_locales</code> request parameter, whenever the
+primary language subtag indicates English <code>en</code> or French <code>fr</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-OP07]</strong></p>
+</div>
+<div class="paragraph">
+<p>If an authentication request does not include the <code>ui_locales</code> request
+parameter, OpenID providers SHOULD make an effort to determine the End-User&#8217;s
+preferred language by some other means.</p>
+</div>
+<div class="paragraph">
+<p><em>Examples include other technical mechanisms for obtaining the preferred language from
+the RP (such as 1st-party cookie, or API), accepting the user&#8217;s preferred
+language as provide by the browser in the <code>Accept-Language</code>  HTTP header, or by
+rendering a splash page to prompt the user for their preference.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-OP08]</strong></p>
+</div>
+<div class="paragraph">
+<p>The <code>locale</code> claim is REQUIRED in all ID Tokens issued by an OpenID provider.
+The value of this claim MUST reflect the End-User&#8217;s most recently known language
+preference.</p>
+</div>
+<div class="paragraph">
+<p><strong>[ODP-OP09]</strong></p>
+</div>
+<div class="paragraph">
+<p>An OpenID Provider&#8217;s UserInfo endpoint MUST also include the <code>locale</code> claim in all
+successful UserInfo responses.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1012,7 +1154,7 @@ hours.</p>
 <p><strong>[ODP-PIP01]</strong></p>
 </div>
 <div class="paragraph">
-<p>Proxying Identity Provider deployments MUST support the mapping of incoming to
+<p>Proxying OpenID Provider deployments MUST support the mapping of incoming to
 outgoing <code>sub</code> claims, to pass through values or map between different
 vocabularies as required.</p>
 </div>
@@ -1020,24 +1162,27 @@ vocabularies as required.</p>
 <p><strong>[ODP-PIP02]</strong></p>
 </div>
 <div class="paragraph">
-<p>Proxying Identity Provider deployments MUST support the mapping of incoming to
-outgoing <code>acr_values</code> and <code>vtr</code> authentication request parameters, to pass
-through values or map between different vocabularies as required.</p>
+<p>Proxying OpenID Provider deployments MUST support the mapping of incoming to
+outgoing <code>ui_loales</code>, <code>scope</code>, <code>acr_values</code> and <code>vtr</code> authentication request
+parameters, to pass through values or map between different vocabularies as
+required.</p>
 </div>
 <div class="paragraph">
 <p><strong>[ODP-PIP03]</strong></p>
 </div>
 <div class="paragraph">
-<p>Proxying Identity Provider deployments MUST support the mapping of incoming to
+<p>Proxying OpenID Provider deployments MUST support the mapping of incoming to
 outgoing <code>acr</code> or <code>vot</code> and <code>vtm</code> claims, as well as the generation of
 new <code>acr</code> or <code>vot</code> and <code>vtm</code> claims using information from other claims in
 the ID token (such as the <code>iss</code>), to pass through values or map between
 different vocabularies as required.</p>
 </div>
 <div class="paragraph">
-<p><strong>[ODP-PIP04]</strong> Proxying Identity Provider deployments MUST support the
-consumption and production of aggregated and distributed claims as described in
-section 5.6.2 of <a href="#OIDC">[OIDC]</a>.</p>
+<p><strong>[ODP-PIP04]</strong></p>
+</div>
+<div class="paragraph">
+<p>Proxying OpenID Provider deployments MUST support the consumption and production
+of aggregated and distributed claims as described in section 5.6.2 of <a href="#OIDC">[OIDC]</a>.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1071,6 +1216,9 @@ section 5.6.2 of <a href="#OIDC">[OIDC]</a>.</p>
 <p><a id="OIDC-FC"></a>[OIDC-FC] OpenID Foundation, OpenID Connect Front-Channel Logout 1.0 - draft 02, January 2017, <a href="https://openid.net/specs/openid-connect-frontchannel-1_0.html" class="bare">https://openid.net/specs/openid-connect-frontchannel-1_0.html</a></p>
 </li>
 <li>
+<p><a id="OIDC-IA"></a>[OIDC-IA] OpenID Foundation, OpenID Connect for Identity Assurance 1.0 - implementers draft 2, May 2020, <a href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-ID2.html" class="bare">https://openid.net/specs/openid-connect-4-identity-assurance-1_0-ID2.html</a></p>
+</li>
+<li>
 <p><a id="RFC6749"></a>[RFC6749] IETF RFC6749, The OAuth 2.0 Authorization Framework, October 2012, <a href="https://tools.ietf.org/html/rfc6749" class="bare">https://tools.ietf.org/html/rfc6749</a></p>
 </li>
 <li>
@@ -1084,6 +1232,10 @@ section 5.6.2 of <a href="#OIDC">[OIDC]</a>.</p>
 </li>
 <li>
 <p><a id="ITSP.40.062"></a>[ITSP.40.062] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. <a href="https://cyber.gc.ca/en/guidance/guidance-securely-configuring-network-protocols-itsp40062" class="bare">https://cyber.gc.ca/en/guidance/guidance-securely-configuring-network-protocols-itsp40062</a></p>
+</li>
+<li>
+<p>[[[ITSP.30.031 v3]]] Communications Security Establishment,
+User Authentication Guidance for Information Technology Systems. <a href="https://cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3" class="bare">https://cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3</a></p>
 </li>
 <li>
 <p><a id="IMI"></a>[IMI] OASIS Standard, Identity Metasystem Interoperability Version 1.0. <a href="http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf" class="bare">http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf</a></p>
@@ -1111,7 +1263,7 @@ section 5.6.2 of <a href="#OIDC">[OIDC]</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-19 16:51:40 UTC
+Last updated 2021-05-14 15:12:08 UTC
 </div>
 </div>
 </body>

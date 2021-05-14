@@ -450,7 +450,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 Version
 </td>
 <td class="hdlist2">
-<p>3.x</p>
+<p>3.0.0</p>
 </td>
 </tr>
 <tr>
@@ -458,7 +458,7 @@ Version
 Date
 </td>
 <td class="hdlist2">
-<p>2020-06-19</p>
+<p>2021-05-14</p>
 </td>
 </tr>
 <tr>
@@ -470,10 +470,6 @@ Status
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<div class="title">Required Information</div>
-<p>Document identifier: TBD</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -3534,14 +3530,14 @@ service provider metadata advertising the ability to accept distributed claims:<
 <h3 id="_cats_basic_attribute_profile">7.2. CATS Basic Attribute Profile</h3>
 <div class="paragraph">
 <p>The CATS Basic attribute profile allow SAML relying parties to obtain a basic
-set of verified claims using the traditional SAML authnetication request
+set of verified claims using the traditional SAML authentication request
 protocol.</p>
 </div>
 <div class="paragraph">
 <p>_To minimize friction between SAML relying parties, and OpenID connect claims
 providers, this profile defines a correspondence between SAML attribute names
 and attribute value types and the the standard claims defined in section 5.1 of
-<a href="#OIDC">[OIDC]</a>.</p>
+<a href="#OIDC">[OIDC]</a> and section 3.1 of <a href="#OIDC-IA">[OIDC-IA]</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_identification_2">7.2.1. Identification</h4>
@@ -3557,13 +3553,14 @@ and attribute value types and the the standard claims defined in section 5.1 of
 </div>
 <div class="paragraph">
 <p>The Name XML attribute in  <code>&lt;saml:Attribute&gt;</code> elements MUST correspond to one of
-the standard claims defined in section 5.1 of <a href="#OIDC">[OIDC]</a> as follows:</p>
+the standard claims defined in section 5.1 of <a href="#OIDC">[OIDC]</a>  or section 3.1 of
+<a href="#OIDC-IA">[OIDC-IA]</a> as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>The value of the <code>Name</code> XML attribute of <code>&lt;saml:Attribute&gt;</code> elements MUST
-match the JSON member name of a standard claim in <a href="#OIDC">[OIDC]</a>.</p>
+match the JSON member name of a standard claim in <a href="#OIDC">[OIDC]</a> or <a href="#OIDC-IA">[OIDC-IA]</a>.</p>
 </li>
 <li>
 <p>The <code>address</code> claim MUST NOT be used. <em>Refer to requirement <strong>[SDP-IDP18]</strong>.</em></p>
@@ -3665,6 +3662,9 @@ basic claims:</p>
    &lt;/saml2:Attribute&gt;
    &lt;saml2:Attribute Name="region" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"&gt;
       &lt;saml2:AttributeValue&gt;ON&lt;/saml2:AttributeValue&gt;
+   &lt;/saml2:Attribute&gt;
+   &lt;saml2:Attribute Name="place_of_birth" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"&gt;
+      &lt;saml2:AttributeValue&gt;{"place_of_birth":{"country":"CA","region":"NS","locality":"Truro"}&lt;/saml2:AttributeValue&gt;
    &lt;/saml2:Attribute&gt;
 &lt;/saml2:AttributeStatement&gt;</pre>
 </div>
@@ -3905,6 +3905,9 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 <p><a id="OIDC"></a>[OIDC] OpenID Foundation Specification, OpenID Connect Core 1.0 incorporating errata set 1, November 8, 2014. <a href="https://openid.net/specs/openid-connect-core-1_0.html" class="bare">https://openid.net/specs/openid-connect-core-1_0.html</a></p>
 </li>
 <li>
+<p><a id="OIDC-IA"></a>[OIDC-IA] OpenID Foundation, OpenID Connect for Identity Assurance 1.0 - implementers draft 2, May 2020, <a href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-ID2.html" class="bare">https://openid.net/specs/openid-connect-4-identity-assurance-1_0-ID2.html</a></p>
+</li>
+<li>
 <p><a id="CORS"></a>[CORS] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. <a href="http://www.w3.org/TR/cors/" class="bare">http://www.w3.org/TR/cors/</a></p>
 </li>
 <li>
@@ -3924,11 +3927,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 <div class="ulist bibliography">
 <ul class="bibliography">
 <li>
-<p><a id="CATS-SAML2Id"></a>[CATS-SAML2Id] - Treasury Board Canada Secretariat, CATS SAML 2.0 Deployment Profile for Identity Authentication. <a href="https://canada-ca.github.io/CATS-STAE/saml2id.html" class="bare">https://canada-ca.github.io/CATS-STAE/saml2id.html</a></p>
-</li>
-<li>
-<p><a id="PCTF"></a>[PCTF] Identity Management Subcomittee, Pan-Canadian Trust Framework.
-<a href="https://github.com/canada-ca/PCTF-CCP" class="bare">https://github.com/canada-ca/PCTF-CCP</a></p>
+<p><a id="PCTF"></a>[PCTF] Identity Management Subcomittee, Pan-Canadian Trust Framework. <a href="https://github.com/canada-ca/PCTF-CCP" class="bare">https://github.com/canada-ca/PCTF-CCP</a></p>
 </li>
 <li>
 <p><a id="XMLEncBreak"></a>[XMLEncBreak] Jager and Somorovsky, How to Break XML Encryption, October 2011. <a href="http://www.nds.rub.de/media/nds/veroeffentlichungen/2011/10/22/HowToBreakXMLenc.pdf" class="bare">http://www.nds.rub.de/media/nds/veroeffentlichungen/2011/10/22/HowToBreakXMLenc.pdf</a></p>
@@ -3975,7 +3974,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-19 17:03:59 UTC
+Last updated 2021-05-14 15:12:29 UTC
 </div>
 </div>
 </body>
