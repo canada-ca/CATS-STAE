@@ -37,7 +37,14 @@ Further details are then provided to fully explain the CATS requirement.
 
 This profile also has requirements which are specific to this profile.
 
-Deployments owned by Government of Canada departments and agencies MUST obtain
-approval from the Office of the Chief Information Officer, Treasury Board
-Secretariat before ignoring any requirements labelled with the key words
-"SHOULD", "SHOULD NOT", "RECOMMENDED" or "NOT RECOMMENDED".
+Government of Canada departments and agencies who choose not to implement any
+requirements labelled with the key words "SHOULD", "SHOULD NOT", "RECOMMENDED"
+or "NOT RECOMMENDED" must document the implications and their reasons for doing
+so in a Security Assessment and a Privacy Impact Assessment.
+
+Compliance with all requirements labed "REQUIRED" "MANDATORY", "MUST", and "MUST
+NOT" is required for all members of the Sign in Canada Federation. Federation
+members who wish to seek an exemption to one or more MANDATORY requirements may
+do so via the Government of Canada Trusted Digital Identity Committee (TDIC).
+The TDIC may, at its discretion, direct adjustments to this specification that
+strengthen or relax requirements as warranted.
