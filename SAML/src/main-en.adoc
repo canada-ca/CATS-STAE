@@ -7,12 +7,9 @@
 :sectnumlevels: 4
 
 [horizontal]
-Version:: 3.x
+Version:: 3.0.0
 Date:: {docdate}
 Status:: Implementer's Draft
-
-.Required Information
-Document identifier: TBD
 
 <<<
 include::introduction-en.adoc[]
