@@ -17,8 +17,7 @@
 - [[[CORS]]] W3C Recommendation, Cross-Origin Resource Sharing, January 2014. http://www.w3.org/TR/cors/
 - [[[ITSP.40.111]]] Communications Security Establishment, Cryptographic Algorithms for UNCLASSIFIED, PROTECTED A, and PROTECTED B Information. https://www.cse-cst.gc.ca/en/system/files/pdf_documents/itsp.40.111-eng_0.pdf
 - [[[ITSP.40.062]]] Communications Security Establishment, Guidance on Securely Configuring Network Protocols. https://cyber.gc.ca/en/guidance/guidance-securely-configuring-network-protocols-itsp40062
-- [[[ITSP.30.031 v3]]] Communications Security Establishment, 
-User Authentication Guidance for Information Technology Systems. https://cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3
+- [[[ITSP.30.031v3]]] Communications Security Establishment, User Authentication Guidance for Information Technology Systems. https://cyber.gc.ca/en/guidance/user-authentication-guidance-information-technology-systems-itsp30031-v3
 - [[[IMI]]] OASIS Standard, Identity Metasystem Interoperability Version 1.0. http://docs.oasis-open.org/imi/identity/v1.0/identity.pdf
 - [[[X500SAMLattr]]] OASIS Committee Specification, SAML V2.0 X.500/LDAP Attribute Profile, March 2008. http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-attribute-x500-cs-01.pdf
 

@@ -43,7 +43,7 @@ request parameter, to be enforced if `max_age` is not provided by the RP in an
 authentication request. This default SHOULD be separately configuable for each
 registered RP.
 
-_Deployments should consult section 7.3 of <<ITSP.30.031 v3>> for guidance on
+_Deployments should consult section 7.3 of <<ITSP.30.031v3>> for guidance on
 an appropriate devault value for `max_age`._
 
 *[ODP-OP03]*
