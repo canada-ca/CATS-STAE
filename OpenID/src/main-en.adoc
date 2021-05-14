@@ -9,7 +9,7 @@
 [horizontal]
 Version:: 3.0.0
 Date:: {docdate}
-Status:: Implementation Draft
+Status:: Implementer's Draft
 
 <<<
 include::introduction-en.adoc[]
