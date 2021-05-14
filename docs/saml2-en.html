@@ -2038,9 +2038,7 @@ of <code>&lt;samlp:LogoutRequest&gt;</code> messages.</p>
 </div>
 <div class="paragraph">
 <p>An SP MAY support the HTTP-Redirect binding in the event that their
-implementation does not support the SOAP binding, in which case the SP MUST
-support cross-origin resource sharing <a href="#CORS">[CORS]</a> so that the IdP can send
-<code>&lt;samlp:LogoutRequest&gt;</code> messages without giving up control of the user agent.</p>
+implementation does not support the SOAP binding.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -3828,6 +3826,23 @@ on behalf of other proxies in the chain.</em></p>
 deployments MUST include the <code>ForceAuthn</code> attribute with a value of <code>true</code> or
 <code>1</code>.</p>
 </div>
+<div class="paragraph">
+<p><strong>[CDP-PIP09]</strong></p>
+</div>
+<div class="paragraph">
+<p>Proxying Identity Provider deployments participating as a session authority,
+that also support the proxying of single logout from a proxied IDP to its own
+RPs MUST use the HTTP-Redirect <a href="#SAML2Bind">[SAML2Bind]</a> binding to receive
+<code>&lt;samlp:LogoutRequest&gt;</code> messages from the proxied IDP. Any back-channel mechanism,
+such at the SOAP binding, MUST NOT be used.</p>
+</div>
+<div class="paragraph">
+<p><em>A proxying IDP must obtain access to the user-agent, so that it can propogate
+the logout to its own RPs who require front-channel bindings. Accepting logout
+signals from a proxied IDP via any back-channel mechanism such as SOAP would
+prevent the proxying IDP from fulfilling its obligations as a session authority
+as defined in [SDP-IDP24].</em></p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -3974,7 +3989,7 @@ deployments MUST include the <code>ForceAuthn</code> attribute with a value of <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-14 15:12:29 UTC
+Last updated 2021-05-14 16:15:04 UTC
 </div>
 </div>
 </body>

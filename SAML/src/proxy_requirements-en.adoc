@@ -52,4 +52,18 @@ on behalf of other proxies in the chain._
 
 `<samlp:AuthnRequest>` messages produced by Proxying Identity Provider
 deployments MUST include the `ForceAuthn` attribute with a value of `true` or
-`1`. 
+`1`.
+
+*[CDP-PIP09]*
+
+Proxying Identity Provider deployments participating as a session authority,
+that also support the proxying of single logout from a proxied IDP to its own
+RPs MUST use the HTTP-Redirect <<SAML2Bind>> binding to receive
+`<samlp:LogoutRequest>` messages from the proxied IDP. Any back-channel mechanism,
+such at the SOAP binding, MUST NOT be used.
+
+_A proxying IDP must obtain access to the user-agent, so that it can propogate
+the logout to its own RPs who require front-channel bindings. Accepting logout
+signals from a proxied IDP via any back-channel mechanism such as SOAP would
+prevent the proxying IDP from fulfilling its obligations as a session authority
+as defined in [SDP-IDP24]._
